@@ -1,15 +1,12 @@
-__author__ = ["author name"]
+__author__ = ["Nikhil Gupta"]
 
 from setuptools import setup, find_packages
 
 setup(
-    name="examplepackage",
-    version="x.x",
+    name="benchmarks",
+    version="0.0.1",
     packages=find_packages(),
-    description="package description",
-    author="author name",
-    install_requires=[
-        "numpy>=1.0",
-        "pandas==1.0",
-    ],
+    description="Benchmark pycaret",
+    author="Nikhil Gupta",
+    install_requires=[],
 )
