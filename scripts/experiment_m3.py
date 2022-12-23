@@ -1,105 +1,181 @@
+"""
+Execution command (examples):
+>>> python scripts/experiment_m3.py --help
+>>> python scripts/experiment_m3.py --execution_mode=native --engine=local --ts_category=Other
+>>> python scripts/experiment_m3.py --execution_mode=native --engine=ray --ts_category=Other
+>>> python scripts/experiment_m3.py --execution_mode=fugue --engine=ray --ts_category=Other
+>>> python scripts/experiment_m3.py --execution_mode=fugue --engine=ray --ts_category=Other
+"""
+
+import multiprocessing as mp
 import time
-from typing import Optional
-from tqdm import tqdm
+
+import fire
 import pandas as pd
-from pycaret.time_series import TSForecastingExperiment
+import ray
+from fugue import transform
+from tqdm import tqdm
+
 from benchmarks.datasets.create.time_series.m3 import get_data
+from benchmarks.parallel.time_series.single_ts import forecast_create_model
+from benchmarks.utils import Engine, ExecutionMode, check_allowed_types
 
 # Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
 tqdm.pandas()
 
-directory = "data/"
-dataset = "M3"
-groups = ["Yearly", "Quarterly", "Monthly", "Other"]
 
+def main(
+    dataset: str = "M3",
+    ts_category: str = "Other",
+    model: str = "ets",
+    execution_mode: str = "native",
+    engine: str = "ray",
+) -> None:
+    """Benchmark the performance of a single model across multiple individual
+    time series.
 
-def forecast_single(
-    data: pd.DataFrame,
-    fh: int,
-    target: str,
-    prefix: str,
-    create_model_kwargs: dict,
-    backup_model_kwargs: Optional[dict] = None,
-    **kwargs,
-) -> pd.DataFrame:
-    id = data["unique_id"].unique()[0]
-    prefix = prefix or "dataset"
-    test_preds = pd.DataFrame()
-    setup_passed = False
-    model_name = None
-    model = None
-    try:
-        exp = TSForecastingExperiment()
-        exp.setup(
-            data=data, fh=fh, target=target, experiment_name=f"{prefix}_{id}", **kwargs
+    Parameters
+    ----------
+    dataset : str, optional
+        Dataset to benchmark, by default "M3"
+        NOTE: Currently only M3 is supported
+    ts_category : str, optional
+        Options: "Yearly", "Quarterly", "Monthly", "Other", by default "Other"
+    model : str, optional
+        The model name to pass to pycaret's create_model in order to benchmark,
+        by default "ets". Refer to pycaret's documentation for more information.
+    execution_mode : str, optional
+        Should the execution be done natively or using the Fugue wrapper
+        Options: "native", "fugue", by default "native"
+    engine : str, optional
+        What engine should be used.
+        Options: "local", "ray", "spark", by default "ray"
+            - "local" will execute serially using pandas
+            - "ray" will execute in parallel using Ray
+            - "spark" will execute in parallel using Spark
+        NOTE: Currently only "local" and "ray" are supported
+
+    Raises
+    ------
+    ValueError
+        (1) execution_mode is not one of "native" or "fugue"
+        (2) engine is not one of "local", "ray", or "spark"
+        (3) engine is not implemented
+    """
+    # Check that the execution mode and engine are supported ----
+    if not check_allowed_types(execution_mode, ExecutionMode):
+        raise ValueError(
+            f"Execution Mode '{execution_mode}' not supported. "
+            f"Please choose from {list(ExecutionMode.__members__.keys())}."
         )
-        setup_passed = True
-        try:
-            model_name = create_model_kwargs.get("estimator")
-            model = exp.create_model(**create_model_kwargs)
-            test_preds = exp.predict_model(model)
-        except Exception as e:
-            print(f"Error occurred for ID: {id} when trying main model: {e}")
-            if backup_model_kwargs is not None:
-                try:
-                    print(f"Trying backup model for ID: {id}")
-                    model_name = backup_model_kwargs.get("estimator")
-                    model = exp.create_model(**backup_model_kwargs)
-                    test_preds = exp.predict_model(model)
-                except Exception as e:
-                    print(f"Error occurred for ID: {id} when trying backup model: {e}")
-    except Exception as e:
-        if not setup_passed:
-            print(
-                f"Error occurred for ID: {id} during experiment setup. No model created: {e}"
-            )
+    if not check_allowed_types(engine, Engine):
+        raise ValueError(
+            f"Engine '{engine}' not supported. "
+            f"Please choose from {list(Engine.__members__.keys())}."
+        )
 
-    # Add model name and model hyperparameters used ----
-    test_preds["model_name"] = model_name
-    test_preds["model"] = model
-    return test_preds
+    # Set variables based on the execution mode and engine ----
+    if engine == "local":
+        if execution_mode == "fugue":
+            fugue_engine = None
+            as_local = True
+    elif engine == "ray":
+        if execution_mode == "fugue":
+            fugue_engine = "ray"
+            as_local = True
+        num_cpus = mp.cpu_count()
+        ray.init(num_cpus=num_cpus)
+    elif engine == "spark":
+        raise ValueError("Spark is not supported right now.")
 
+    # Directory where the data is stored ----
+    directory = "data/"
 
-# "Other" group since it has the least number of time series
-groups = groups[-1:]
-for group in tqdm(groups):
-    train, fh, freq, seasonality = get_data(
-        directory=directory, dataset=dataset, group=group
-    )
+    # # "Other" group since it has the least number of time series
+    # ts_categories = ts_categories[-1:]
+    # for ts_category in tqdm(ts_categories):
+    train, fh, _, _ = get_data(directory=directory, dataset=dataset, group=ts_category)
     test, _, _, _ = get_data(
-        directory=directory, dataset=dataset, group=group, train=False
+        directory=directory, dataset=dataset, group=ts_category, train=False
     )
 
     combined = pd.concat([train, test], axis=0)
     combined["ds"] = pd.to_datetime(combined["ds"])
-    combined.set_index("ds", inplace=True)
 
-    model = "ets"
-    prefix = f"{dataset}-{group}-{model}"
-    start = time.time()
-    test_results = combined.groupby("unique_id").progress_apply(
-        forecast_single,
+    prefix = f"{dataset}-{ts_category}-{model}-{engine}-{execution_mode}"
+
+    # # For local testing on a small subset ----
+    # all_ts = combined["unique_id"].unique()
+    # combined = combined[combined["unique_id"].isin(all_ts[:2])]
+
+    apply_kwargs = dict(
         fh=fh,
         target="y",
+        index="ds",
         prefix=prefix,
         fold=1,
         ignore_features=["unique_id"],
+        n_jobs=1,
         session_id=42,
         verbose=False,
         create_model_kwargs={"estimator": model, "cross_validation": False},
         backup_model_kwargs={"estimator": "naive", "cross_validation": False},
     )
+
+    start = time.time()
+    if execution_mode == "native":
+        grouped_data = combined.groupby("unique_id")
+        if engine == "local":
+            test_results = grouped_data.progress_apply(
+                forecast_create_model, **apply_kwargs
+            )
+        elif engine == "ray":
+            test_results = []
+            function_remote = ray.remote(forecast_create_model)
+            for single_group in grouped_data.groups.keys():
+                result_single_group = function_remote.remote(
+                    data=grouped_data.get_group(single_group), **apply_kwargs
+                )
+                test_results.append(result_single_group)
+            test_results = ray.get(test_results)
+            # Combine all results into 1 dataframe
+            test_results = pd.concat(test_results)
+    elif execution_mode == "fugue":
+        schema = "unique_id:str, ds:date, y_pred:float, model_name:str, model:str"
+        test_results = transform(
+            combined,
+            forecast_create_model,
+            params=apply_kwargs,
+            schema=schema,
+            partition={"by": "unique_id"},
+            engine=fugue_engine,
+            as_local=as_local,
+        )
     end = time.time()
     time_taken = round(end - start)
-    print(f"Total time taken for group {group}: {time_taken}s")
+    print(f"Total time taken for category '{ts_category}': {time_taken}s")
 
-    test_results.reset_index(inplace=True)
-    test_results.rename(columns={"level_1": "ds"}, inplace=True)
+    # Order columns (as different engines may have different orders) ----
+    cols = ["unique_id", "ds", "y_pred", "model_name", "model"]
+    test_results = test_results[cols]
+
+    # Write results ----
     test_results.to_csv(f"data/forecasts-{prefix}.csv", index=False)
-
     time_df = pd.DataFrame(
-        {"time": [time_taken], "dataset": [dataset], "group": [group], "model": [model]}
+        {
+            "time": [time_taken],
+            "dataset": [dataset],
+            "group": [ts_category],
+            "model": [model],
+            "engine": [engine],
+            "execution_mode": [execution_mode],
+        }
     )
     time_df.to_csv(f"data/time-{prefix}.csv", index=False)
 
-print("DONE")
+    if engine == "ray":
+        ray.shutdown()
+
+
+if __name__ == "__main__":
+    fire.Fire(main)
