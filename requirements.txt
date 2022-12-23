@@ -1,0 +1,13 @@
+# Pycaret
+pycaret==3.0.0rc5
+
+# Datasets
+datasetsforecast
+
+# Big Data
+ray
+fugue
+
+# Miscellaneous
+
+
