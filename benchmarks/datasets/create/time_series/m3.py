@@ -1,6 +1,4 @@
-"""
-Ref: https://github.com/Nixtla/statsforecast/tree/main/experiments/m3/src
-"""
+"""Ref: https://github.com/Nixtla/statsforecast/tree/main/experiments/m3/src"""
 
 from typing import Tuple
 
@@ -24,8 +22,8 @@ def get_data(
     dataset : str
         'M3' only
     group : str
-        Group name.
-        Allowed groups: 'Yearly', 'Quarterly', 'Monthly', 'Other'.
+        Time Series Category name.
+        Allowed values: 'Yearly', 'Quarterly', 'Monthly', 'Other'.
     train : bool, optional
         Returns the training dataset if True, else the Test dataset,
         by default True
@@ -71,6 +69,19 @@ def get_data(
 
 
 def save_data(dataset: str, group: str, train: bool = True):
+    """Save the dataset to a csv file.
+
+    Parameters
+    ----------
+    dataset : str
+        'M3', M4, etc
+    group : str
+        Time Series Category name.
+        Allowed values: 'Yearly', 'Quarterly', 'Monthly', 'Other'.
+    train : bool, optional
+        Save the training dataset if True, else the Test dataset,
+        by default True
+    """
     df, *_ = get_data("data", dataset, group, train)
     if train:
         df.to_csv(f"data/{dataset}-{group}.csv", index=False)

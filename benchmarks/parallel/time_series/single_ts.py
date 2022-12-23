@@ -1,3 +1,4 @@
+"""Module to forecast a single time series using various pycaret flows."""
 from typing import Optional
 
 import pandas as pd
@@ -11,8 +12,9 @@ def forecast_create_model(
     prefix: Optional[str] = None,
     **kwargs,
 ) -> pd.DataFrame:
-    """Produces forecasts for a single time series using create_model. i.e.
-    Single Time Series, Single Model
+    """Produces forecasts for a single time series using create_model.
+
+    i.e. Single Time Series, Single Model
 
     Parameters
     ----------

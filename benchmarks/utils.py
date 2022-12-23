@@ -1,13 +1,18 @@
+"""Utility functions"""
 from enum import Enum, auto
 
 
 class Engine(Enum):
+    """The execution engine to use."""
+
     local = auto()
     ray = auto()
     spark = auto()
 
 
 class ExecutionMode(Enum):
+    """The execution mode to use."""
+
     native = auto()
     fugue = auto()
 
