@@ -3,6 +3,7 @@ Ref: https://github.com/Nixtla/statsforecast/tree/main/experiments/m3/src
 """
 
 from typing import Tuple
+
 import pandas as pd
 from datasetsforecast.m3 import M3, M3Info
 
