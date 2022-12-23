@@ -1,0 +1,1393 @@
+unique_id,ds,y_pred,model_name,model
+O1,1970-04-07,4558.119,ets,AutoETS(trend='add')
+O1,1970-04-08,4573.726,ets,AutoETS(trend='add')
+O1,1970-04-09,4589.333,ets,AutoETS(trend='add')
+O1,1970-04-10,4604.9399,ets,AutoETS(trend='add')
+O1,1970-04-11,4620.5469,ets,AutoETS(trend='add')
+O1,1970-04-12,4636.1539,ets,AutoETS(trend='add')
+O1,1970-04-13,4651.7609,ets,AutoETS(trend='add')
+O1,1970-04-14,4667.3679,ets,AutoETS(trend='add')
+O10,1970-04-07,5726.8905,ets,AutoETS(trend='add')
+O10,1970-04-08,5722.4472,ets,AutoETS(trend='add')
+O10,1970-04-09,5718.0038,ets,AutoETS(trend='add')
+O10,1970-04-10,5713.5605,ets,AutoETS(trend='add')
+O10,1970-04-11,5709.1172,ets,AutoETS(trend='add')
+O10,1970-04-12,5704.6738,ets,AutoETS(trend='add')
+O10,1970-04-13,5700.2305,ets,AutoETS(trend='add')
+O10,1970-04-14,5695.7872,ets,AutoETS(trend='add')
+O100,1970-03-05,1921.9155,ets,AutoETS(trend='add')
+O100,1970-03-06,1903.8342,ets,AutoETS(trend='add')
+O100,1970-03-07,1885.7528,ets,AutoETS(trend='add')
+O100,1970-03-08,1867.6715,ets,AutoETS(trend='add')
+O100,1970-03-09,1849.5902,ets,AutoETS(trend='add')
+O100,1970-03-10,1831.5089,ets,AutoETS(trend='add')
+O100,1970-03-11,1813.4276,ets,AutoETS(trend='add')
+O100,1970-03-12,1795.3462,ets,AutoETS(trend='add')
+O101,1970-03-05,11223.0798,ets,AutoETS(trend='add')
+O101,1970-03-06,11029.383,ets,AutoETS(trend='add')
+O101,1970-03-07,10835.6861,ets,AutoETS(trend='add')
+O101,1970-03-08,10641.9893,ets,AutoETS(trend='add')
+O101,1970-03-09,10448.2924,ets,AutoETS(trend='add')
+O101,1970-03-10,10254.5956,ets,AutoETS(trend='add')
+O101,1970-03-11,10060.8987,ets,AutoETS(trend='add')
+O101,1970-03-12,9867.2019,ets,AutoETS(trend='add')
+O102,1970-03-05,5813.4009,ets,AutoETS(trend='add')
+O102,1970-03-06,5745.8083,ets,AutoETS(trend='add')
+O102,1970-03-07,5678.2156,ets,AutoETS(trend='add')
+O102,1970-03-08,5610.6229,ets,AutoETS(trend='add')
+O102,1970-03-09,5543.0303,ets,AutoETS(trend='add')
+O102,1970-03-10,5475.4376,ets,AutoETS(trend='add')
+O102,1970-03-11,5407.8449,ets,AutoETS(trend='add')
+O102,1970-03-12,5340.2523,ets,AutoETS(trend='add')
+O103,1970-03-05,9764.1108,ets,AutoETS(trend='add')
+O103,1970-03-06,9669.2314,ets,AutoETS(trend='add')
+O103,1970-03-07,9574.3519,ets,AutoETS(trend='add')
+O103,1970-03-08,9479.4725,ets,AutoETS(trend='add')
+O103,1970-03-09,9384.593,ets,AutoETS(trend='add')
+O103,1970-03-10,9289.7135,ets,AutoETS(trend='add')
+O103,1970-03-11,9194.8341,ets,AutoETS(trend='add')
+O103,1970-03-12,9099.9546,ets,AutoETS(trend='add')
+O104,1970-03-05,10186.1977,ets,AutoETS(trend='add')
+O104,1970-03-06,9933.3777,ets,AutoETS(trend='add')
+O104,1970-03-07,9680.5576,ets,AutoETS(trend='add')
+O104,1970-03-08,9427.7376,ets,AutoETS(trend='add')
+O104,1970-03-09,9174.9176,ets,AutoETS(trend='add')
+O104,1970-03-10,8922.0975,ets,AutoETS(trend='add')
+O104,1970-03-11,8669.2775,ets,AutoETS(trend='add')
+O104,1970-03-12,8416.4575,ets,AutoETS(trend='add')
+O105,1970-03-05,6429.4439,ets,AutoETS(trend='add')
+O105,1970-03-06,6246.9323,ets,AutoETS(trend='add')
+O105,1970-03-07,6064.4206,ets,AutoETS(trend='add')
+O105,1970-03-08,5881.909,ets,AutoETS(trend='add')
+O105,1970-03-09,5699.3973,ets,AutoETS(trend='add')
+O105,1970-03-10,5516.8857,ets,AutoETS(trend='add')
+O105,1970-03-11,5334.374,ets,AutoETS(trend='add')
+O105,1970-03-12,5151.8624,ets,AutoETS(trend='add')
+O106,1970-03-05,6969.2709,ets,AutoETS(trend='add')
+O106,1970-03-06,6898.5417,ets,AutoETS(trend='add')
+O106,1970-03-07,6827.8124,ets,AutoETS(trend='add')
+O106,1970-03-08,6757.0832,ets,AutoETS(trend='add')
+O106,1970-03-09,6686.354,ets,AutoETS(trend='add')
+O106,1970-03-10,6615.6247,ets,AutoETS(trend='add')
+O106,1970-03-11,6544.8955,ets,AutoETS(trend='add')
+O106,1970-03-12,6474.1662,ets,AutoETS(trend='add')
+O107,1970-03-05,12145.3741,ets,AutoETS(trend='add')
+O107,1970-03-06,12039.7409,ets,AutoETS(trend='add')
+O107,1970-03-07,11934.1078,ets,AutoETS(trend='add')
+O107,1970-03-08,11828.4746,ets,AutoETS(trend='add')
+O107,1970-03-09,11722.8415,ets,AutoETS(trend='add')
+O107,1970-03-10,11617.2083,ets,AutoETS(trend='add')
+O107,1970-03-11,11511.5752,ets,AutoETS(trend='add')
+O107,1970-03-12,11405.942,ets,AutoETS(trend='add')
+O108,1970-03-05,3578.7645,ets,AutoETS(trend='add')
+O108,1970-03-06,3584.7404,ets,AutoETS(trend='add')
+O108,1970-03-07,3590.7163,ets,AutoETS(trend='add')
+O108,1970-03-08,3596.6921,ets,AutoETS(trend='add')
+O108,1970-03-09,3602.668,ets,AutoETS(trend='add')
+O108,1970-03-10,3608.6439,ets,AutoETS(trend='add')
+O108,1970-03-11,3614.6197,ets,AutoETS(trend='add')
+O108,1970-03-12,3620.5956,ets,AutoETS(trend='add')
+O109,1970-03-05,4195.9205,ets,AutoETS(trend='add')
+O109,1970-03-06,4128.3336,ets,AutoETS(trend='add')
+O109,1970-03-07,4060.7468,ets,AutoETS(trend='add')
+O109,1970-03-08,3993.1599,ets,AutoETS(trend='add')
+O109,1970-03-09,3925.573,ets,AutoETS(trend='add')
+O109,1970-03-10,3857.9861,ets,AutoETS(trend='add')
+O109,1970-03-11,3790.3992,ets,AutoETS(trend='add')
+O109,1970-03-12,3722.8123,ets,AutoETS(trend='add')
+O11,1970-04-06,6552.9344,ets,AutoETS(trend='add')
+O11,1970-04-07,6556.7776,ets,AutoETS(trend='add')
+O11,1970-04-08,6560.6207,ets,AutoETS(trend='add')
+O11,1970-04-09,6564.4638,ets,AutoETS(trend='add')
+O11,1970-04-10,6568.307,ets,AutoETS(trend='add')
+O11,1970-04-11,6572.1501,ets,AutoETS(trend='add')
+O11,1970-04-12,6575.9932,ets,AutoETS(trend='add')
+O11,1970-04-13,6579.8364,ets,AutoETS(trend='add')
+O110,1970-03-05,4565.1371,ets,AutoETS(trend='add')
+O110,1970-03-06,4539.2775,ets,AutoETS(trend='add')
+O110,1970-03-07,4513.4178,ets,AutoETS(trend='add')
+O110,1970-03-08,4487.5581,ets,AutoETS(trend='add')
+O110,1970-03-09,4461.6984,ets,AutoETS(trend='add')
+O110,1970-03-10,4435.8388,ets,AutoETS(trend='add')
+O110,1970-03-11,4409.9791,ets,AutoETS(trend='add')
+O110,1970-03-12,4384.1194,ets,AutoETS(trend='add')
+O111,1970-03-05,5969.6753,ets,AutoETS(trend='add')
+O111,1970-03-06,5937.3493,ets,AutoETS(trend='add')
+O111,1970-03-07,5905.0233,ets,AutoETS(trend='add')
+O111,1970-03-08,5872.6972,ets,AutoETS(trend='add')
+O111,1970-03-09,5840.3712,ets,AutoETS(trend='add')
+O111,1970-03-10,5808.0452,ets,AutoETS(trend='add')
+O111,1970-03-11,5775.7191,ets,AutoETS(trend='add')
+O111,1970-03-12,5743.3931,ets,AutoETS(trend='add')
+O112,1970-03-05,1583.1145,ets,AutoETS(trend='add')
+O112,1970-03-06,1568.2311,ets,AutoETS(trend='add')
+O112,1970-03-07,1553.3478,ets,AutoETS(trend='add')
+O112,1970-03-08,1538.4645,ets,AutoETS(trend='add')
+O112,1970-03-09,1523.5811,ets,AutoETS(trend='add')
+O112,1970-03-10,1508.6978,ets,AutoETS(trend='add')
+O112,1970-03-11,1493.8144,ets,AutoETS(trend='add')
+O112,1970-03-12,1478.9311,ets,AutoETS(trend='add')
+O113,1970-03-05,2533.5116,ets,AutoETS(trend='add')
+O113,1970-03-06,2504.0256,ets,AutoETS(trend='add')
+O113,1970-03-07,2474.5397,ets,AutoETS(trend='add')
+O113,1970-03-08,2445.0537,ets,AutoETS(trend='add')
+O113,1970-03-09,2415.5678,ets,AutoETS(trend='add')
+O113,1970-03-10,2386.0818,ets,AutoETS(trend='add')
+O113,1970-03-11,2356.5959,ets,AutoETS(trend='add')
+O113,1970-03-12,2327.1099,ets,AutoETS(trend='add')
+O114,1970-03-05,1625.6598,ets,AutoETS(trend='add')
+O114,1970-03-06,1603.3202,ets,AutoETS(trend='add')
+O114,1970-03-07,1580.9806,ets,AutoETS(trend='add')
+O114,1970-03-08,1558.6411,ets,AutoETS(trend='add')
+O114,1970-03-09,1536.3015,ets,AutoETS(trend='add')
+O114,1970-03-10,1513.9619,ets,AutoETS(trend='add')
+O114,1970-03-11,1491.6224,ets,AutoETS(trend='add')
+O114,1970-03-12,1469.2828,ets,AutoETS(trend='add')
+O115,1970-03-05,3277.6929,ets,AutoETS(trend='add')
+O115,1970-03-06,3234.095,ets,AutoETS(trend='add')
+O115,1970-03-07,3190.497,ets,AutoETS(trend='add')
+O115,1970-03-08,3146.899,ets,AutoETS(trend='add')
+O115,1970-03-09,3103.3011,ets,AutoETS(trend='add')
+O115,1970-03-10,3059.7031,ets,AutoETS(trend='add')
+O115,1970-03-11,3016.1052,ets,AutoETS(trend='add')
+O115,1970-03-12,2972.5072,ets,AutoETS(trend='add')
+O116,1970-03-05,2889.0177,ets,AutoETS(trend='add')
+O116,1970-03-06,2859.9051,ets,AutoETS(trend='add')
+O116,1970-03-07,2830.7925,ets,AutoETS(trend='add')
+O116,1970-03-08,2801.6799,ets,AutoETS(trend='add')
+O116,1970-03-09,2772.5674,ets,AutoETS(trend='add')
+O116,1970-03-10,2743.4548,ets,AutoETS(trend='add')
+O116,1970-03-11,2714.3422,ets,AutoETS(trend='add')
+O116,1970-03-12,2685.2296,ets,AutoETS(trend='add')
+O117,1970-03-05,4588.7045,ets,AutoETS(trend='add')
+O117,1970-03-06,4526.7853,ets,AutoETS(trend='add')
+O117,1970-03-07,4464.8661,ets,AutoETS(trend='add')
+O117,1970-03-08,4402.9469,ets,AutoETS(trend='add')
+O117,1970-03-09,4341.0277,ets,AutoETS(trend='add')
+O117,1970-03-10,4279.1085,ets,AutoETS(trend='add')
+O117,1970-03-11,4217.1893,ets,AutoETS(trend='add')
+O117,1970-03-12,4155.2701,ets,AutoETS(trend='add')
+O118,1970-03-05,3146.2323,ets,AutoETS(trend='add')
+O118,1970-03-06,3111.4601,ets,AutoETS(trend='add')
+O118,1970-03-07,3076.6879,ets,AutoETS(trend='add')
+O118,1970-03-08,3041.9157,ets,AutoETS(trend='add')
+O118,1970-03-09,3007.1435,ets,AutoETS(trend='add')
+O118,1970-03-10,2972.3714,ets,AutoETS(trend='add')
+O118,1970-03-11,2937.5992,ets,AutoETS(trend='add')
+O118,1970-03-12,2902.827,ets,AutoETS(trend='add')
+O119,1970-03-05,2328.139,ets,AutoETS(trend='add')
+O119,1970-03-06,2309.2998,ets,AutoETS(trend='add')
+O119,1970-03-07,2290.4606,ets,AutoETS(trend='add')
+O119,1970-03-08,2271.6214,ets,AutoETS(trend='add')
+O119,1970-03-09,2252.7821,ets,AutoETS(trend='add')
+O119,1970-03-10,2233.9429,ets,AutoETS(trend='add')
+O119,1970-03-11,2215.1037,ets,AutoETS(trend='add')
+O119,1970-03-12,2196.2645,ets,AutoETS(trend='add')
+O12,1970-04-07,6803.0701,ets,AutoETS(trend='add')
+O12,1970-04-08,6804.0541,ets,AutoETS(trend='add')
+O12,1970-04-09,6805.038,ets,AutoETS(trend='add')
+O12,1970-04-10,6806.022,ets,AutoETS(trend='add')
+O12,1970-04-11,6807.006,ets,AutoETS(trend='add')
+O12,1970-04-12,6807.9899,ets,AutoETS(trend='add')
+O12,1970-04-13,6808.9739,ets,AutoETS(trend='add')
+O12,1970-04-14,6809.9579,ets,AutoETS(trend='add')
+O120,1970-03-05,3220.4365,ets,AutoETS(trend='add')
+O120,1970-03-06,3181.8561,ets,AutoETS(trend='add')
+O120,1970-03-07,3143.2758,ets,AutoETS(trend='add')
+O120,1970-03-08,3104.6954,ets,AutoETS(trend='add')
+O120,1970-03-09,3066.115,ets,AutoETS(trend='add')
+O120,1970-03-10,3027.5347,ets,AutoETS(trend='add')
+O120,1970-03-11,2988.9543,ets,AutoETS(trend='add')
+O120,1970-03-12,2950.374,ets,AutoETS(trend='add')
+O121,1970-03-05,13439.9911,ets,AutoETS(trend='add')
+O121,1970-03-06,13224.9835,ets,AutoETS(trend='add')
+O121,1970-03-07,13009.9759,ets,AutoETS(trend='add')
+O121,1970-03-08,12794.9682,ets,AutoETS(trend='add')
+O121,1970-03-09,12579.9606,ets,AutoETS(trend='add')
+O121,1970-03-10,12364.953,ets,AutoETS(trend='add')
+O121,1970-03-11,12149.9454,ets,AutoETS(trend='add')
+O121,1970-03-12,11934.9378,ets,AutoETS(trend='add')
+O122,1970-03-05,2625.1911,ets,AutoETS(trend='add')
+O122,1970-03-06,2595.3831,ets,AutoETS(trend='add')
+O122,1970-03-07,2565.5752,ets,AutoETS(trend='add')
+O122,1970-03-08,2535.7672,ets,AutoETS(trend='add')
+O122,1970-03-09,2505.9592,ets,AutoETS(trend='add')
+O122,1970-03-10,2476.1513,ets,AutoETS(trend='add')
+O122,1970-03-11,2446.3433,ets,AutoETS(trend='add')
+O122,1970-03-12,2416.5354,ets,AutoETS(trend='add')
+O123,1970-03-05,4033.8533,ets,AutoETS(trend='add')
+O123,1970-03-06,3991.7069,ets,AutoETS(trend='add')
+O123,1970-03-07,3949.5606,ets,AutoETS(trend='add')
+O123,1970-03-08,3907.4142,ets,AutoETS(trend='add')
+O123,1970-03-09,3865.2678,ets,AutoETS(trend='add')
+O123,1970-03-10,3823.1214,ets,AutoETS(trend='add')
+O123,1970-03-11,3780.975,ets,AutoETS(trend='add')
+O123,1970-03-12,3738.8287,ets,AutoETS(trend='add')
+O124,1970-03-05,5244.3564,ets,AutoETS(trend='add')
+O124,1970-03-06,5197.7121,ets,AutoETS(trend='add')
+O124,1970-03-07,5151.0679,ets,AutoETS(trend='add')
+O124,1970-03-08,5104.4236,ets,AutoETS(trend='add')
+O124,1970-03-09,5057.7794,ets,AutoETS(trend='add')
+O124,1970-03-10,5011.1351,ets,AutoETS(trend='add')
+O124,1970-03-11,4964.4909,ets,AutoETS(trend='add')
+O124,1970-03-12,4917.8466,ets,AutoETS(trend='add')
+O125,1970-03-05,3018.2268,ets,AutoETS(trend='add')
+O125,1970-03-06,2981.1791,ets,AutoETS(trend='add')
+O125,1970-03-07,2944.1314,ets,AutoETS(trend='add')
+O125,1970-03-08,2907.0838,ets,AutoETS(trend='add')
+O125,1970-03-09,2870.0361,ets,AutoETS(trend='add')
+O125,1970-03-10,2832.9884,ets,AutoETS(trend='add')
+O125,1970-03-11,2795.9407,ets,AutoETS(trend='add')
+O125,1970-03-12,2758.893,ets,AutoETS(trend='add')
+O126,1970-03-05,2657.6748,ets,AutoETS(trend='add')
+O126,1970-03-06,2608.3486,ets,AutoETS(trend='add')
+O126,1970-03-07,2559.0223,ets,AutoETS(trend='add')
+O126,1970-03-08,2509.6961,ets,AutoETS(trend='add')
+O126,1970-03-09,2460.3698,ets,AutoETS(trend='add')
+O126,1970-03-10,2411.0436,ets,AutoETS(trend='add')
+O126,1970-03-11,2361.7174,ets,AutoETS(trend='add')
+O126,1970-03-12,2312.3911,ets,AutoETS(trend='add')
+O127,1970-03-05,2057.1343,ets,"AutoETS(seasonal='mul', sp=13, trend='add')"
+O127,1970-03-06,2036.1049,ets,"AutoETS(seasonal='mul', sp=13, trend='add')"
+O127,1970-03-07,1994.2708,ets,"AutoETS(seasonal='mul', sp=13, trend='add')"
+O127,1970-03-08,2001.2909,ets,"AutoETS(seasonal='mul', sp=13, trend='add')"
+O127,1970-03-09,2023.0654,ets,"AutoETS(seasonal='mul', sp=13, trend='add')"
+O127,1970-03-10,2017.5764,ets,"AutoETS(seasonal='mul', sp=13, trend='add')"
+O127,1970-03-11,2015.4252,ets,"AutoETS(seasonal='mul', sp=13, trend='add')"
+O127,1970-03-12,2016.9863,ets,"AutoETS(seasonal='mul', sp=13, trend='add')"
+O128,1970-03-05,1250.1307,ets,AutoETS(trend='add')
+O128,1970-03-06,1240.2618,ets,AutoETS(trend='add')
+O128,1970-03-07,1230.393,ets,AutoETS(trend='add')
+O128,1970-03-08,1220.5242,ets,AutoETS(trend='add')
+O128,1970-03-09,1210.6553,ets,AutoETS(trend='add')
+O128,1970-03-10,1200.7865,ets,AutoETS(trend='add')
+O128,1970-03-11,1190.9177,ets,AutoETS(trend='add')
+O128,1970-03-12,1181.0488,ets,AutoETS(trend='add')
+O129,1970-03-05,4160.2152,ets,AutoETS(trend='add')
+O129,1970-03-06,4125.4429,ets,AutoETS(trend='add')
+O129,1970-03-07,4090.6706,ets,AutoETS(trend='add')
+O129,1970-03-08,4055.8984,ets,AutoETS(trend='add')
+O129,1970-03-09,4021.1261,ets,AutoETS(trend='add')
+O129,1970-03-10,3986.3538,ets,AutoETS(trend='add')
+O129,1970-03-11,3951.5815,ets,AutoETS(trend='add')
+O129,1970-03-12,3916.8092,ets,AutoETS(trend='add')
+O13,1970-04-06,6499.0054,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O13,1970-04-07,6500.7874,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O13,1970-04-08,6475.3772,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O13,1970-04-09,6473.152,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O13,1970-04-10,6465.256,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O13,1970-04-11,6453.1007,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O13,1970-04-12,6452.7109,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O13,1970-04-13,6453.4168,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O130,1970-03-05,3227.0854,ets,AutoETS(trend='add')
+O130,1970-03-06,3162.1728,ets,AutoETS(trend='add')
+O130,1970-03-07,3097.2602,ets,AutoETS(trend='add')
+O130,1970-03-08,3032.3476,ets,AutoETS(trend='add')
+O130,1970-03-09,2967.435,ets,AutoETS(trend='add')
+O130,1970-03-10,2902.5224,ets,AutoETS(trend='add')
+O130,1970-03-11,2837.6098,ets,AutoETS(trend='add')
+O130,1970-03-12,2772.6972,ets,AutoETS(trend='add')
+O131,1970-03-05,1239.0045,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O131,1970-03-06,1218.4683,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O131,1970-03-07,1193.6156,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O131,1970-03-08,1183.6548,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O131,1970-03-09,1157.2774,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O131,1970-03-10,1151.4095,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O131,1970-03-11,1131.0897,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O131,1970-03-12,1106.7736,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O132,1970-03-05,10440.4651,ets,AutoETS(trend='add')
+O132,1970-03-06,10435.9326,ets,AutoETS(trend='add')
+O132,1970-03-07,10431.4002,ets,AutoETS(trend='add')
+O132,1970-03-08,10426.8677,ets,AutoETS(trend='add')
+O132,1970-03-09,10422.3353,ets,AutoETS(trend='add')
+O132,1970-03-10,10417.8028,ets,AutoETS(trend='add')
+O132,1970-03-11,10413.2704,ets,AutoETS(trend='add')
+O132,1970-03-12,10408.7379,ets,AutoETS(trend='add')
+O133,1970-03-05,5932.1265,ets,AutoETS(trend='add')
+O133,1970-03-06,5956.2472,ets,AutoETS(trend='add')
+O133,1970-03-07,5980.3679,ets,AutoETS(trend='add')
+O133,1970-03-08,6004.4886,ets,AutoETS(trend='add')
+O133,1970-03-09,6028.6093,ets,AutoETS(trend='add')
+O133,1970-03-10,6052.73,ets,AutoETS(trend='add')
+O133,1970-03-11,6076.8506,ets,AutoETS(trend='add')
+O133,1970-03-12,6100.9713,ets,AutoETS(trend='add')
+O134,1970-03-05,1894.3246,ets,AutoETS(trend='add')
+O134,1970-03-06,1876.6471,ets,AutoETS(trend='add')
+O134,1970-03-07,1858.9696,ets,AutoETS(trend='add')
+O134,1970-03-08,1841.2921,ets,AutoETS(trend='add')
+O134,1970-03-09,1823.6146,ets,AutoETS(trend='add')
+O134,1970-03-10,1805.937,ets,AutoETS(trend='add')
+O134,1970-03-11,1788.2595,ets,AutoETS(trend='add')
+O134,1970-03-12,1770.582,ets,AutoETS(trend='add')
+O135,1970-03-05,2957.7081,ets,AutoETS(trend='add')
+O135,1970-03-06,2901.4211,ets,AutoETS(trend='add')
+O135,1970-03-07,2845.134,ets,AutoETS(trend='add')
+O135,1970-03-08,2788.847,ets,AutoETS(trend='add')
+O135,1970-03-09,2732.5599,ets,AutoETS(trend='add')
+O135,1970-03-10,2676.2729,ets,AutoETS(trend='add')
+O135,1970-03-11,2619.9858,ets,AutoETS(trend='add')
+O135,1970-03-12,2563.6988,ets,AutoETS(trend='add')
+O136,1970-03-05,2660.5277,ets,AutoETS(trend='add')
+O136,1970-03-06,2618.997,ets,AutoETS(trend='add')
+O136,1970-03-07,2577.4663,ets,AutoETS(trend='add')
+O136,1970-03-08,2535.9356,ets,AutoETS(trend='add')
+O136,1970-03-09,2494.4049,ets,AutoETS(trend='add')
+O136,1970-03-10,2452.8743,ets,AutoETS(trend='add')
+O136,1970-03-11,2411.3436,ets,AutoETS(trend='add')
+O136,1970-03-12,2369.8129,ets,AutoETS(trend='add')
+O137,1970-03-05,2926.6416,ets,AutoETS(trend='add')
+O137,1970-03-06,2892.2839,ets,AutoETS(trend='add')
+O137,1970-03-07,2857.9262,ets,AutoETS(trend='add')
+O137,1970-03-08,2823.5685,ets,AutoETS(trend='add')
+O137,1970-03-09,2789.2108,ets,AutoETS(trend='add')
+O137,1970-03-10,2754.8531,ets,AutoETS(trend='add')
+O137,1970-03-11,2720.4954,ets,AutoETS(trend='add')
+O137,1970-03-12,2686.1377,ets,AutoETS(trend='add')
+O138,1970-03-05,2997.5368,ets,AutoETS(trend='add')
+O138,1970-03-06,2954.8392,ets,AutoETS(trend='add')
+O138,1970-03-07,2912.1416,ets,AutoETS(trend='add')
+O138,1970-03-08,2869.444,ets,AutoETS(trend='add')
+O138,1970-03-09,2826.7464,ets,AutoETS(trend='add')
+O138,1970-03-10,2784.0488,ets,AutoETS(trend='add')
+O138,1970-03-11,2741.3512,ets,AutoETS(trend='add')
+O138,1970-03-12,2698.6536,ets,AutoETS(trend='add')
+O139,1970-03-05,2812.0184,ets,AutoETS(trend='add')
+O139,1970-03-06,2753.9574,ets,AutoETS(trend='add')
+O139,1970-03-07,2695.8965,ets,AutoETS(trend='add')
+O139,1970-03-08,2637.8355,ets,AutoETS(trend='add')
+O139,1970-03-09,2579.7746,ets,AutoETS(trend='add')
+O139,1970-03-10,2521.7136,ets,AutoETS(trend='add')
+O139,1970-03-11,2463.6527,ets,AutoETS(trend='add')
+O139,1970-03-12,2405.5917,ets,AutoETS(trend='add')
+O14,1970-04-06,6599.4048,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O14,1970-04-07,6601.7863,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O14,1970-04-08,6597.6502,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O14,1970-04-09,6600.0308,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O14,1970-04-10,6595.8956,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O14,1970-04-11,6598.2753,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O14,1970-04-12,6594.1409,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O14,1970-04-13,6596.5197,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O140,1970-03-05,11489.1411,ets,AutoETS(trend='add')
+O140,1970-03-06,11401.8171,ets,AutoETS(trend='add')
+O140,1970-03-07,11314.4932,ets,AutoETS(trend='add')
+O140,1970-03-08,11227.1692,ets,AutoETS(trend='add')
+O140,1970-03-09,11139.8452,ets,AutoETS(trend='add')
+O140,1970-03-10,11052.5212,ets,AutoETS(trend='add')
+O140,1970-03-11,10965.1972,ets,AutoETS(trend='add')
+O140,1970-03-12,10877.8732,ets,AutoETS(trend='add')
+O141,1970-03-05,3476.745,ets,AutoETS(trend='add')
+O141,1970-03-06,3414.4678,ets,AutoETS(trend='add')
+O141,1970-03-07,3352.1906,ets,AutoETS(trend='add')
+O141,1970-03-08,3289.9134,ets,AutoETS(trend='add')
+O141,1970-03-09,3227.6362,ets,AutoETS(trend='add')
+O141,1970-03-10,3165.359,ets,AutoETS(trend='add')
+O141,1970-03-11,3103.0817,ets,AutoETS(trend='add')
+O141,1970-03-12,3040.8045,ets,AutoETS(trend='add')
+O142,1970-03-05,1895.3133,ets,AutoETS(trend='add')
+O142,1970-03-06,1873.1747,ets,AutoETS(trend='add')
+O142,1970-03-07,1851.036,ets,AutoETS(trend='add')
+O142,1970-03-08,1828.8974,ets,AutoETS(trend='add')
+O142,1970-03-09,1806.7588,ets,AutoETS(trend='add')
+O142,1970-03-10,1784.6202,ets,AutoETS(trend='add')
+O142,1970-03-11,1762.4816,ets,AutoETS(trend='add')
+O142,1970-03-12,1740.343,ets,AutoETS(trend='add')
+O143,1970-03-05,4321.2219,ets,AutoETS(trend='add')
+O143,1970-03-06,4269.1639,ets,AutoETS(trend='add')
+O143,1970-03-07,4217.1059,ets,AutoETS(trend='add')
+O143,1970-03-08,4165.0479,ets,AutoETS(trend='add')
+O143,1970-03-09,4112.9899,ets,AutoETS(trend='add')
+O143,1970-03-10,4060.9318,ets,AutoETS(trend='add')
+O143,1970-03-11,4008.8738,ets,AutoETS(trend='add')
+O143,1970-03-12,3956.8158,ets,AutoETS(trend='add')
+O144,1970-03-05,6309.9555,ets,AutoETS(trend='add')
+O144,1970-03-06,6234.9066,ets,AutoETS(trend='add')
+O144,1970-03-07,6159.8578,ets,AutoETS(trend='add')
+O144,1970-03-08,6084.8089,ets,AutoETS(trend='add')
+O144,1970-03-09,6009.7601,ets,AutoETS(trend='add')
+O144,1970-03-10,5934.7112,ets,AutoETS(trend='add')
+O144,1970-03-11,5859.6624,ets,AutoETS(trend='add')
+O144,1970-03-12,5784.6136,ets,AutoETS(trend='add')
+O145,1970-03-05,1219.5242,ets,AutoETS(trend='add')
+O145,1970-03-06,1201.0472,ets,AutoETS(trend='add')
+O145,1970-03-07,1182.5702,ets,AutoETS(trend='add')
+O145,1970-03-08,1164.0932,ets,AutoETS(trend='add')
+O145,1970-03-09,1145.6163,ets,AutoETS(trend='add')
+O145,1970-03-10,1127.1393,ets,AutoETS(trend='add')
+O145,1970-03-11,1108.6623,ets,AutoETS(trend='add')
+O145,1970-03-12,1090.1853,ets,AutoETS(trend='add')
+O146,1970-03-05,2683.1696,ets,AutoETS(trend='add')
+O146,1970-03-06,2647.7961,ets,AutoETS(trend='add')
+O146,1970-03-07,2612.4226,ets,AutoETS(trend='add')
+O146,1970-03-08,2577.0491,ets,AutoETS(trend='add')
+O146,1970-03-09,2541.6757,ets,AutoETS(trend='add')
+O146,1970-03-10,2506.3022,ets,AutoETS(trend='add')
+O146,1970-03-11,2470.9287,ets,AutoETS(trend='add')
+O146,1970-03-12,2435.5553,ets,AutoETS(trend='add')
+O147,1970-03-05,1535.2096,ets,AutoETS(trend='add')
+O147,1970-03-06,1514.4203,ets,AutoETS(trend='add')
+O147,1970-03-07,1493.6311,ets,AutoETS(trend='add')
+O147,1970-03-08,1472.8419,ets,AutoETS(trend='add')
+O147,1970-03-09,1452.0526,ets,AutoETS(trend='add')
+O147,1970-03-10,1431.2634,ets,AutoETS(trend='add')
+O147,1970-03-11,1410.4741,ets,AutoETS(trend='add')
+O147,1970-03-12,1389.6849,ets,AutoETS(trend='add')
+O148,1970-03-05,11039.0978,ets,AutoETS(trend='add')
+O148,1970-03-06,10934.1921,ets,AutoETS(trend='add')
+O148,1970-03-07,10829.2864,ets,AutoETS(trend='add')
+O148,1970-03-08,10724.3808,ets,AutoETS(trend='add')
+O148,1970-03-09,10619.4751,ets,AutoETS(trend='add')
+O148,1970-03-10,10514.5694,ets,AutoETS(trend='add')
+O148,1970-03-11,10409.6637,ets,AutoETS(trend='add')
+O148,1970-03-12,10304.758,ets,AutoETS(trend='add')
+O149,1970-03-05,8268.9609,ets,AutoETS(trend='add')
+O149,1970-03-06,8135.9239,ets,AutoETS(trend='add')
+O149,1970-03-07,8002.8869,ets,AutoETS(trend='add')
+O149,1970-03-08,7869.8499,ets,AutoETS(trend='add')
+O149,1970-03-09,7736.8129,ets,AutoETS(trend='add')
+O149,1970-03-10,7603.7758,ets,AutoETS(trend='add')
+O149,1970-03-11,7470.7388,ets,AutoETS(trend='add')
+O149,1970-03-12,7337.7018,ets,AutoETS(trend='add')
+O15,1970-04-06,7445.8553,ets,AutoETS(trend='add')
+O15,1970-04-07,7455.5034,ets,AutoETS(trend='add')
+O15,1970-04-08,7465.1515,ets,AutoETS(trend='add')
+O15,1970-04-09,7474.7996,ets,AutoETS(trend='add')
+O15,1970-04-10,7484.4478,ets,AutoETS(trend='add')
+O15,1970-04-11,7494.0959,ets,AutoETS(trend='add')
+O15,1970-04-12,7503.744,ets,AutoETS(trend='add')
+O15,1970-04-13,7513.3922,ets,AutoETS(trend='add')
+O150,1970-03-05,2217.4828,ets,AutoETS(trend='add')
+O150,1970-03-06,2181.9652,ets,AutoETS(trend='add')
+O150,1970-03-07,2146.4477,ets,AutoETS(trend='add')
+O150,1970-03-08,2110.9302,ets,AutoETS(trend='add')
+O150,1970-03-09,2075.4127,ets,AutoETS(trend='add')
+O150,1970-03-10,2039.8951,ets,AutoETS(trend='add')
+O150,1970-03-11,2004.3776,ets,AutoETS(trend='add')
+O150,1970-03-12,1968.8601,ets,AutoETS(trend='add')
+O151,1970-03-05,1905.1499,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O151,1970-03-06,1898.8741,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O151,1970-03-07,1893.9133,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O151,1970-03-08,1838.0154,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O151,1970-03-09,1831.8382,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O151,1970-03-10,1815.1334,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O151,1970-03-11,1804.0997,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O151,1970-03-12,1786.2159,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O152,1970-03-05,3964.4941,ets,AutoETS(trend='add')
+O152,1970-03-06,3917.7345,ets,AutoETS(trend='add')
+O152,1970-03-07,3870.9749,ets,AutoETS(trend='add')
+O152,1970-03-08,3824.2153,ets,AutoETS(trend='add')
+O152,1970-03-09,3777.4557,ets,AutoETS(trend='add')
+O152,1970-03-10,3730.6962,ets,AutoETS(trend='add')
+O152,1970-03-11,3683.9366,ets,AutoETS(trend='add')
+O152,1970-03-12,3637.177,ets,AutoETS(trend='add')
+O153,1970-03-05,1159.882,ets,AutoETS(trend='add')
+O153,1970-03-06,1143.6897,ets,AutoETS(trend='add')
+O153,1970-03-07,1127.4974,ets,AutoETS(trend='add')
+O153,1970-03-08,1111.305,ets,AutoETS(trend='add')
+O153,1970-03-09,1095.1127,ets,AutoETS(trend='add')
+O153,1970-03-10,1078.9204,ets,AutoETS(trend='add')
+O153,1970-03-11,1062.7281,ets,AutoETS(trend='add')
+O153,1970-03-12,1046.5358,ets,AutoETS(trend='add')
+O154,1970-03-05,9044.3608,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O154,1970-03-06,8848.6043,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O154,1970-03-07,8783.2096,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O154,1970-03-08,8676.7305,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O154,1970-03-09,8604.4345,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O154,1970-03-10,8523.6854,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O154,1970-03-11,8458.4731,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O154,1970-03-12,8411.1127,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O155,1970-03-05,9795.0728,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O155,1970-03-06,9725.3116,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O155,1970-03-07,9632.8631,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O155,1970-03-08,9517.4042,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O155,1970-03-09,9433.5647,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O155,1970-03-10,9380.3297,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O155,1970-03-11,9310.0053,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O155,1970-03-12,9217.9611,ets,"AutoETS(seasonal='mul', sp=5, trend='add')"
+O156,1970-03-05,4059.9529,ets,"AutoETS(seasonal='mul', sp=25, trend='add')"
+O156,1970-03-06,3998.8932,ets,"AutoETS(seasonal='mul', sp=25, trend='add')"
+O156,1970-03-07,3848.6718,ets,"AutoETS(seasonal='mul', sp=25, trend='add')"
+O156,1970-03-08,3723.7946,ets,"AutoETS(seasonal='mul', sp=25, trend='add')"
+O156,1970-03-09,3615.7157,ets,"AutoETS(seasonal='mul', sp=25, trend='add')"
+O156,1970-03-10,3496.5787,ets,"AutoETS(seasonal='mul', sp=25, trend='add')"
+O156,1970-03-11,3396.2195,ets,"AutoETS(seasonal='mul', sp=25, trend='add')"
+O156,1970-03-12,3302.5039,ets,"AutoETS(seasonal='mul', sp=25, trend='add')"
+O157,1970-03-05,1998.6604,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O157,1970-03-06,1949.8278,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O157,1970-03-07,1906.6241,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O157,1970-03-08,1847.9555,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O157,1970-03-09,1799.0144,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O157,1970-03-10,1755.2496,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O157,1970-03-11,1697.2506,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O157,1970-03-12,1648.2011,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O158,1970-03-05,1608.6942,ets,AutoETS(trend='add')
+O158,1970-03-06,1586.387,ets,AutoETS(trend='add')
+O158,1970-03-07,1564.0798,ets,AutoETS(trend='add')
+O158,1970-03-08,1541.7726,ets,AutoETS(trend='add')
+O158,1970-03-09,1519.4654,ets,AutoETS(trend='add')
+O158,1970-03-10,1497.1582,ets,AutoETS(trend='add')
+O158,1970-03-11,1474.8509,ets,AutoETS(trend='add')
+O158,1970-03-12,1452.5437,ets,AutoETS(trend='add')
+O159,1970-03-05,1752.6106,ets,AutoETS(trend='add')
+O159,1970-03-06,1717.2231,ets,AutoETS(trend='add')
+O159,1970-03-07,1681.8357,ets,AutoETS(trend='add')
+O159,1970-03-08,1646.4482,ets,AutoETS(trend='add')
+O159,1970-03-09,1611.0608,ets,AutoETS(trend='add')
+O159,1970-03-10,1575.6733,ets,AutoETS(trend='add')
+O159,1970-03-11,1540.2859,ets,AutoETS(trend='add')
+O159,1970-03-12,1504.8984,ets,AutoETS(trend='add')
+O16,1970-04-05,8233.2016,ets,AutoETS(trend='add')
+O16,1970-04-06,8240.6843,ets,AutoETS(trend='add')
+O16,1970-04-07,8248.167,ets,AutoETS(trend='add')
+O16,1970-04-08,8255.6497,ets,AutoETS(trend='add')
+O16,1970-04-09,8263.1324,ets,AutoETS(trend='add')
+O16,1970-04-10,8270.6151,ets,AutoETS(trend='add')
+O16,1970-04-11,8278.0978,ets,AutoETS(trend='add')
+O16,1970-04-12,8285.5805,ets,AutoETS(trend='add')
+O160,1970-03-05,2010.2985,ets,AutoETS(trend='add')
+O160,1970-03-06,1958.5942,ets,AutoETS(trend='add')
+O160,1970-03-07,1906.89,ets,AutoETS(trend='add')
+O160,1970-03-08,1855.1858,ets,AutoETS(trend='add')
+O160,1970-03-09,1803.4815,ets,AutoETS(trend='add')
+O160,1970-03-10,1751.7773,ets,AutoETS(trend='add')
+O160,1970-03-11,1700.0731,ets,AutoETS(trend='add')
+O160,1970-03-12,1648.3688,ets,AutoETS(trend='add')
+O161,1970-03-05,29149.1042,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O161,1970-03-06,29250.7594,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O161,1970-03-07,29365.9304,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O161,1970-03-08,29467.5356,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O161,1970-03-09,29582.7566,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O161,1970-03-10,29684.3117,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O161,1970-03-11,29799.5828,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O161,1970-03-12,29901.0878,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O162,1970-03-05,6476.2113,ets,AutoETS(trend='add')
+O162,1970-03-06,5934.8198,ets,AutoETS(trend='add')
+O162,1970-03-07,5393.4282,ets,AutoETS(trend='add')
+O162,1970-03-08,4852.0366,ets,AutoETS(trend='add')
+O162,1970-03-09,4310.645,ets,AutoETS(trend='add')
+O162,1970-03-10,3769.2535,ets,AutoETS(trend='add')
+O162,1970-03-11,3227.8619,ets,AutoETS(trend='add')
+O162,1970-03-12,2686.4703,ets,AutoETS(trend='add')
+O163,1970-03-05,16225.0037,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O163,1970-03-06,16096.1782,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O163,1970-03-07,15956.2773,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O163,1970-03-08,15827.3594,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O163,1970-03-09,15687.5509,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O163,1970-03-10,15558.5405,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O163,1970-03-11,15418.8245,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O163,1970-03-12,15289.7216,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O164,1970-03-05,5626.6299,ets,AutoETS(trend='add')
+O164,1970-03-06,5610.873,ets,AutoETS(trend='add')
+O164,1970-03-07,5595.1161,ets,AutoETS(trend='add')
+O164,1970-03-08,5579.3592,ets,AutoETS(trend='add')
+O164,1970-03-09,5563.6023,ets,AutoETS(trend='add')
+O164,1970-03-10,5547.8454,ets,AutoETS(trend='add')
+O164,1970-03-11,5532.0885,ets,AutoETS(trend='add')
+O164,1970-03-12,5516.3315,ets,AutoETS(trend='add')
+O165,1970-03-05,2687.4148,ets,AutoETS(trend='add')
+O165,1970-03-06,2680.3538,ets,AutoETS(trend='add')
+O165,1970-03-07,2673.2928,ets,AutoETS(trend='add')
+O165,1970-03-08,2666.2318,ets,AutoETS(trend='add')
+O165,1970-03-09,2659.1707,ets,AutoETS(trend='add')
+O165,1970-03-10,2652.1097,ets,AutoETS(trend='add')
+O165,1970-03-11,2645.0487,ets,AutoETS(trend='add')
+O165,1970-03-12,2637.9877,ets,AutoETS(trend='add')
+O166,1970-03-05,5933.2556,ets,AutoETS(trend='add')
+O166,1970-03-06,5896.0449,ets,AutoETS(trend='add')
+O166,1970-03-07,5858.8342,ets,AutoETS(trend='add')
+O166,1970-03-08,5821.6235,ets,AutoETS(trend='add')
+O166,1970-03-09,5784.4128,ets,AutoETS(trend='add')
+O166,1970-03-10,5747.2022,ets,AutoETS(trend='add')
+O166,1970-03-11,5709.9915,ets,AutoETS(trend='add')
+O166,1970-03-12,5672.7808,ets,AutoETS(trend='add')
+O167,1970-03-05,3248.7719,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O167,1970-03-06,3232.9558,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O167,1970-03-07,3221.7591,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O167,1970-03-08,3205.9623,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O167,1970-03-09,3194.7463,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O167,1970-03-10,3178.9688,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O167,1970-03-11,3167.7335,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O167,1970-03-12,3151.9753,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O168,1970-03-05,2184.1749,ets,AutoETS(trend='add')
+O168,1970-03-06,2190.3019,ets,AutoETS(trend='add')
+O168,1970-03-07,2196.429,ets,AutoETS(trend='add')
+O168,1970-03-08,2202.5561,ets,AutoETS(trend='add')
+O168,1970-03-09,2208.6831,ets,AutoETS(trend='add')
+O168,1970-03-10,2214.8102,ets,AutoETS(trend='add')
+O168,1970-03-11,2220.9373,ets,AutoETS(trend='add')
+O168,1970-03-12,2227.0644,ets,AutoETS(trend='add')
+O169,1970-03-05,2633.2752,ets,AutoETS(trend='add')
+O169,1970-03-06,2627.5851,ets,AutoETS(trend='add')
+O169,1970-03-07,2621.895,ets,AutoETS(trend='add')
+O169,1970-03-08,2616.2049,ets,AutoETS(trend='add')
+O169,1970-03-09,2610.5149,ets,AutoETS(trend='add')
+O169,1970-03-10,2604.8248,ets,AutoETS(trend='add')
+O169,1970-03-11,2599.1347,ets,AutoETS(trend='add')
+O169,1970-03-12,2593.4446,ets,AutoETS(trend='add')
+O17,1970-04-07,4463.2225,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O17,1970-04-08,4456.9645,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O17,1970-04-09,4459.977,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O17,1970-04-10,4457.0353,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O17,1970-04-11,4482.1282,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O17,1970-04-12,4475.8238,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O17,1970-04-13,4478.8292,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O17,1970-04-14,4475.855,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O170,1970-03-05,1541.5025,ets,AutoETS(trend='add')
+O170,1970-03-06,1518.0027,ets,AutoETS(trend='add')
+O170,1970-03-07,1494.503,ets,AutoETS(trend='add')
+O170,1970-03-08,1471.0032,ets,AutoETS(trend='add')
+O170,1970-03-09,1447.5035,ets,AutoETS(trend='add')
+O170,1970-03-10,1424.0037,ets,AutoETS(trend='add')
+O170,1970-03-11,1400.504,ets,AutoETS(trend='add')
+O170,1970-03-12,1377.0042,ets,AutoETS(trend='add')
+O171,1970-03-05,1603.175,ets,AutoETS(trend='add')
+O171,1970-03-06,1572.3502,ets,AutoETS(trend='add')
+O171,1970-03-07,1541.5255,ets,AutoETS(trend='add')
+O171,1970-03-08,1510.7007,ets,AutoETS(trend='add')
+O171,1970-03-09,1479.876,ets,AutoETS(trend='add')
+O171,1970-03-10,1449.0512,ets,AutoETS(trend='add')
+O171,1970-03-11,1418.2264,ets,AutoETS(trend='add')
+O171,1970-03-12,1387.4017,ets,AutoETS(trend='add')
+O172,1970-03-05,7639.0479,ets,AutoETS(trend='add')
+O172,1970-03-06,7226.1192,ets,AutoETS(trend='add')
+O172,1970-03-07,6813.1905,ets,AutoETS(trend='add')
+O172,1970-03-08,6400.2618,ets,AutoETS(trend='add')
+O172,1970-03-09,5987.3331,ets,AutoETS(trend='add')
+O172,1970-03-10,5574.4044,ets,AutoETS(trend='add')
+O172,1970-03-11,5161.4757,ets,AutoETS(trend='add')
+O172,1970-03-12,4748.547,ets,AutoETS(trend='add')
+O173,1970-03-05,10967.4127,ets,AutoETS(trend='add')
+O173,1970-03-06,10813.8344,ets,AutoETS(trend='add')
+O173,1970-03-07,10660.2561,ets,AutoETS(trend='add')
+O173,1970-03-08,10506.6778,ets,AutoETS(trend='add')
+O173,1970-03-09,10353.0994,ets,AutoETS(trend='add')
+O173,1970-03-10,10199.5211,ets,AutoETS(trend='add')
+O173,1970-03-11,10045.9428,ets,AutoETS(trend='add')
+O173,1970-03-12,9892.3645,ets,AutoETS(trend='add')
+O174,1970-03-05,3458.6804,ets,AutoETS(trend='add')
+O174,1970-03-06,3421.344,ets,AutoETS(trend='add')
+O174,1970-03-07,3384.0076,ets,AutoETS(trend='add')
+O174,1970-03-08,3346.6712,ets,AutoETS(trend='add')
+O174,1970-03-09,3309.3348,ets,AutoETS(trend='add')
+O174,1970-03-10,3271.9984,ets,AutoETS(trend='add')
+O174,1970-03-11,3234.662,ets,AutoETS(trend='add')
+O174,1970-03-12,3197.3256,ets,AutoETS(trend='add')
+O18,1970-04-06,3353.5231,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O18,1970-04-07,3371.8134,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O18,1970-04-08,3369.3046,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O18,1970-04-09,3331.9581,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O18,1970-04-10,3300.5114,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O18,1970-04-11,3264.9881,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O18,1970-04-12,3270.2145,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O18,1970-04-13,3250.2656,ets,"AutoETS(seasonal='mul', sp=11, trend='add')"
+O19,1970-04-07,6933.5286,ets,"AutoETS(seasonal='mul', sp=6, trend='add')"
+O19,1970-04-08,6920.4796,ets,"AutoETS(seasonal='mul', sp=6, trend='add')"
+O19,1970-04-09,6939.0216,ets,"AutoETS(seasonal='mul', sp=6, trend='add')"
+O19,1970-04-10,6914.2507,ets,"AutoETS(seasonal='mul', sp=6, trend='add')"
+O19,1970-04-11,6926.1578,ets,"AutoETS(seasonal='mul', sp=6, trend='add')"
+O19,1970-04-12,6930.8417,ets,"AutoETS(seasonal='mul', sp=6, trend='add')"
+O19,1970-04-13,6947.6405,ets,"AutoETS(seasonal='mul', sp=6, trend='add')"
+O19,1970-04-14,6934.5601,ets,"AutoETS(seasonal='mul', sp=6, trend='add')"
+O2,1970-04-07,7059.1,naive,NaiveForecaster()
+O2,1970-04-08,7059.1,naive,NaiveForecaster()
+O2,1970-04-09,7059.1,naive,NaiveForecaster()
+O2,1970-04-10,7059.1,naive,NaiveForecaster()
+O2,1970-04-11,7059.1,naive,NaiveForecaster()
+O2,1970-04-12,7059.1,naive,NaiveForecaster()
+O2,1970-04-13,7059.1,naive,NaiveForecaster()
+O2,1970-04-14,7059.1,naive,NaiveForecaster()
+O20,1970-04-06,6551.6554,ets,AutoETS(trend='add')
+O20,1970-04-07,6542.9211,ets,AutoETS(trend='add')
+O20,1970-04-08,6534.1868,ets,AutoETS(trend='add')
+O20,1970-04-09,6525.4525,ets,AutoETS(trend='add')
+O20,1970-04-10,6516.7182,ets,AutoETS(trend='add')
+O20,1970-04-11,6507.9839,ets,AutoETS(trend='add')
+O20,1970-04-12,6499.2496,ets,AutoETS(trend='add')
+O20,1970-04-13,6490.5153,ets,AutoETS(trend='add')
+O21,1970-04-07,7673.9291,ets,AutoETS(trend='add')
+O21,1970-04-08,7676.9719,ets,AutoETS(trend='add')
+O21,1970-04-09,7680.0147,ets,AutoETS(trend='add')
+O21,1970-04-10,7683.0574,ets,AutoETS(trend='add')
+O21,1970-04-11,7686.1002,ets,AutoETS(trend='add')
+O21,1970-04-12,7689.143,ets,AutoETS(trend='add')
+O21,1970-04-13,7692.1857,ets,AutoETS(trend='add')
+O21,1970-04-14,7695.2285,ets,AutoETS(trend='add')
+O22,1970-04-07,6077.2713,ets,AutoETS(trend='add')
+O22,1970-04-08,6060.7679,ets,AutoETS(trend='add')
+O22,1970-04-09,6044.2645,ets,AutoETS(trend='add')
+O22,1970-04-10,6027.761,ets,AutoETS(trend='add')
+O22,1970-04-11,6011.2576,ets,AutoETS(trend='add')
+O22,1970-04-12,5994.7542,ets,AutoETS(trend='add')
+O22,1970-04-13,5978.2507,ets,AutoETS(trend='add')
+O22,1970-04-14,5961.7473,ets,AutoETS(trend='add')
+O23,1970-03-13,6407.5974,ets,AutoETS(trend='add')
+O23,1970-03-14,6431.1542,ets,AutoETS(trend='add')
+O23,1970-03-15,6454.711,ets,AutoETS(trend='add')
+O23,1970-03-16,6478.2678,ets,AutoETS(trend='add')
+O23,1970-03-17,6501.8246,ets,AutoETS(trend='add')
+O23,1970-03-18,6525.3814,ets,AutoETS(trend='add')
+O23,1970-03-19,6548.9382,ets,AutoETS(trend='add')
+O23,1970-03-20,6572.495,ets,AutoETS(trend='add')
+O24,1970-03-12,6763.1508,ets,AutoETS(trend='add')
+O24,1970-03-13,6786.3132,ets,AutoETS(trend='add')
+O24,1970-03-14,6809.4755,ets,AutoETS(trend='add')
+O24,1970-03-15,6832.6379,ets,AutoETS(trend='add')
+O24,1970-03-16,6855.8002,ets,AutoETS(trend='add')
+O24,1970-03-17,6878.9626,ets,AutoETS(trend='add')
+O24,1970-03-18,6902.1249,ets,AutoETS(trend='add')
+O24,1970-03-19,6925.2873,ets,AutoETS(trend='add')
+O25,1970-03-11,5534.4879,ets,AutoETS(trend='add')
+O25,1970-03-12,5516.751,ets,AutoETS(trend='add')
+O25,1970-03-13,5499.014,ets,AutoETS(trend='add')
+O25,1970-03-14,5481.2771,ets,AutoETS(trend='add')
+O25,1970-03-15,5463.5401,ets,AutoETS(trend='add')
+O25,1970-03-16,5445.8032,ets,AutoETS(trend='add')
+O25,1970-03-17,5428.0662,ets,AutoETS(trend='add')
+O25,1970-03-18,5410.3293,ets,AutoETS(trend='add')
+O26,1970-03-12,6305.1757,ets,AutoETS(trend='add')
+O26,1970-03-13,6308.5058,ets,AutoETS(trend='add')
+O26,1970-03-14,6311.8359,ets,AutoETS(trend='add')
+O26,1970-03-15,6315.166,ets,AutoETS(trend='add')
+O26,1970-03-16,6318.4961,ets,AutoETS(trend='add')
+O26,1970-03-17,6321.8262,ets,AutoETS(trend='add')
+O26,1970-03-18,6325.1564,ets,AutoETS(trend='add')
+O26,1970-03-19,6328.4865,ets,AutoETS(trend='add')
+O27,1970-03-26,5069.2338,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O27,1970-03-27,5020.3372,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O27,1970-03-28,4989.7254,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O27,1970-03-29,5008.8677,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O27,1970-03-30,4970.3698,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O27,1970-03-31,4890.8569,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O27,1970-04-01,4916.5631,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O27,1970-04-02,4948.6032,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O28,1970-03-25,6419.796,ets,AutoETS(trend='add')
+O28,1970-03-26,6443.5418,ets,AutoETS(trend='add')
+O28,1970-03-27,6467.2875,ets,AutoETS(trend='add')
+O28,1970-03-28,6491.0332,ets,AutoETS(trend='add')
+O28,1970-03-29,6514.779,ets,AutoETS(trend='add')
+O28,1970-03-30,6538.5247,ets,AutoETS(trend='add')
+O28,1970-03-31,6562.2705,ets,AutoETS(trend='add')
+O28,1970-04-01,6586.0162,ets,AutoETS(trend='add')
+O29,1970-03-24,8012.1947,ets,AutoETS(trend='add')
+O29,1970-03-25,8030.015,ets,AutoETS(trend='add')
+O29,1970-03-26,8047.8352,ets,AutoETS(trend='add')
+O29,1970-03-27,8065.6554,ets,AutoETS(trend='add')
+O29,1970-03-28,8083.4757,ets,AutoETS(trend='add')
+O29,1970-03-29,8101.2959,ets,AutoETS(trend='add')
+O29,1970-03-30,8119.1162,ets,AutoETS(trend='add')
+O29,1970-03-31,8136.9364,ets,AutoETS(trend='add')
+O3,1970-04-07,7365.624,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O3,1970-04-08,7647.862,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O3,1970-04-09,7429.5631,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O3,1970-04-10,7713.9643,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O3,1970-04-11,7493.5022,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O3,1970-04-12,7780.0666,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O3,1970-04-13,7557.4414,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O3,1970-04-14,7846.1689,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O30,1970-03-13,5668.6434,ets,AutoETS(trend='add')
+O30,1970-03-14,5684.379,ets,AutoETS(trend='add')
+O30,1970-03-15,5700.1146,ets,AutoETS(trend='add')
+O30,1970-03-16,5715.8502,ets,AutoETS(trend='add')
+O30,1970-03-17,5731.5858,ets,AutoETS(trend='add')
+O30,1970-03-18,5747.3214,ets,AutoETS(trend='add')
+O30,1970-03-19,5763.0571,ets,AutoETS(trend='add')
+O30,1970-03-20,5778.7927,ets,AutoETS(trend='add')
+O31,1970-03-12,6561.6013,ets,AutoETS(trend='add')
+O31,1970-03-13,6579.4304,ets,AutoETS(trend='add')
+O31,1970-03-14,6597.2594,ets,AutoETS(trend='add')
+O31,1970-03-15,6615.0884,ets,AutoETS(trend='add')
+O31,1970-03-16,6632.9174,ets,AutoETS(trend='add')
+O31,1970-03-17,6650.7465,ets,AutoETS(trend='add')
+O31,1970-03-18,6668.5755,ets,AutoETS(trend='add')
+O31,1970-03-19,6686.4045,ets,AutoETS(trend='add')
+O32,1970-03-12,6768.0597,ets,AutoETS(trend='add')
+O32,1970-03-13,6766.5222,ets,AutoETS(trend='add')
+O32,1970-03-14,6764.9847,ets,AutoETS(trend='add')
+O32,1970-03-15,6763.4472,ets,AutoETS(trend='add')
+O32,1970-03-16,6761.9098,ets,AutoETS(trend='add')
+O32,1970-03-17,6760.3723,ets,AutoETS(trend='add')
+O32,1970-03-18,6758.8348,ets,AutoETS(trend='add')
+O32,1970-03-19,6757.2973,ets,AutoETS(trend='add')
+O33,1970-03-07,8475.0016,ets,"AutoETS(seasonal='mul', sp=20, trend='add')"
+O33,1970-03-08,8465.7492,ets,"AutoETS(seasonal='mul', sp=20, trend='add')"
+O33,1970-03-09,8459.3364,ets,"AutoETS(seasonal='mul', sp=20, trend='add')"
+O33,1970-03-10,8338.3014,ets,"AutoETS(seasonal='mul', sp=20, trend='add')"
+O33,1970-03-11,8449.4362,ets,"AutoETS(seasonal='mul', sp=20, trend='add')"
+O33,1970-03-12,8482.6001,ets,"AutoETS(seasonal='mul', sp=20, trend='add')"
+O33,1970-03-13,8536.1303,ets,"AutoETS(seasonal='mul', sp=20, trend='add')"
+O33,1970-03-14,8523.8994,ets,"AutoETS(seasonal='mul', sp=20, trend='add')"
+O34,1970-03-13,4325.9835,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O34,1970-03-14,3909.8674,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O34,1970-03-15,3975.1139,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O34,1970-03-16,4465.1177,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O34,1970-03-17,4578.7188,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O34,1970-03-18,4604.764,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O34,1970-03-19,4515.0961,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O34,1970-03-20,4350.1354,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O35,1970-03-13,5859.616,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O35,1970-03-14,6272.3214,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O35,1970-03-15,6320.597,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O35,1970-03-16,6301.5942,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O35,1970-03-17,6465.5896,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O35,1970-03-18,6423.5935,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O35,1970-03-19,6010.278,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O35,1970-03-20,6086.5439,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O36,1970-03-13,3744.7407,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O36,1970-03-14,3628.7612,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O36,1970-03-15,3724.8764,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O36,1970-03-16,3389.5637,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O36,1970-03-17,3038.6346,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O36,1970-03-18,3252.4666,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O36,1970-03-19,3720.2471,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O36,1970-03-20,3667.4578,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O37,1970-03-13,6286.3863,ets,AutoETS(trend='add')
+O37,1970-03-14,6322.8065,ets,AutoETS(trend='add')
+O37,1970-03-15,6359.2267,ets,AutoETS(trend='add')
+O37,1970-03-16,6395.6469,ets,AutoETS(trend='add')
+O37,1970-03-17,6432.0671,ets,AutoETS(trend='add')
+O37,1970-03-18,6468.4873,ets,AutoETS(trend='add')
+O37,1970-03-19,6504.9075,ets,AutoETS(trend='add')
+O37,1970-03-20,6541.3277,ets,AutoETS(trend='add')
+O38,1970-03-13,4153.2788,ets,AutoETS(trend='add')
+O38,1970-03-14,4106.5097,ets,AutoETS(trend='add')
+O38,1970-03-15,4059.7406,ets,AutoETS(trend='add')
+O38,1970-03-16,4012.9715,ets,AutoETS(trend='add')
+O38,1970-03-17,3966.2024,ets,AutoETS(trend='add')
+O38,1970-03-18,3919.4333,ets,AutoETS(trend='add')
+O38,1970-03-19,3872.6642,ets,AutoETS(trend='add')
+O38,1970-03-20,3825.8951,ets,AutoETS(trend='add')
+O39,1970-03-13,4985.3945,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O39,1970-03-14,4811.2583,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O39,1970-03-15,4298.5347,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O39,1970-03-16,4275.5713,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O39,1970-03-17,4801.4497,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O39,1970-03-18,4876.209,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O39,1970-03-19,4760.0775,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O39,1970-03-20,4912.9565,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O4,1970-04-07,10078.6024,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O4,1970-04-08,9879.6271,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O4,1970-04-09,10095.2003,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O4,1970-04-10,9895.8839,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O4,1970-04-11,10111.7982,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O4,1970-04-12,9912.1407,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O4,1970-04-13,10128.3961,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O4,1970-04-14,9928.3975,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O40,1970-03-13,4675.9352,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O40,1970-03-14,4665.4856,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O40,1970-03-15,5276.5223,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O40,1970-03-16,5410.4604,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O40,1970-03-17,5443.469,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O40,1970-03-18,5501.1175,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O40,1970-03-19,5258.6498,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O40,1970-03-20,4783.5295,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O41,1970-03-13,2482.5342,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O41,1970-03-14,2450.322,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O41,1970-03-15,2535.3187,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O41,1970-03-16,2334.1478,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O41,1970-03-17,2277.9578,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O41,1970-03-18,1977.597,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O41,1970-03-19,1788.6881,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O41,1970-03-20,1900.7401,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O42,1970-03-13,4117.3084,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O42,1970-03-14,4087.7323,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O42,1970-03-15,4079.9509,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O42,1970-03-16,4050.4742,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O42,1970-03-17,4042.5935,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O42,1970-03-18,4013.2161,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O42,1970-03-19,4005.236,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O42,1970-03-20,3975.9579,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O43,1970-03-13,3618.4866,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O43,1970-03-14,3556.0356,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O43,1970-03-15,3584.0963,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O43,1970-03-16,3522.0774,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O43,1970-03-17,3549.7059,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O43,1970-03-18,3488.1192,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O43,1970-03-19,3515.3156,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O43,1970-03-20,3454.161,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O44,1970-03-13,4033.275,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O44,1970-03-14,3884.0804,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O44,1970-03-15,3516.7291,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O44,1970-03-16,3801.3822,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O44,1970-03-17,4241.7856,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O44,1970-03-18,4221.3745,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O44,1970-03-19,4281.39,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O44,1970-03-20,4048.7696,ets,"AutoETS(seasonal='mul', sp=7, trend='add')"
+O45,1970-03-13,4891.1735,ets,"AutoETS(seasonal='mul', sp=15, trend='add')"
+O45,1970-03-14,4486.6808,ets,"AutoETS(seasonal='mul', sp=15, trend='add')"
+O45,1970-03-15,4296.4236,ets,"AutoETS(seasonal='mul', sp=15, trend='add')"
+O45,1970-03-16,4558.0491,ets,"AutoETS(seasonal='mul', sp=15, trend='add')"
+O45,1970-03-17,4648.5997,ets,"AutoETS(seasonal='mul', sp=15, trend='add')"
+O45,1970-03-18,4664.6135,ets,"AutoETS(seasonal='mul', sp=15, trend='add')"
+O45,1970-03-19,4875.3028,ets,"AutoETS(seasonal='mul', sp=15, trend='add')"
+O45,1970-03-20,4983.2471,ets,"AutoETS(seasonal='mul', sp=15, trend='add')"
+O46,1970-03-13,3321.2766,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O46,1970-03-14,3441.835,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O46,1970-03-15,3323.93,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O46,1970-03-16,3357.6615,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O46,1970-03-17,3113.0969,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O46,1970-03-18,2699.5802,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O46,1970-03-19,2645.9798,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O46,1970-03-20,3078.8162,ets,"AutoETS(seasonal='mul', sp=14, trend='add')"
+O47,1970-03-10,2203.2309,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O47,1970-03-11,2205.3058,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O47,1970-03-12,2202.823,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O47,1970-03-13,2204.8974,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O47,1970-03-14,2202.4151,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O47,1970-03-15,2204.4891,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O47,1970-03-16,2202.0072,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O47,1970-03-17,2204.0808,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O48,1970-03-10,2264.9344,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O48,1970-03-11,2268.9287,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O48,1970-03-12,2263.2278,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O48,1970-03-13,2267.2185,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O48,1970-03-14,2261.5213,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O48,1970-03-15,2265.5083,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O48,1970-03-16,2259.8147,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O48,1970-03-17,2263.7981,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O49,1970-03-10,2127.9159,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O49,1970-03-11,2138.5602,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O49,1970-03-12,2127.1117,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O49,1970-03-13,2137.7518,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O49,1970-03-14,2126.3076,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O49,1970-03-15,2136.9435,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O49,1970-03-16,2125.5034,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O49,1970-03-17,2136.1351,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O5,1970-04-07,5320.9222,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O5,1970-04-08,5332.5233,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O5,1970-04-09,5344.6775,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O5,1970-04-10,5356.2774,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O5,1970-04-11,5368.4328,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O5,1970-04-12,5380.0315,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O5,1970-04-13,5392.1882,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O5,1970-04-14,5403.7856,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O50,1970-03-10,2180.1899,ets,AutoETS(trend='add')
+O50,1970-03-11,2180.7667,ets,AutoETS(trend='add')
+O50,1970-03-12,2181.3435,ets,AutoETS(trend='add')
+O50,1970-03-13,2181.9202,ets,AutoETS(trend='add')
+O50,1970-03-14,2182.497,ets,AutoETS(trend='add')
+O50,1970-03-15,2183.0738,ets,AutoETS(trend='add')
+O50,1970-03-16,2183.6505,ets,AutoETS(trend='add')
+O50,1970-03-17,2184.2273,ets,AutoETS(trend='add')
+O51,1970-03-10,2132.1852,ets,AutoETS(trend='add')
+O51,1970-03-11,2129.5934,ets,AutoETS(trend='add')
+O51,1970-03-12,2127.0017,ets,AutoETS(trend='add')
+O51,1970-03-13,2124.4099,ets,AutoETS(trend='add')
+O51,1970-03-14,2121.8182,ets,AutoETS(trend='add')
+O51,1970-03-15,2119.2264,ets,AutoETS(trend='add')
+O51,1970-03-16,2116.6347,ets,AutoETS(trend='add')
+O51,1970-03-17,2114.0429,ets,AutoETS(trend='add')
+O52,1970-03-10,2204.4409,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O52,1970-03-11,2202.9071,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O52,1970-03-12,2205.0266,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O52,1970-03-13,2203.4924,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O52,1970-03-14,2205.6124,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O52,1970-03-15,2204.0777,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O52,1970-03-16,2206.1982,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O52,1970-03-17,2204.663,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O53,1970-03-10,2087.0091,ets,AutoETS(trend='add')
+O53,1970-03-11,2085.589,ets,AutoETS(trend='add')
+O53,1970-03-12,2084.1689,ets,AutoETS(trend='add')
+O53,1970-03-13,2082.7488,ets,AutoETS(trend='add')
+O53,1970-03-14,2081.3287,ets,AutoETS(trend='add')
+O53,1970-03-15,2079.9086,ets,AutoETS(trend='add')
+O53,1970-03-16,2078.4885,ets,AutoETS(trend='add')
+O53,1970-03-17,2077.0684,ets,AutoETS(trend='add')
+O54,1970-03-10,2125.8129,ets,AutoETS(trend='add')
+O54,1970-03-11,2127.4011,ets,AutoETS(trend='add')
+O54,1970-03-12,2128.9894,ets,AutoETS(trend='add')
+O54,1970-03-13,2130.5777,ets,AutoETS(trend='add')
+O54,1970-03-14,2132.166,ets,AutoETS(trend='add')
+O54,1970-03-15,2133.7543,ets,AutoETS(trend='add')
+O54,1970-03-16,2135.3425,ets,AutoETS(trend='add')
+O54,1970-03-17,2136.9308,ets,AutoETS(trend='add')
+O55,1970-03-05,3095.1841,ets,AutoETS(trend='add')
+O55,1970-03-06,3046.3705,ets,AutoETS(trend='add')
+O55,1970-03-07,2997.5569,ets,AutoETS(trend='add')
+O55,1970-03-08,2948.7433,ets,AutoETS(trend='add')
+O55,1970-03-09,2899.9298,ets,AutoETS(trend='add')
+O55,1970-03-10,2851.1162,ets,AutoETS(trend='add')
+O55,1970-03-11,2802.3026,ets,AutoETS(trend='add')
+O55,1970-03-12,2753.489,ets,AutoETS(trend='add')
+O56,1970-03-05,5182.1942,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O56,1970-03-06,5173.0646,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O56,1970-03-07,5165.2962,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O56,1970-03-08,5130.6671,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O56,1970-03-09,5121.4572,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O56,1970-03-10,5113.5944,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O56,1970-03-11,5079.14,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O56,1970-03-12,5069.8499,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O57,1970-03-05,7678.7797,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O57,1970-03-06,7541.0433,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O57,1970-03-07,7423.5062,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O57,1970-03-08,7299.5884,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O57,1970-03-09,7159.126,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O57,1970-03-10,7021.9282,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O57,1970-03-11,6903.5336,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O57,1970-03-12,6779.1827,ets,"AutoETS(seasonal='mul', sp=4, trend='add')"
+O58,1970-03-05,4805.2687,ets,AutoETS(trend='add')
+O58,1970-03-06,4757.5391,ets,AutoETS(trend='add')
+O58,1970-03-07,4709.8095,ets,AutoETS(trend='add')
+O58,1970-03-08,4662.08,ets,AutoETS(trend='add')
+O58,1970-03-09,4614.3504,ets,AutoETS(trend='add')
+O58,1970-03-10,4566.6209,ets,AutoETS(trend='add')
+O58,1970-03-11,4518.8913,ets,AutoETS(trend='add')
+O58,1970-03-12,4471.1617,ets,AutoETS(trend='add')
+O59,1970-03-05,2279.7591,ets,AutoETS(trend='add')
+O59,1970-03-06,2252.6376,ets,AutoETS(trend='add')
+O59,1970-03-07,2225.516,ets,AutoETS(trend='add')
+O59,1970-03-08,2198.3944,ets,AutoETS(trend='add')
+O59,1970-03-09,2171.2728,ets,AutoETS(trend='add')
+O59,1970-03-10,2144.1512,ets,AutoETS(trend='add')
+O59,1970-03-11,2117.0296,ets,AutoETS(trend='add')
+O59,1970-03-12,2089.908,ets,AutoETS(trend='add')
+O6,1970-04-06,4343.2797,ets,AutoETS(trend='add')
+O6,1970-04-07,4331.6262,ets,AutoETS(trend='add')
+O6,1970-04-08,4319.9727,ets,AutoETS(trend='add')
+O6,1970-04-09,4308.3192,ets,AutoETS(trend='add')
+O6,1970-04-10,4296.6657,ets,AutoETS(trend='add')
+O6,1970-04-11,4285.0123,ets,AutoETS(trend='add')
+O6,1970-04-12,4273.3588,ets,AutoETS(trend='add')
+O6,1970-04-13,4261.7053,ets,AutoETS(trend='add')
+O60,1970-03-05,2945.1237,ets,AutoETS(trend='add')
+O60,1970-03-06,2909.5147,ets,AutoETS(trend='add')
+O60,1970-03-07,2873.9058,ets,AutoETS(trend='add')
+O60,1970-03-08,2838.2969,ets,AutoETS(trend='add')
+O60,1970-03-09,2802.688,ets,AutoETS(trend='add')
+O60,1970-03-10,2767.0791,ets,AutoETS(trend='add')
+O60,1970-03-11,2731.4702,ets,AutoETS(trend='add')
+O60,1970-03-12,2695.8612,ets,AutoETS(trend='add')
+O61,1970-03-05,1218.9327,ets,AutoETS(trend='add')
+O61,1970-03-06,1201.867,ets,AutoETS(trend='add')
+O61,1970-03-07,1184.8014,ets,AutoETS(trend='add')
+O61,1970-03-08,1167.7357,ets,AutoETS(trend='add')
+O61,1970-03-09,1150.6701,ets,AutoETS(trend='add')
+O61,1970-03-10,1133.6045,ets,AutoETS(trend='add')
+O61,1970-03-11,1116.5388,ets,AutoETS(trend='add')
+O61,1970-03-12,1099.4732,ets,AutoETS(trend='add')
+O62,1970-03-05,3927.493,ets,AutoETS(trend='add')
+O62,1970-03-06,3934.9794,ets,AutoETS(trend='add')
+O62,1970-03-07,3942.4657,ets,AutoETS(trend='add')
+O62,1970-03-08,3949.9521,ets,AutoETS(trend='add')
+O62,1970-03-09,3957.4385,ets,AutoETS(trend='add')
+O62,1970-03-10,3964.9248,ets,AutoETS(trend='add')
+O62,1970-03-11,3972.4112,ets,AutoETS(trend='add')
+O62,1970-03-12,3979.8976,ets,AutoETS(trend='add')
+O63,1970-03-05,6596.5075,ets,AutoETS(trend='add')
+O63,1970-03-06,6503.0167,ets,AutoETS(trend='add')
+O63,1970-03-07,6409.5259,ets,AutoETS(trend='add')
+O63,1970-03-08,6316.0352,ets,AutoETS(trend='add')
+O63,1970-03-09,6222.5444,ets,AutoETS(trend='add')
+O63,1970-03-10,6129.0536,ets,AutoETS(trend='add')
+O63,1970-03-11,6035.5628,ets,AutoETS(trend='add')
+O63,1970-03-12,5942.072,ets,AutoETS(trend='add')
+O64,1970-03-05,2482.4576,ets,AutoETS(trend='add')
+O64,1970-03-06,2450.9145,ets,AutoETS(trend='add')
+O64,1970-03-07,2419.3714,ets,AutoETS(trend='add')
+O64,1970-03-08,2387.8283,ets,AutoETS(trend='add')
+O64,1970-03-09,2356.2852,ets,AutoETS(trend='add')
+O64,1970-03-10,2324.7421,ets,AutoETS(trend='add')
+O64,1970-03-11,2293.199,ets,AutoETS(trend='add')
+O64,1970-03-12,2261.6559,ets,AutoETS(trend='add')
+O65,1970-03-05,1291.6036,ets,AutoETS(trend='add')
+O65,1970-03-06,1260.6936,ets,AutoETS(trend='add')
+O65,1970-03-07,1229.7835,ets,AutoETS(trend='add')
+O65,1970-03-08,1198.8734,ets,AutoETS(trend='add')
+O65,1970-03-09,1167.9633,ets,AutoETS(trend='add')
+O65,1970-03-10,1137.0532,ets,AutoETS(trend='add')
+O65,1970-03-11,1106.1431,ets,AutoETS(trend='add')
+O65,1970-03-12,1075.2331,ets,AutoETS(trend='add')
+O66,1970-03-05,3823.01,ets,AutoETS(trend='add')
+O66,1970-03-06,3787.0216,ets,AutoETS(trend='add')
+O66,1970-03-07,3751.0331,ets,AutoETS(trend='add')
+O66,1970-03-08,3715.0447,ets,AutoETS(trend='add')
+O66,1970-03-09,3679.0562,ets,AutoETS(trend='add')
+O66,1970-03-10,3643.0677,ets,AutoETS(trend='add')
+O66,1970-03-11,3607.0793,ets,AutoETS(trend='add')
+O66,1970-03-12,3571.0908,ets,AutoETS(trend='add')
+O67,1970-03-05,11022.1327,ets,AutoETS(trend='add')
+O67,1970-03-06,10894.2673,ets,AutoETS(trend='add')
+O67,1970-03-07,10766.402,ets,AutoETS(trend='add')
+O67,1970-03-08,10638.5366,ets,AutoETS(trend='add')
+O67,1970-03-09,10510.6712,ets,AutoETS(trend='add')
+O67,1970-03-10,10382.8059,ets,AutoETS(trend='add')
+O67,1970-03-11,10254.9405,ets,AutoETS(trend='add')
+O67,1970-03-12,10127.0752,ets,AutoETS(trend='add')
+O68,1970-03-05,7383.4483,ets,"AutoETS(seasonal='mul', sp=22, trend='add')"
+O68,1970-03-06,7371.0534,ets,"AutoETS(seasonal='mul', sp=22, trend='add')"
+O68,1970-03-07,7405.3866,ets,"AutoETS(seasonal='mul', sp=22, trend='add')"
+O68,1970-03-08,7403.7839,ets,"AutoETS(seasonal='mul', sp=22, trend='add')"
+O68,1970-03-09,7416.1887,ets,"AutoETS(seasonal='mul', sp=22, trend='add')"
+O68,1970-03-10,7430.0155,ets,"AutoETS(seasonal='mul', sp=22, trend='add')"
+O68,1970-03-11,7493.1764,ets,"AutoETS(seasonal='mul', sp=22, trend='add')"
+O68,1970-03-12,7916.6402,ets,"AutoETS(seasonal='mul', sp=22, trend='add')"
+O69,1970-03-05,8753.816,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O69,1970-03-06,8665.9914,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O69,1970-03-07,8579.7907,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O69,1970-03-08,8491.9824,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O69,1970-03-09,8405.7654,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O69,1970-03-10,8317.9734,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O69,1970-03-11,8231.7402,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O69,1970-03-12,8143.9644,ets,"AutoETS(seasonal='mul', sp=2, trend='add')"
+O7,1970-04-07,5320.0238,ets,AutoETS(trend='add')
+O7,1970-04-08,5326.3095,ets,AutoETS(trend='add')
+O7,1970-04-09,5332.5951,ets,AutoETS(trend='add')
+O7,1970-04-10,5338.8808,ets,AutoETS(trend='add')
+O7,1970-04-11,5345.1664,ets,AutoETS(trend='add')
+O7,1970-04-12,5351.452,ets,AutoETS(trend='add')
+O7,1970-04-13,5357.7377,ets,AutoETS(trend='add')
+O7,1970-04-14,5364.0233,ets,AutoETS(trend='add')
+O70,1970-03-05,2404.6452,ets,AutoETS(trend='add')
+O70,1970-03-06,2362.2963,ets,AutoETS(trend='add')
+O70,1970-03-07,2319.9473,ets,AutoETS(trend='add')
+O70,1970-03-08,2277.5984,ets,AutoETS(trend='add')
+O70,1970-03-09,2235.2494,ets,AutoETS(trend='add')
+O70,1970-03-10,2192.9005,ets,AutoETS(trend='add')
+O70,1970-03-11,2150.5515,ets,AutoETS(trend='add')
+O70,1970-03-12,2108.2026,ets,AutoETS(trend='add')
+O71,1970-03-05,4364.8073,ets,AutoETS(trend='add')
+O71,1970-03-06,4302.5206,ets,AutoETS(trend='add')
+O71,1970-03-07,4240.2338,ets,AutoETS(trend='add')
+O71,1970-03-08,4177.9471,ets,AutoETS(trend='add')
+O71,1970-03-09,4115.6604,ets,AutoETS(trend='add')
+O71,1970-03-10,4053.3737,ets,AutoETS(trend='add')
+O71,1970-03-11,3991.087,ets,AutoETS(trend='add')
+O71,1970-03-12,3928.8003,ets,AutoETS(trend='add')
+O72,1970-03-05,1704.4391,ets,"AutoETS(seasonal='mul', sp=12, trend='add')"
+O72,1970-03-06,1681.4102,ets,"AutoETS(seasonal='mul', sp=12, trend='add')"
+O72,1970-03-07,1671.4998,ets,"AutoETS(seasonal='mul', sp=12, trend='add')"
+O72,1970-03-08,1676.9722,ets,"AutoETS(seasonal='mul', sp=12, trend='add')"
+O72,1970-03-09,1642.1402,ets,"AutoETS(seasonal='mul', sp=12, trend='add')"
+O72,1970-03-10,1613.0752,ets,"AutoETS(seasonal='mul', sp=12, trend='add')"
+O72,1970-03-11,1596.979,ets,"AutoETS(seasonal='mul', sp=12, trend='add')"
+O72,1970-03-12,1580.2341,ets,"AutoETS(seasonal='mul', sp=12, trend='add')"
+O73,1970-03-05,2924.5732,ets,AutoETS(trend='add')
+O73,1970-03-06,2866.1491,ets,AutoETS(trend='add')
+O73,1970-03-07,2807.7251,ets,AutoETS(trend='add')
+O73,1970-03-08,2749.301,ets,AutoETS(trend='add')
+O73,1970-03-09,2690.877,ets,AutoETS(trend='add')
+O73,1970-03-10,2632.453,ets,AutoETS(trend='add')
+O73,1970-03-11,2574.0289,ets,AutoETS(trend='add')
+O73,1970-03-12,2515.6049,ets,AutoETS(trend='add')
+O74,1970-03-05,5024.1451,ets,AutoETS(trend='add')
+O74,1970-03-06,4931.3642,ets,AutoETS(trend='add')
+O74,1970-03-07,4838.5833,ets,AutoETS(trend='add')
+O74,1970-03-08,4745.8025,ets,AutoETS(trend='add')
+O74,1970-03-09,4653.0216,ets,AutoETS(trend='add')
+O74,1970-03-10,4560.2407,ets,AutoETS(trend='add')
+O74,1970-03-11,4467.4599,ets,AutoETS(trend='add')
+O74,1970-03-12,4374.679,ets,AutoETS(trend='add')
+O75,1970-03-05,3345.1987,ets,AutoETS(trend='add')
+O75,1970-03-06,3309.3968,ets,AutoETS(trend='add')
+O75,1970-03-07,3273.5949,ets,AutoETS(trend='add')
+O75,1970-03-08,3237.793,ets,AutoETS(trend='add')
+O75,1970-03-09,3201.9911,ets,AutoETS(trend='add')
+O75,1970-03-10,3166.1891,ets,AutoETS(trend='add')
+O75,1970-03-11,3130.3872,ets,AutoETS(trend='add')
+O75,1970-03-12,3094.5853,ets,AutoETS(trend='add')
+O76,1970-03-05,1647.4835,ets,AutoETS(trend='add')
+O76,1970-03-06,1620.9662,ets,AutoETS(trend='add')
+O76,1970-03-07,1594.4488,ets,AutoETS(trend='add')
+O76,1970-03-08,1567.9315,ets,AutoETS(trend='add')
+O76,1970-03-09,1541.4141,ets,AutoETS(trend='add')
+O76,1970-03-10,1514.8968,ets,AutoETS(trend='add')
+O76,1970-03-11,1488.3794,ets,AutoETS(trend='add')
+O76,1970-03-12,1461.8621,ets,AutoETS(trend='add')
+O77,1970-03-05,4860.1302,ets,AutoETS(trend='add')
+O77,1970-03-06,4828.6305,ets,AutoETS(trend='add')
+O77,1970-03-07,4797.1309,ets,AutoETS(trend='add')
+O77,1970-03-08,4765.6312,ets,AutoETS(trend='add')
+O77,1970-03-09,4734.1316,ets,AutoETS(trend='add')
+O77,1970-03-10,4702.6319,ets,AutoETS(trend='add')
+O77,1970-03-11,4671.1323,ets,AutoETS(trend='add')
+O77,1970-03-12,4639.6326,ets,AutoETS(trend='add')
+O78,1970-03-05,5865.3121,ets,AutoETS(trend='add')
+O78,1970-03-06,5784.6349,ets,AutoETS(trend='add')
+O78,1970-03-07,5703.9577,ets,AutoETS(trend='add')
+O78,1970-03-08,5623.2805,ets,AutoETS(trend='add')
+O78,1970-03-09,5542.6033,ets,AutoETS(trend='add')
+O78,1970-03-10,5461.926,ets,AutoETS(trend='add')
+O78,1970-03-11,5381.2488,ets,AutoETS(trend='add')
+O78,1970-03-12,5300.5716,ets,AutoETS(trend='add')
+O79,1970-03-05,1161.7023,ets,AutoETS(trend='add')
+O79,1970-03-06,1142.4044,ets,AutoETS(trend='add')
+O79,1970-03-07,1123.1064,ets,AutoETS(trend='add')
+O79,1970-03-08,1103.8085,ets,AutoETS(trend='add')
+O79,1970-03-09,1084.5105,ets,AutoETS(trend='add')
+O79,1970-03-10,1065.2126,ets,AutoETS(trend='add')
+O79,1970-03-11,1045.9146,ets,AutoETS(trend='add')
+O79,1970-03-12,1026.6167,ets,AutoETS(trend='add')
+O8,1970-04-06,5497.455,ets,AutoETS(trend='add')
+O8,1970-04-07,5496.5324,ets,AutoETS(trend='add')
+O8,1970-04-08,5495.6099,ets,AutoETS(trend='add')
+O8,1970-04-09,5494.6874,ets,AutoETS(trend='add')
+O8,1970-04-10,5493.7649,ets,AutoETS(trend='add')
+O8,1970-04-11,5492.8424,ets,AutoETS(trend='add')
+O8,1970-04-12,5491.9198,ets,AutoETS(trend='add')
+O8,1970-04-13,5490.9973,ets,AutoETS(trend='add')
+O80,1970-03-05,1864.0297,ets,AutoETS(trend='add')
+O80,1970-03-06,1842.0603,ets,AutoETS(trend='add')
+O80,1970-03-07,1820.0908,ets,AutoETS(trend='add')
+O80,1970-03-08,1798.1213,ets,AutoETS(trend='add')
+O80,1970-03-09,1776.1518,ets,AutoETS(trend='add')
+O80,1970-03-10,1754.1824,ets,AutoETS(trend='add')
+O80,1970-03-11,1732.2129,ets,AutoETS(trend='add')
+O80,1970-03-12,1710.2434,ets,AutoETS(trend='add')
+O81,1970-03-05,2547.8573,ets,AutoETS(trend='add')
+O81,1970-03-06,2437.7174,ets,AutoETS(trend='add')
+O81,1970-03-07,2327.5775,ets,AutoETS(trend='add')
+O81,1970-03-08,2217.4377,ets,AutoETS(trend='add')
+O81,1970-03-09,2107.2978,ets,AutoETS(trend='add')
+O81,1970-03-10,1997.158,ets,AutoETS(trend='add')
+O81,1970-03-11,1887.0181,ets,AutoETS(trend='add')
+O81,1970-03-12,1776.8782,ets,AutoETS(trend='add')
+O82,1970-03-05,5679.0132,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O82,1970-03-06,5565.9526,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O82,1970-03-07,5489.7164,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O82,1970-03-08,5414.2533,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O82,1970-03-09,5302.3675,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O82,1970-03-10,5225.572,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O82,1970-03-11,5149.4935,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O82,1970-03-12,5038.7825,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O83,1970-03-05,2922.754,ets,AutoETS(trend='add')
+O83,1970-03-06,2879.8988,ets,AutoETS(trend='add')
+O83,1970-03-07,2837.0437,ets,AutoETS(trend='add')
+O83,1970-03-08,2794.1885,ets,AutoETS(trend='add')
+O83,1970-03-09,2751.3334,ets,AutoETS(trend='add')
+O83,1970-03-10,2708.4783,ets,AutoETS(trend='add')
+O83,1970-03-11,2665.6231,ets,AutoETS(trend='add')
+O83,1970-03-12,2622.768,ets,AutoETS(trend='add')
+O84,1970-03-05,1393.0539,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O84,1970-03-06,1373.8767,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O84,1970-03-07,1360.818,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O84,1970-03-08,1347.3862,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O84,1970-03-09,1328.3401,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O84,1970-03-10,1315.2103,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O84,1970-03-11,1301.7185,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O84,1970-03-12,1282.8035,ets,"AutoETS(seasonal='mul', sp=3, trend='add')"
+O85,1970-03-05,4403.48,ets,AutoETS(trend='add')
+O85,1970-03-06,4356.9593,ets,AutoETS(trend='add')
+O85,1970-03-07,4310.4387,ets,AutoETS(trend='add')
+O85,1970-03-08,4263.918,ets,AutoETS(trend='add')
+O85,1970-03-09,4217.3974,ets,AutoETS(trend='add')
+O85,1970-03-10,4170.8767,ets,AutoETS(trend='add')
+O85,1970-03-11,4124.3561,ets,AutoETS(trend='add')
+O85,1970-03-12,4077.8354,ets,AutoETS(trend='add')
+O86,1970-03-05,2926.1144,ets,AutoETS(trend='add')
+O86,1970-03-06,2886.2307,ets,AutoETS(trend='add')
+O86,1970-03-07,2846.3471,ets,AutoETS(trend='add')
+O86,1970-03-08,2806.4634,ets,AutoETS(trend='add')
+O86,1970-03-09,2766.5797,ets,AutoETS(trend='add')
+O86,1970-03-10,2726.696,ets,AutoETS(trend='add')
+O86,1970-03-11,2686.8123,ets,AutoETS(trend='add')
+O86,1970-03-12,2646.9286,ets,AutoETS(trend='add')
+O87,1970-03-05,3417.5094,ets,AutoETS(trend='add')
+O87,1970-03-06,3345.0186,ets,AutoETS(trend='add')
+O87,1970-03-07,3272.5278,ets,AutoETS(trend='add')
+O87,1970-03-08,3200.037,ets,AutoETS(trend='add')
+O87,1970-03-09,3127.5462,ets,AutoETS(trend='add')
+O87,1970-03-10,3055.0554,ets,AutoETS(trend='add')
+O87,1970-03-11,2982.5646,ets,AutoETS(trend='add')
+O87,1970-03-12,2910.0738,ets,AutoETS(trend='add')
+O88,1970-03-05,4173.9176,ets,AutoETS(trend='add')
+O88,1970-03-06,4147.8312,ets,AutoETS(trend='add')
+O88,1970-03-07,4121.7447,ets,AutoETS(trend='add')
+O88,1970-03-08,4095.6582,ets,AutoETS(trend='add')
+O88,1970-03-09,4069.5717,ets,AutoETS(trend='add')
+O88,1970-03-10,4043.4852,ets,AutoETS(trend='add')
+O88,1970-03-11,4017.3987,ets,AutoETS(trend='add')
+O88,1970-03-12,3991.3123,ets,AutoETS(trend='add')
+O89,1970-03-05,11419.7168,ets,AutoETS(trend='add')
+O89,1970-03-06,11298.3228,ets,AutoETS(trend='add')
+O89,1970-03-07,11176.9288,ets,AutoETS(trend='add')
+O89,1970-03-08,11055.5349,ets,AutoETS(trend='add')
+O89,1970-03-09,10934.1409,ets,AutoETS(trend='add')
+O89,1970-03-10,10812.7469,ets,AutoETS(trend='add')
+O89,1970-03-11,10691.3529,ets,AutoETS(trend='add')
+O89,1970-03-12,10569.959,ets,AutoETS(trend='add')
+O9,1970-04-06,6173.2797,ets,AutoETS(trend='add')
+O9,1970-04-07,6175.8055,ets,AutoETS(trend='add')
+O9,1970-04-08,6178.3313,ets,AutoETS(trend='add')
+O9,1970-04-09,6180.8571,ets,AutoETS(trend='add')
+O9,1970-04-10,6183.383,ets,AutoETS(trend='add')
+O9,1970-04-11,6185.9088,ets,AutoETS(trend='add')
+O9,1970-04-12,6188.4346,ets,AutoETS(trend='add')
+O9,1970-04-13,6190.9604,ets,AutoETS(trend='add')
+O90,1970-03-05,5110.1415,ets,AutoETS(trend='add')
+O90,1970-03-06,5074.2892,ets,AutoETS(trend='add')
+O90,1970-03-07,5038.437,ets,AutoETS(trend='add')
+O90,1970-03-08,5002.5847,ets,AutoETS(trend='add')
+O90,1970-03-09,4966.7325,ets,AutoETS(trend='add')
+O90,1970-03-10,4930.8803,ets,AutoETS(trend='add')
+O90,1970-03-11,4895.028,ets,AutoETS(trend='add')
+O90,1970-03-12,4859.1758,ets,AutoETS(trend='add')
+O91,1970-03-05,5999.6156,ets,AutoETS(trend='add')
+O91,1970-03-06,5966.2318,ets,AutoETS(trend='add')
+O91,1970-03-07,5932.8481,ets,AutoETS(trend='add')
+O91,1970-03-08,5899.4643,ets,AutoETS(trend='add')
+O91,1970-03-09,5866.0806,ets,AutoETS(trend='add')
+O91,1970-03-10,5832.6968,ets,AutoETS(trend='add')
+O91,1970-03-11,5799.3131,ets,AutoETS(trend='add')
+O91,1970-03-12,5765.9293,ets,AutoETS(trend='add')
+O92,1970-03-05,3807.19,ets,AutoETS(trend='add')
+O92,1970-03-06,3777.0464,ets,AutoETS(trend='add')
+O92,1970-03-07,3746.9028,ets,AutoETS(trend='add')
+O92,1970-03-08,3716.7593,ets,AutoETS(trend='add')
+O92,1970-03-09,3686.6157,ets,AutoETS(trend='add')
+O92,1970-03-10,3656.4721,ets,AutoETS(trend='add')
+O92,1970-03-11,3626.3285,ets,AutoETS(trend='add')
+O92,1970-03-12,3596.1849,ets,AutoETS(trend='add')
+O93,1970-03-05,2841.699,ets,AutoETS(trend='add')
+O93,1970-03-06,2807.2114,ets,AutoETS(trend='add')
+O93,1970-03-07,2772.7238,ets,AutoETS(trend='add')
+O93,1970-03-08,2738.2363,ets,AutoETS(trend='add')
+O93,1970-03-09,2703.7487,ets,AutoETS(trend='add')
+O93,1970-03-10,2669.2611,ets,AutoETS(trend='add')
+O93,1970-03-11,2634.7736,ets,AutoETS(trend='add')
+O93,1970-03-12,2600.286,ets,AutoETS(trend='add')
+O94,1970-03-05,3536.8507,ets,AutoETS(trend='add')
+O94,1970-03-06,3516.7088,ets,AutoETS(trend='add')
+O94,1970-03-07,3496.5668,ets,AutoETS(trend='add')
+O94,1970-03-08,3476.4249,ets,AutoETS(trend='add')
+O94,1970-03-09,3456.2829,ets,AutoETS(trend='add')
+O94,1970-03-10,3436.141,ets,AutoETS(trend='add')
+O94,1970-03-11,3415.999,ets,AutoETS(trend='add')
+O94,1970-03-12,3395.8571,ets,AutoETS(trend='add')
+O95,1970-03-05,2644.8081,ets,AutoETS(trend='add')
+O95,1970-03-06,2609.0777,ets,AutoETS(trend='add')
+O95,1970-03-07,2573.3472,ets,AutoETS(trend='add')
+O95,1970-03-08,2537.6168,ets,AutoETS(trend='add')
+O95,1970-03-09,2501.8863,ets,AutoETS(trend='add')
+O95,1970-03-10,2466.1559,ets,AutoETS(trend='add')
+O95,1970-03-11,2430.4254,ets,AutoETS(trend='add')
+O95,1970-03-12,2394.695,ets,AutoETS(trend='add')
+O96,1970-03-05,1225.0817,ets,AutoETS(trend='add')
+O96,1970-03-06,1203.0925,ets,AutoETS(trend='add')
+O96,1970-03-07,1181.1032,ets,AutoETS(trend='add')
+O96,1970-03-08,1159.114,ets,AutoETS(trend='add')
+O96,1970-03-09,1137.1247,ets,AutoETS(trend='add')
+O96,1970-03-10,1115.1355,ets,AutoETS(trend='add')
+O96,1970-03-11,1093.1462,ets,AutoETS(trend='add')
+O96,1970-03-12,1071.1569,ets,AutoETS(trend='add')
+O97,1970-03-05,2838.6462,ets,"AutoETS(seasonal='mul', sp=8, trend='add')"
+O97,1970-03-06,2812.234,ets,"AutoETS(seasonal='mul', sp=8, trend='add')"
+O97,1970-03-07,2758.8849,ets,"AutoETS(seasonal='mul', sp=8, trend='add')"
+O97,1970-03-08,2727.1235,ets,"AutoETS(seasonal='mul', sp=8, trend='add')"
+O97,1970-03-09,2689.4917,ets,"AutoETS(seasonal='mul', sp=8, trend='add')"
+O97,1970-03-10,2664.9343,ets,"AutoETS(seasonal='mul', sp=8, trend='add')"
+O97,1970-03-11,2641.3977,ets,"AutoETS(seasonal='mul', sp=8, trend='add')"
+O97,1970-03-12,2598.2719,ets,"AutoETS(seasonal='mul', sp=8, trend='add')"
+O98,1970-03-05,2032.899,ets,AutoETS(trend='add')
+O98,1970-03-06,2011.7035,ets,AutoETS(trend='add')
+O98,1970-03-07,1990.508,ets,AutoETS(trend='add')
+O98,1970-03-08,1969.3125,ets,AutoETS(trend='add')
+O98,1970-03-09,1948.117,ets,AutoETS(trend='add')
+O98,1970-03-10,1926.9215,ets,AutoETS(trend='add')
+O98,1970-03-11,1905.7259,ets,AutoETS(trend='add')
+O98,1970-03-12,1884.5304,ets,AutoETS(trend='add')
+O99,1970-03-05,28368.6164,ets,"AutoETS(seasonal='mul', sp=16, trend='add')"
+O99,1970-03-06,28116.7971,ets,"AutoETS(seasonal='mul', sp=16, trend='add')"
+O99,1970-03-07,27688.9525,ets,"AutoETS(seasonal='mul', sp=16, trend='add')"
+O99,1970-03-08,27281.2144,ets,"AutoETS(seasonal='mul', sp=16, trend='add')"
+O99,1970-03-09,26642.647,ets,"AutoETS(seasonal='mul', sp=16, trend='add')"
+O99,1970-03-10,26156.9946,ets,"AutoETS(seasonal='mul', sp=16, trend='add')"
+O99,1970-03-11,25666.3219,ets,"AutoETS(seasonal='mul', sp=16, trend='add')"
+O99,1970-03-12,23720.8058,ets,"AutoETS(seasonal='mul', sp=16, trend='add')"
