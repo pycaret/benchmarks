@@ -1,24 +1,27 @@
 """
 Execution command (examples):
->>> python scripts/experiment_m3.py --help
->>> python scripts/experiment_m3.py --execution_mode=native --engine=local --ts_category=Other
->>> python scripts/experiment_m3.py --execution_mode=native --engine=ray --ts_category=Other
->>> python scripts/experiment_m3.py --execution_mode=fugue --engine=ray --ts_category=Other
->>> python scripts/experiment_m3.py --execution_mode=fugue --engine=ray --ts_category=Other
+>>> python scripts/m3/experiment.py --help
+>>> python scripts/m3/experiment.py --execution_mode=native --engine=local --ts_category=Other
+>>> python scripts/m3/experiment.py --execution_mode=native --engine=ray --ts_category=Other
+>>> python scripts/m3/experiment.py --execution_mode=fugue --engine=local --ts_category=Other
+>>> python scripts/m3/experiment.py --execution_mode=fugue --engine=ray --ts_category=Other
 """
 
 import multiprocessing as mp
-import time
+from typing import Optional
 
 import fire
 import pandas as pd
-import ray
-from fugue import transform
 from tqdm import tqdm
 
 from benchmarks.datasets.create.time_series.m3 import get_data
+from benchmarks.parallel.execution import (
+    execute,
+    initialize_engine,
+    run_checks,
+    shutdown_engine,
+)
 from benchmarks.parallel.time_series.single_ts import forecast_create_model
-from benchmarks.utils import Engine, ExecutionMode, check_allowed_types
 
 # Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
 tqdm.pandas()
@@ -30,6 +33,7 @@ def main(
     model: str = "ets",
     execution_mode: str = "native",
     engine: str = "ray",
+    num_cpus: Optional[int] = None,
 ) -> None:
     """Benchmark the performance of a single model across multiple individual
     time series.
@@ -54,6 +58,10 @@ def main(
             - "ray" will execute in parallel using Ray
             - "spark" will execute in parallel using Spark
         NOTE: Currently only "local" and "ray" are supported
+    num_cpus : Optional[int], optional
+        Number of CPUs to use to execute in parallel, by default None which uses
+        up all available CPUs. In local mode, this is ignored and only 1 CPU is
+        used .
 
     Raises
     ------
@@ -62,43 +70,26 @@ def main(
         (2) engine is not one of "local", "ray", or "spark"
         (3) engine is not implemented
     """
-    # Check that the execution mode and engine are supported ----
-    if not check_allowed_types(execution_mode, ExecutionMode):
-        raise ValueError(
-            f"Execution Mode '{execution_mode}' not supported. "
-            f"Please choose from {list(ExecutionMode.__members__.keys())}."
-        )
-    if not check_allowed_types(engine, Engine):
-        raise ValueError(
-            f"Engine '{engine}' not supported. "
-            f"Please choose from {list(Engine.__members__.keys())}."
-        )
 
-    # Set variables based on the execution mode and engine ----
-    if engine == "local":
-        if execution_mode == "fugue":
-            fugue_engine = None
-            as_local = True
-    elif engine == "ray":
-        if execution_mode == "fugue":
-            fugue_engine = "ray"
-            as_local = True
-        num_cpus = mp.cpu_count()
-        ray.init(num_cpus=num_cpus)
-    elif engine == "spark":
-        raise ValueError("Spark is not supported right now.")
+    run_checks(execution_mode, engine)
 
-    # Directory where the data is stored ----
+    num_cpus = num_cpus or mp.cpu_count()
+    print(
+        f"Running benchmark for Dataset: '{dataset}' Category: '{ts_category}' "
+        f"Model: '{model}' using ..."
+        f"\n  - Engine: '{engine}'"
+        f"\n  - Execution Mode: '{execution_mode}'"
+        f"\n  - CPUs: {num_cpus}"
+    )
+
+    initialize_engine(engine, num_cpus)
+
+    # Get the data ----
     directory = "data/"
-
-    # # "Other" group since it has the least number of time series
-    # ts_categories = ts_categories[-1:]
-    # for ts_category in tqdm(ts_categories):
     train, fh, _, _ = get_data(directory=directory, dataset=dataset, group=ts_category)
     test, _, _, _ = get_data(
         directory=directory, dataset=dataset, group=ts_category, train=False
     )
-
     combined = pd.concat([train, test], axis=0)
     combined["ds"] = pd.to_datetime(combined["ds"])
 
@@ -122,38 +113,22 @@ def main(
         backup_model_kwargs={"estimator": "naive", "cross_validation": False},
     )
 
-    start = time.time()
-    if execution_mode == "native":
-        grouped_data = combined.groupby("unique_id")
-        if engine == "local":
-            test_results = grouped_data.progress_apply(
-                forecast_create_model, **apply_kwargs
-            )
-        elif engine == "ray":
-            test_results = []
-            function_remote = ray.remote(forecast_create_model)
-            for single_group in grouped_data.groups.keys():
-                result_single_group = function_remote.remote(
-                    data=grouped_data.get_group(single_group), **apply_kwargs
-                )
-                test_results.append(result_single_group)
-            test_results = ray.get(test_results)
-            # Combine all results into 1 dataframe
-            test_results = pd.concat(test_results)
-    elif execution_mode == "fugue":
+    # Fugue required the schema of the returned dataframe ----
+    if execution_mode == "fugue":
         schema = "unique_id:str, ds:date, y_pred:float, model_name:str, model:str"
-        test_results = transform(
-            combined,
-            forecast_create_model,
-            params=apply_kwargs,
-            schema=schema,
-            partition={"by": "unique_id"},
-            engine=fugue_engine,
-            as_local=as_local,
-        )
-    end = time.time()
-    time_taken = round(end - start)
-    print(f"Total time taken for category '{ts_category}': {time_taken}s")
+    else:
+        schema = None
+
+    test_results, time_taken = execute(
+        all_groups=combined,
+        keys="unique_id",
+        function_single_group=forecast_create_model,
+        execution_mode=execution_mode,
+        engine=engine,
+        num_cpus=num_cpus,
+        schema=schema,
+        **apply_kwargs,
+    )
 
     # Order columns (as different engines may have different orders) ----
     cols = ["unique_id", "ds", "y_pred", "model_name", "model"]
@@ -173,8 +148,9 @@ def main(
     )
     time_df.to_csv(f"data/time-{prefix}.csv", index=False)
 
-    if engine == "ray":
-        ray.shutdown()
+    shutdown_engine(engine)
+
+    print("\nBenchmark Complete!")
 
 
 if __name__ == "__main__":
