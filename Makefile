@@ -1,8 +1,8 @@
 .PHONY: all lint test install environment
 
-SRC_DIR = examplepackage
+SRC_DIR = benchmarks
 
-lint: 
+lint:
 	flake8 $(SRC_DIR)
 	pydocstyle $(SRC_DIR)
 
@@ -11,6 +11,7 @@ test:
 
 install:
 	pip install -r requirements.dev.txt
+	pip install -r requirements.txt
 	pip install -e .
 
 environment:
@@ -20,6 +21,8 @@ environment:
 		source .venv/bin/activate; \
 		echo "> Installing dev requirements"; \
 		pip install -r requirements.dev.txt; \
+		echo "> Installing requirements"; \
+		pip install -r requirements.txt; \
 		echo "> Installing local package in editable mode"; \
 		pip install -e .; \
 		echo "> Making venv available in jupyter notebooks"; \

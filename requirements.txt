@@ -1,0 +1,15 @@
+# Pycaret
+pycaret==3.0.0rc5
+
+# Datasets
+datasetsforecast
+
+# Big Data
+# Needed for now until Fugue is updated
+ray==2.0.1
+fugue[ray]==0.7.3
+
+# Miscellaneous
+fire
+
+
