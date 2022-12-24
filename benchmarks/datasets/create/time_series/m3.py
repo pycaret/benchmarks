@@ -3,6 +3,7 @@
 from typing import Tuple
 
 import pandas as pd
+from datasetsforecast.losses import mape, smape
 from datasetsforecast.m3 import M3, M3Info
 
 dict_datasets = {
@@ -87,3 +88,74 @@ def save_data(dataset: str, group: str, train: bool = True):
         df.to_csv(f"data/{dataset}-{group}.csv", index=False)
     else:
         df.to_csv(f"data/{dataset}-{group}-test.csv", index=False)
+
+
+def evaluate(
+    dataset: str, group: str, model: str, engine: str, execution_mode: str
+) -> pd.DataFrame:
+    """Evaluate the results of a model across a dataset.
+
+    Parameters
+    ----------
+    dataset : str
+        'M3' only
+    group : str
+        Time Series Category name.
+        Allowed values: 'Yearly', 'Quarterly', 'Monthly', 'Other'.
+    model : str
+        Name of the model to evaluate.
+    execution_mode : str, optional
+        Evaluate the model based on which execution mode
+        Options: "native", "fugue"
+    engine : str, optional
+        Evaluate the model based on which engine
+        Options: "local", "ray", "spark", by default "ray"
+
+    Returns
+    -------
+    pd.DataFrame
+        Dataframe showing the evaluation metrics along with execution times.
+    """
+    suffix = f"{dataset}-{group}-{model}-{engine}-{execution_mode}"
+    print(suffix)
+    y_test, horizon, _, _ = get_data("data/", dataset, group, False)
+    try:
+        forecast = pd.read_csv(f"data/forecasts-{suffix}.csv")
+    except FileNotFoundError:
+        forecast = pd.DataFrame(
+            columns=["unique_id", "ds", "y_pred", "model_name", "model"]
+        )
+    # Just to be double sure
+    selected_cols = ["unique_id", "ds", "y_pred"]
+    forecast = forecast.query("model_name == @model")[selected_cols]
+    forecast["ds"] = pd.to_datetime(forecast["ds"])
+
+    combined = pd.merge(y_test, forecast, on=["unique_id", "ds"], how="left")
+    y_test = combined["y"].values.reshape(-1, horizon)
+    y_hat = combined["y_pred"].values.reshape(-1, horizon)
+
+    evaluations = {}
+    for metric in (mape, smape):
+        metric_name = metric.__name__
+        loss = metric(y_test, y_hat)
+        evaluations[metric_name] = loss
+
+    evaluations = pd.DataFrame(evaluations, index=[0])
+
+    try:
+        times = pd.read_csv(f"data/time-{suffix}.csv")
+    except FileNotFoundError:
+        times = pd.DataFrame(
+            {
+                "time": [0],
+                "dataset": dataset,
+                "group": group,
+                "model": model,
+                "engine": engine,
+                "execution_mode": execution_mode,
+            }
+        )
+
+    evaluations = pd.concat([evaluations, times], axis=1)
+
+    return evaluations
