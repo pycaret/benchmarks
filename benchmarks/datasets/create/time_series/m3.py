@@ -2,6 +2,7 @@
 
 from typing import Tuple
 
+import numpy as np
 import pandas as pd
 from datasetsforecast.losses import mape, smape
 from datasetsforecast.m3 import M3, M3Info
@@ -119,16 +120,66 @@ def evaluate(
     suffix = f"{dataset}-{group}-{model}-{engine}-{execution_mode}"
     print(suffix)
     y_test, horizon, _, _ = get_data("data/", dataset, group, False)
+    count_ts = len(y_test) / horizon
+
+    primary_model_per = np.nan
+    backup_model_per = np.nan
+    no_model_per = np.nan
     try:
         forecast = pd.read_csv(f"data/forecasts-{suffix}.csv")
+        no_model_per = forecast["model_name"].isna().sum() / len(forecast) * 100
+        primary_model_per = (
+            len(forecast.query("model_name == @model")) / len(forecast) * 100
+        )
+        backup_model_per = 100 - primary_model_per - no_model_per
     except FileNotFoundError:
         forecast = pd.DataFrame(
             columns=["unique_id", "ds", "y_pred", "model_name", "model"]
         )
+
+    all_models = forecast["model_name"].unique().tolist()
+    backup_model = [
+        candidate_bk_model
+        for candidate_bk_model in all_models
+        if candidate_bk_model != model
+    ] or [""]
+
+    stats = pd.DataFrame(
+        {
+            "count_ts": [count_ts],
+            "primary_model_per": primary_model_per,
+            "backup_model_per": backup_model_per,
+            "no_model_per": no_model_per,
+            "backup_model": backup_model,
+        }
+    )
+
     # Just to be double sure
     selected_cols = ["unique_id", "ds", "y_pred"]
     forecast = forecast.query("model_name == @model")[selected_cols]
     forecast["ds"] = pd.to_datetime(forecast["ds"])
+
+    if group == "Monthly":
+        # Remove day since one can have Month Start and one can have Month End
+        # This is due to internal coercing in PyCaret
+        forecast["ds"] = forecast["ds"].dt.strftime("%Y-%m")
+        y_test["ds"] = y_test["ds"].dt.strftime("%Y-%m")
+    elif group == "Quarterly":
+        # Remove day-month since one can have Quarter Start and one can have Quarter End
+        # This is due to internal coercing in PyCaret
+        forecast["ds"] = (
+            forecast["ds"].dt.year.astype(str)
+            + "-"
+            + forecast["ds"].dt.quarter.astype(str)
+        )
+        y_test["ds"] = (
+            y_test["ds"].dt.year.astype(str) + "-" + y_test["ds"].dt.quarter.astype(str)
+        )
+    if group == "Yearly":
+        # Remove day-month since one can have Year Start and one can have Year End
+        # This is due to internal coercing in PyCaret
+        forecast["ds"] = forecast["ds"].dt.strftime("%Y")
+        y_test["ds"] = y_test["ds"].dt.strftime("%Y")
 
     combined = pd.merge(y_test, forecast, on=["unique_id", "ds"], how="left")
     y_test = combined["y"].values.reshape(-1, horizon)
@@ -156,6 +207,6 @@ def evaluate(
             }
         )
 
-    evaluations = pd.concat([evaluations, times], axis=1)
+    evaluations = pd.concat([evaluations, times, stats], axis=1)
 
     return evaluations

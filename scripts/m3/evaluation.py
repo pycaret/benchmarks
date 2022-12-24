@@ -8,7 +8,6 @@ from benchmarks.utils import return_pycaret_model_names
 
 if __name__ == "__main__":
     groups = ["Yearly", "Quarterly", "Monthly", "Other"]
-
     models = return_pycaret_model_names()
     datasets = ["M3"]
     evaluation = [
@@ -31,6 +30,11 @@ if __name__ == "__main__":
             "model",
             "engine",
             "execution_mode",
+            "count_ts",
+            "primary_model_per",
+            "backup_model_per",
+            "no_model_per",
+            "backup_model",
             "mape",
             "smape",
             "time",
@@ -38,7 +42,20 @@ if __name__ == "__main__":
     ]
     evaluation["time"] /= 60  # minutes
     evaluation = (
-        evaluation.set_index(["dataset", "group", "model", "engine", "execution_mode"])
+        evaluation.set_index(
+            [
+                "dataset",
+                "group",
+                "model",
+                "engine",
+                "execution_mode",
+                "count_ts",
+                "primary_model_per",
+                "backup_model_per",
+                "no_model_per",
+                "backup_model",
+            ]
+        )
         .stack()
         .reset_index()
     )
@@ -48,17 +65,35 @@ if __name__ == "__main__":
         "model",
         "engine",
         "execution_mode",
+        "count_ts",
+        "primary_model_per",
+        "backup_model_per",
+        "no_model_per",
+        "backup_model",
         "metric",
         "val",
     ]
     evaluation = (
         evaluation.set_index(
-            ["dataset", "group", "model", "engine", "execution_mode", "metric"]
+            [
+                "dataset",
+                "group",
+                "model",
+                "engine",
+                "execution_mode",
+                "count_ts",
+                "primary_model_per",
+                "backup_model_per",
+                "no_model_per",
+                "backup_model",
+                "metric",
+            ]
         )
         .unstack()
         .round(3)
     )
     evaluation = evaluation.droplevel(0, 1).reset_index()
-    evaluation.replace(0, np.nan, inplace=True)
+    cols_to_clean = ["mape", "smape", "time"]
+    evaluation[cols_to_clean] = evaluation[cols_to_clean].replace(0, np.nan)
     evaluation.to_csv("data/evaluation.csv", index=False)
     print(evaluation)
