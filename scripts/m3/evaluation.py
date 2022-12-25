@@ -1,3 +1,8 @@
+"""
+To Run
+>>> python scripts\m3\evaluation.py
+"""
+
 from itertools import product
 
 import numpy as np
@@ -30,6 +35,8 @@ if __name__ == "__main__":
             "model",
             "engine",
             "execution_mode",
+            "run_date",
+            "pycaret_version",
             "count_ts",
             "primary_model_per",
             "backup_model_per",
@@ -49,6 +56,8 @@ if __name__ == "__main__":
                 "model",
                 "engine",
                 "execution_mode",
+                "run_date",
+                "pycaret_version",
                 "count_ts",
                 "primary_model_per",
                 "backup_model_per",
@@ -65,6 +74,8 @@ if __name__ == "__main__":
         "model",
         "engine",
         "execution_mode",
+        "run_date",
+        "pycaret_version",
         "count_ts",
         "primary_model_per",
         "backup_model_per",
@@ -81,6 +92,8 @@ if __name__ == "__main__":
                 "model",
                 "engine",
                 "execution_mode",
+                "run_date",
+                "pycaret_version",
                 "count_ts",
                 "primary_model_per",
                 "backup_model_per",
