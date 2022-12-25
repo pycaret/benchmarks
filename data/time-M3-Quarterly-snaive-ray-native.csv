@@ -1,2 +1,0 @@
-time,dataset,group,model,engine,execution_mode
-278,M3,Quarterly,snaive,ray,native

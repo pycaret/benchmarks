@@ -1,2 +1,0 @@
-time,dataset,group,model,engine,execution_mode
-242,M3,Yearly,exp_smooth,ray,native

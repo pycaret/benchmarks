@@ -1,2 +1,0 @@
-time,dataset,group,model,engine,execution_mode
-554,M3,Monthly,naive,ray,native
