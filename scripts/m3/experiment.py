@@ -8,10 +8,14 @@ Execution command (examples):
 """
 
 import multiprocessing as mp
+from datetime import date
 from typing import Optional
 
 import fire
+
+# import numpy as np
 import pandas as pd
+import pycaret
 from tqdm import tqdm
 
 from benchmarks.datasets.create.time_series.m3 import get_data
@@ -90,6 +94,12 @@ def main(
     test, _, _, _ = get_data(
         directory=directory, dataset=dataset, group=ts_category, train=False
     )
+
+    # Uncomment after this is implementedhttps://github.com/pycaret/pycaret/issues/3202
+    # We only need the y_test time points. y_test values should be unknown to
+    # avoid any chance of leakage
+    # test["y"] = np.nan
+
     combined = pd.concat([train, test], axis=0)
     combined["ds"] = pd.to_datetime(combined["ds"])
 
@@ -99,18 +109,34 @@ def main(
     # all_ts = combined["unique_id"].unique()
     # combined = combined[combined["unique_id"].isin(all_ts[:2])]
 
+    RUN_DATE = date.today().strftime("%Y-%m-%d")
+    PYCARET_VERSION = pycaret.__version__
+
+    verbose = False
+    cross_validate = False
     apply_kwargs = dict(
-        fh=fh,
-        target="y",
-        index="ds",
         prefix=prefix,
-        fold=1,
-        ignore_features=["unique_id"],
-        n_jobs=1,
-        session_id=42,
-        verbose=False,
-        create_model_kwargs={"estimator": model, "cross_validation": False},
-        backup_model_kwargs={"estimator": "naive", "cross_validation": False},
+        setup_kwargs={
+            "fh": fh,
+            "target": "y",
+            "index": "ds",
+            "fold": 1,
+            # "numeric_imputation_target": "ffill",
+            "ignore_features": ["unique_id"],
+            "n_jobs": 1,
+            "session_id": 42,
+            "verbose": verbose,
+        },
+        create_model_kwargs={
+            "estimator": model,
+            "cross_validation": cross_validate,
+            "verbose": verbose,
+        },
+        backup_model_kwargs={
+            "estimator": "naive",
+            "cross_validation": cross_validate,
+            "verbose": verbose,
+        },
     )
 
     # Fugue required the schema of the returned dataframe ----
@@ -123,11 +149,11 @@ def main(
         all_groups=combined,
         keys="unique_id",
         function_single_group=forecast_create_model,
+        function_kwargs=apply_kwargs,
         execution_mode=execution_mode,
         engine=engine,
         num_cpus=num_cpus,
         schema=schema,
-        **apply_kwargs,
     )
 
     # Order columns (as different engines may have different orders) ----
@@ -144,6 +170,8 @@ def main(
             "model": [model],
             "engine": [engine],
             "execution_mode": [execution_mode],
+            "run_date": [RUN_DATE],
+            "pycaret_version": [PYCARET_VERSION],
         }
     )
     time_df.to_csv(f"data/time-{prefix}.csv", index=False)

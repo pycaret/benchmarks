@@ -14,11 +14,11 @@ def execute(
     all_groups: pd.DataFrame,
     keys: str,
     function_single_group: Callable,
+    function_kwargs: dict,
     execution_mode: str,
     engine: str,
     num_cpus: int,
     schema: Optional[str] = None,
-    **apply_kwargs,
 ) -> Tuple[pd.DataFrame, float]:
     """Applies a function over each group of a dataframe using specified engine.
 
@@ -30,6 +30,8 @@ def execute(
         The column name indicating the unique identifier for each group.
     function_single_group : Callable
         The func to apply to each group.
+    function_kwargs: dict
+        The kwargs to pass to function_single_group.
     execution_mode : str, optional
         Should the execution be done natively or using the Fugue wrapper
         Options: "native", "fugue"
@@ -74,14 +76,14 @@ def execute(
         grouped_data = all_groups.groupby(keys)
         if engine == "local":
             all_results = grouped_data.progress_apply(
-                function_single_group, **apply_kwargs
+                function_single_group, **function_kwargs
             )
         elif engine == "ray":
             all_results = []
             function_remote = ray.remote(function_single_group)
             for single_group in grouped_data.groups.keys():
                 result_single_group = function_remote.remote(
-                    data=grouped_data.get_group(single_group), **apply_kwargs
+                    data=grouped_data.get_group(single_group), **function_kwargs
                 )
                 all_results.append(result_single_group)
             all_results = ray.get(all_results)
@@ -91,7 +93,7 @@ def execute(
         all_results = transform(
             all_groups,
             function_single_group,
-            params=apply_kwargs,
+            params=function_kwargs,
             schema=schema,
             # TODO: In future releases of Fugue, we may not have to pass num_cpus.
             partition={"by": keys, "num": num_cpus},

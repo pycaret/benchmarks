@@ -133,3 +133,6 @@ dmypy.json
 *.code-workspace
 
 .DS_Store
+
+# Benchmark details
+data/m3/results/*

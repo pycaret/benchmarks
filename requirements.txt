@@ -1,5 +1,5 @@
 # Pycaret
-pycaret==3.0.0rc5
+pycaret==3.0.0rc6
 
 # Datasets
 datasetsforecast

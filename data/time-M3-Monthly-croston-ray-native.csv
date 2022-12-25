@@ -1,2 +1,0 @@
-time,dataset,group,model,engine,execution_mode
-478,M3,Monthly,croston,ray,native

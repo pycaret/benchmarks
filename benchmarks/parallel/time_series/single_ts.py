@@ -7,10 +7,10 @@ from pycaret.time_series import TSForecastingExperiment
 
 def forecast_create_model(
     data: pd.DataFrame,
+    setup_kwargs: dict,
     create_model_kwargs: dict,
     backup_model_kwargs: Optional[dict] = None,
     prefix: Optional[str] = None,
-    **kwargs,
 ) -> pd.DataFrame:
     """Produces forecasts for a single time series using create_model.
 
@@ -20,6 +20,11 @@ def forecast_create_model(
     ----------
     data : pd.DataFrame
         The data for a single intersection or group (i.e. unique_id)
+    setup_kwargs : dict
+        The arguments to pass to pycaret's setup function. The following arguments
+        are auto inferred and do not need to be included:
+        (1) data: taken from the data argument of this function
+        (2) experiment_name: derived from the unique_id in the data and the prefix.
     create_model_kwargs : dict
         The arguments to pass to pycaret's create_model. This must include a key
         called "estimator" which is the name of the model to use. Other arguments
@@ -45,12 +50,12 @@ def forecast_create_model(
     model = None
     try:
         exp = TSForecastingExperiment()
-        exp.setup(data=data, experiment_name=f"{prefix}_{unique_id}", **kwargs)
+        exp.setup(data=data, experiment_name=f"{prefix}_{unique_id}", **setup_kwargs)
         setup_passed = True
         try:
             model_name = create_model_kwargs.get("estimator")
             model = exp.create_model(**create_model_kwargs)
-            test_preds = exp.predict_model(model)
+            test_preds = exp.predict_model(model, verbose=False)
         except Exception as e:
             print(f"Error occurred for ID: {unique_id} when trying main model: " f"{e}")
             if backup_model_kwargs is not None:
@@ -58,7 +63,7 @@ def forecast_create_model(
                     print(f"Trying backup model for ID: {unique_id}")
                     model_name = backup_model_kwargs.get("estimator")
                     model = exp.create_model(**backup_model_kwargs)
-                    test_preds = exp.predict_model(model)
+                    test_preds = exp.predict_model(model, verbose=False)
                 except Exception as e:
                     print(
                         f"Error occurred for ID: {unique_id} when trying backup model: "

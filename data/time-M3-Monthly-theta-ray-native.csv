@@ -1,2 +1,0 @@
-time,dataset,group,model,engine,execution_mode
-523,M3,Monthly,theta,ray,native
