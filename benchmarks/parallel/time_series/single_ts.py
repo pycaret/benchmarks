@@ -20,6 +20,11 @@ def forecast_create_model(
     ----------
     data : pd.DataFrame
         The data for a single intersection or group (i.e. unique_id)
+    setup_kwargs : dict
+        The arguments to pass to pycaret's setup function. The following arguments
+        are auto inferred and do not need to be included:
+        (1) data: taken from the data argument of this function
+        (2) experiment_name: derived from the unique_id in the data and the prefix.
     create_model_kwargs : dict
         The arguments to pass to pycaret's create_model. This must include a key
         called "estimator" which is the name of the model to use. Other arguments

@@ -30,6 +30,8 @@ def execute(
         The column name indicating the unique identifier for each group.
     function_single_group : Callable
         The func to apply to each group.
+    function_kwargs: dict
+        The kwargs to pass to function_single_group.
     execution_mode : str, optional
         Should the execution be done natively or using the Fugue wrapper
         Options: "native", "fugue"

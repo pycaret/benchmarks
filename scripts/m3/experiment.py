@@ -8,15 +8,15 @@ Execution command (examples):
 """
 
 import multiprocessing as mp
+from datetime import date
 from typing import Optional
 
-from datetime import date
 import fire
 
 # import numpy as np
 import pandas as pd
-from tqdm import tqdm
 import pycaret
+from tqdm import tqdm
 
 from benchmarks.datasets.create.time_series.m3 import get_data
 from benchmarks.parallel.execution import (
