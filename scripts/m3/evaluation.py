@@ -15,6 +15,9 @@ if __name__ == "__main__":
     groups = ["Yearly", "Quarterly", "Monthly", "Other"]
     models = return_pycaret_model_names()
     datasets = ["M3"]
+    # All dataset evaluations are stored in the same BASE_DIR
+    BASE_DIR = "data"
+
     evaluation = [
         evaluate(
             dataset=dataset,
@@ -108,5 +111,5 @@ if __name__ == "__main__":
     evaluation = evaluation.droplevel(0, 1).reset_index()
     cols_to_clean = ["mape", "smape", "time"]
     evaluation[cols_to_clean] = evaluation[cols_to_clean].replace(0, np.nan)
-    evaluation.to_csv("data/evaluation.csv", index=False)
+    evaluation.to_csv(f"{BASE_DIR}/evaluation.csv", index=False)
     print(evaluation)

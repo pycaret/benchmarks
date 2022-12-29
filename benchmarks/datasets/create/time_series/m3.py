@@ -7,6 +7,8 @@ import pandas as pd
 from datasetsforecast.losses import mape, smape
 from datasetsforecast.m3 import M3, M3Info
 
+from benchmarks.utils import return_dirs
+
 dict_datasets = {
     "M3": (M3, M3Info),
 }
@@ -84,11 +86,13 @@ def save_data(dataset: str, group: str, train: bool = True):
         Save the training dataset if True, else the Test dataset,
         by default True
     """
-    df, *_ = get_data("data", dataset, group, train)
+    dataset_ = dataset.lower()
+    BASE_DIR = f"data/{dataset_}"
+    df, *_ = get_data(BASE_DIR, dataset, group, train)
     if train:
-        df.to_csv(f"data/{dataset}-{group}.csv", index=False)
+        df.to_csv(f"{BASE_DIR}/{dataset}-{group}.csv", index=False)
     else:
-        df.to_csv(f"data/{dataset}-{group}-test.csv", index=False)
+        df.to_csv(f"{BASE_DIR}/{dataset}-{group}-test.csv", index=False)
 
 
 def evaluate(
@@ -117,16 +121,18 @@ def evaluate(
     pd.DataFrame
         Dataframe showing the evaluation metrics along with execution times.
     """
+    BASE_DIR, FORECAST_DIR, TIME_DIR = return_dirs(dataset=dataset)
+
     suffix = f"{dataset}-{group}-{model}-{engine}-{execution_mode}"
     print(suffix)
-    y_test, horizon, _, _ = get_data("data/", dataset, group, False)
+    y_test, horizon, _, _ = get_data(BASE_DIR, dataset, group, False)
     count_ts = len(y_test) / horizon
 
     primary_model_per = np.nan
     backup_model_per = np.nan
     no_model_per = np.nan
     try:
-        forecast = pd.read_csv(f"data/forecasts-{suffix}.csv")
+        forecast = pd.read_csv(f"{FORECAST_DIR}/forecasts-{suffix}.csv")
         no_model_per = forecast["model_name"].isna().sum() / len(forecast) * 100
         primary_model_per = (
             len(forecast.query("model_name == @model")) / len(forecast) * 100
@@ -194,7 +200,7 @@ def evaluate(
     evaluations = pd.DataFrame(evaluations, index=[0])
 
     try:
-        times = pd.read_csv(f"data/time-{suffix}.csv")
+        times = pd.read_csv(f"{TIME_DIR}/time-{suffix}.csv")
     except FileNotFoundError:
         times = pd.DataFrame(
             {

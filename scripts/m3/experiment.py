@@ -6,8 +6,8 @@ Execution command (examples):
 >>> python scripts/m3/experiment.py --execution_mode=fugue --engine=local --ts_category=Other
 >>> python scripts/m3/experiment.py --execution_mode=fugue --engine=ray --ts_category=Other
 """
-
 import multiprocessing as mp
+import os
 from datetime import date
 from typing import Optional
 
@@ -26,6 +26,7 @@ from benchmarks.parallel.execution import (
     shutdown_engine,
 )
 from benchmarks.parallel.time_series.single_ts import forecast_create_model
+from benchmarks.utils import return_dirs
 
 # Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
 tqdm.pandas()
@@ -89,10 +90,17 @@ def main(
     initialize_engine(engine, num_cpus)
 
     # Get the data ----
-    directory = "data/"
-    train, fh, _, _ = get_data(directory=directory, dataset=dataset, group=ts_category)
+    BASE_DIR, FORECAST_DIR, TIME_DIR = return_dirs(dataset=dataset)
+
+    # Check if the directory exists
+    for dir in [FORECAST_DIR, TIME_DIR]:
+        if not os.path.exists(dir):
+            # Create the directory
+            os.makedirs(dir)
+
+    train, fh, _, _ = get_data(directory=BASE_DIR, dataset=dataset, group=ts_category)
     test, _, _, _ = get_data(
-        directory=directory, dataset=dataset, group=ts_category, train=False
+        directory=BASE_DIR, dataset=dataset, group=ts_category, train=False
     )
 
     # Uncomment after this is implementedhttps://github.com/pycaret/pycaret/issues/3202
@@ -161,7 +169,7 @@ def main(
     test_results = test_results[cols]
 
     # Write results ----
-    test_results.to_csv(f"data/forecasts-{prefix}.csv", index=False)
+    test_results.to_csv(f"{FORECAST_DIR}/forecasts-{prefix}.csv", index=False)
     time_df = pd.DataFrame(
         {
             "time": [time_taken],
@@ -174,7 +182,7 @@ def main(
             "pycaret_version": [PYCARET_VERSION],
         }
     )
-    time_df.to_csv(f"data/time-{prefix}.csv", index=False)
+    time_df.to_csv(f"{TIME_DIR}/time-{prefix}.csv", index=False)
 
     shutdown_engine(engine)
 
