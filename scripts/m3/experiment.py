@@ -13,7 +13,7 @@ from typing import Optional
 
 import fire
 
-# import numpy as np
+import numpy as np
 import pandas as pd
 import pycaret
 from tqdm import tqdm
@@ -92,10 +92,9 @@ def main(
     # Get the data ----
     BASE_DIR, FORECAST_DIR, TIME_DIR = return_dirs(dataset=dataset)
 
-    # Check if the directory exists
+    # Check if the directory exists. If not, create it.
     for dir in [FORECAST_DIR, TIME_DIR]:
         if not os.path.exists(dir):
-            # Create the directory
             os.makedirs(dir)
 
     train, fh, _, _ = get_data(directory=BASE_DIR, dataset=dataset, group=ts_category)
@@ -103,10 +102,10 @@ def main(
         directory=BASE_DIR, dataset=dataset, group=ts_category, train=False
     )
 
-    # Uncomment after this is implementedhttps://github.com/pycaret/pycaret/issues/3202
+    # Uncomment after this is implemented https://github.com/pycaret/pycaret/issues/3202
     # We only need the y_test time points. y_test values should be unknown to
     # avoid any chance of leakage
-    # test["y"] = np.nan
+    test["y"] = np.nan
 
     combined = pd.concat([train, test], axis=0)
     combined["ds"] = pd.to_datetime(combined["ds"])
@@ -129,7 +128,7 @@ def main(
             "target": "y",
             "index": "ds",
             "fold": 1,
-            # "numeric_imputation_target": "ffill",
+            "numeric_imputation_target": "ffill",
             "ignore_features": ["unique_id"],
             "n_jobs": 1,
             "session_id": 42,
