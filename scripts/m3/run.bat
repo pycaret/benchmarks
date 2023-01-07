@@ -1,7 +1,7 @@
 
 @REM To Run: scripts\m3\run.bat
-@REM Defaults: --execution_mode=native --engine=ray 
-@REM python scripts/m3/experiment.py --model=ets --ts_category=Other 
+@REM Defaults: --execution_mode=native --engine=ray
+@REM python scripts/m3/experiment.py --model=ets --ts_category=Other
 
 @echo OFF
 for %%c in (Other Monthly Quarterly Yearly) do (
@@ -19,4 +19,19 @@ for %%c in (Other Monthly Quarterly Yearly) do (
     for %%m in (et_cds_dt dt_cds_dt rf_cds_dt ada_cds_dt gbr_cds_dt lightgbm_cds_dt knn_cds_dt) do (
         python scripts/m3/experiment.py --model=%%m --ts_category=%%c
     )
+
+    @REM Slow Models ----
+    for %%m in (prophet) do (
+        python scripts/m3/experiment.py --model=%%m --ts_category=%%c
+    )
+
+    @REM Slow Models + Uses too much memory ----
+    @REM for %%m in (auto_arima) do (
+    @REM     python scripts/m3/experiment.py --model=%%m --ts_category=%%c
+    @REM )
+
+    @REM Really Slow Models ----
+    @REM for %%m in (bats tbats) do (
+    @REM     python scripts/m3/experiment.py --model=%%m --ts_category=%%c
+    @REM )
 )
