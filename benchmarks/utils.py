@@ -76,8 +76,10 @@ def return_dirs(dataset: str) -> Tuple[str, str, str]:
 
 
 def _return_pycaret_version_or_hash() -> str:
-    """Returns the pycaret version if pycaret is installed using pip, else
-    returns the git hash if it is installed from git.
+    """Returns the pycaret version
+
+    If pycaret is installed using pip, else returns the git hash if it is
+    installed from git.
 
     Returns
     -------
