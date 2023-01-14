@@ -1,7 +1,10 @@
 """Utility functions"""
+import logging
+import re
 from enum import Enum, auto
 from typing import Tuple
 
+import pycaret
 from pycaret.containers.models import get_all_ts_model_containers
 from pycaret.datasets import get_data
 from pycaret.time_series import TSForecastingExperiment
@@ -70,3 +73,29 @@ def return_dirs(dataset: str) -> Tuple[str, str, str]:
     FORECAST_DIR = f"{RESULTS_DIR}/forecasts"
     TIME_DIR = f"{RESULTS_DIR}/time"
     return BASE_DIR, FORECAST_DIR, TIME_DIR
+
+
+def _return_pycaret_version_or_hash() -> str:
+    """Returns the pycaret version if pycaret is installed using pip, else
+    returns the git hash if it is installed from git.
+
+    Returns
+    -------
+    str
+        Pycaret version or git hash
+    """
+    try:
+        from pip._internal.operations import freeze
+    except ImportError:
+        from pip.operations import freeze
+
+    pkgs = " ".join(freeze.freeze())
+    match = re.search(r"git\+https://github\.com/pycaret/pycaret@([^#]*)", pkgs)
+    if match is None:
+        logging.info("Pycaret has been installed using pip. Returning version.")
+        PYCARET_VERSION = pycaret.__version__
+    else:
+        logging.info("Pycaret has been installed from git. Returning git hash.")
+        PYCARET_VERSION = match.group(1).split()[0]
+
+    return PYCARET_VERSION
