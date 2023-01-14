@@ -2,7 +2,7 @@
 To Run
 >>> python scripts\m3\evaluation.py
 """
-
+import logging
 from itertools import product
 
 import numpy as np
@@ -111,5 +111,12 @@ if __name__ == "__main__":
     evaluation = evaluation.droplevel(0, 1).reset_index()
     cols_to_clean = ["mape", "smape", "time"]
     evaluation[cols_to_clean] = evaluation[cols_to_clean].replace(0, np.nan)
-    evaluation.to_csv(f"{BASE_DIR}/evaluation.csv", index=False)
-    print(evaluation)
+
+    cols_to_round = ["primary_model_per", "backup_model_per", "no_model_per"]
+    evaluation[cols_to_round] = evaluation[cols_to_round].round(4)
+
+    eval_file_name = f"{BASE_DIR}/evaluation.csv"
+    logging.info(f"\nWriting evaluation results to {eval_file_name}")
+    evaluation.to_csv(eval_file_name, index=False)
+
+    logging.info("\nEvaluation Complete!")

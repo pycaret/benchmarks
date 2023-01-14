@@ -6,6 +6,8 @@ Execution command (examples):
 >>> python scripts/m3/experiment.py --execution_mode=fugue --engine=local --ts_category=Other
 >>> python scripts/m3/experiment.py --execution_mode=fugue --engine=ray --ts_category=Other
 """
+
+import logging
 import multiprocessing as mp
 import os
 from datetime import date
@@ -79,7 +81,7 @@ def main(
     RUN_DATE = date.today().strftime("%Y-%m-%d")
     PYCARET_VERSION = _return_pycaret_version_or_hash()
     num_cpus = num_cpus or mp.cpu_count()
-    print(
+    logging.info(
         f"\n\nRunning benchmark for Dataset: '{dataset}' Category: '{ts_category}' "
         f"Model: '{model}' using ..."
         f"\n  - PyCaret Version: '{PYCARET_VERSION}'"
@@ -166,7 +168,7 @@ def main(
 
     # Write results ----
     result_file_name = f"{FORECAST_DIR}/forecasts-{prefix}.csv"
-    print(f"\nWriting results to {result_file_name}")
+    logging.info(f"\nWriting results to {result_file_name}")
     test_results.to_csv(result_file_name, index=False)
     time_df = pd.DataFrame(
         {
@@ -181,12 +183,12 @@ def main(
         }
     )
     time_file_name = f"{TIME_DIR}/time-{prefix}.csv"
-    print(f"Writing time to {time_file_name}")
+    logging.info(f"Writing time to {time_file_name}")
     time_df.to_csv(time_file_name, index=False)
 
     shutdown_engine(engine)
 
-    print("\nBenchmark Complete!")
+    logging.info("\nBenchmark Complete!")
 
 
 if __name__ == "__main__":
