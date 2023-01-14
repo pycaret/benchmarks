@@ -2,6 +2,7 @@
 # pycaret==3.0.0rc6
 git+https://github.com/pycaret/pycaret@6a4914f1552547fe73dd7be13f3d1843e72d1f61
 prophet
+statsforecast
 
 # Datasets
 datasetsforecast

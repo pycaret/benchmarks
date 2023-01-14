@@ -1,4 +1,5 @@
 """Module to forecast a single time series using various pycaret flows."""
+import logging
 from typing import Optional
 
 import pandas as pd
@@ -47,6 +48,7 @@ def forecast_create_model(
     test_preds = pd.DataFrame()
     setup_passed = False
     model_name = None
+    model_engine = None
     model = None
     try:
         exp = TSForecastingExperiment()
@@ -54,30 +56,35 @@ def forecast_create_model(
         setup_passed = True
         try:
             model_name = create_model_kwargs.get("estimator")
+            model_engine = exp.get_engine(model_name)
             model = exp.create_model(**create_model_kwargs)
             test_preds = exp.predict_model(model, verbose=False)
         except Exception as e:
-            print(f"Error occurred for ID: {unique_id} when trying main model: " f"{e}")
+            logging.warn(
+                f"Error occurred for ID: {unique_id} when trying main model: " f"{e}"
+            )
             if backup_model_kwargs is not None:
                 try:
-                    print(f"Trying backup model for ID: {unique_id}")
+                    logging.info(f"Trying backup model for ID: {unique_id}")
                     model_name = backup_model_kwargs.get("estimator")
+                    model_engine = exp.get_engine(model_name)
                     model = exp.create_model(**backup_model_kwargs)
                     test_preds = exp.predict_model(model, verbose=False)
                 except Exception as e:
-                    print(
+                    logging.warn(
                         f"Error occurred for ID: {unique_id} when trying backup model: "
                         f"{e}"
                     )
     except Exception as e:
         if not setup_passed:
-            print(
+            logging.warn(
                 f"Error occurred for ID: {unique_id} during experiment setup. "
                 f"No model created: {e}"
             )
 
     # Add model name and model hyperparameters used ----
     test_preds["model_name"] = model_name
+    test_preds["model_engine"] = model_engine
     test_preds["model"] = model.__repr__()
 
     # Fugue does not return back the group by column (like Pandas)
