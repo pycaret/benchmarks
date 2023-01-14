@@ -12,10 +12,8 @@ from datetime import date
 from typing import Optional
 
 import fire
-
 import numpy as np
 import pandas as pd
-import pycaret
 from tqdm import tqdm
 
 from benchmarks.datasets.create.time_series.m3 import get_data
@@ -26,7 +24,7 @@ from benchmarks.parallel.execution import (
     shutdown_engine,
 )
 from benchmarks.parallel.time_series.single_ts import forecast_create_model
-from benchmarks.utils import return_dirs
+from benchmarks.utils import _return_pycaret_version_or_hash, return_dirs
 
 # Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
 tqdm.pandas()
@@ -78,10 +76,13 @@ def main(
 
     run_checks(execution_mode, engine)
 
+    RUN_DATE = date.today().strftime("%Y-%m-%d")
+    PYCARET_VERSION = _return_pycaret_version_or_hash()
     num_cpus = num_cpus or mp.cpu_count()
     print(
-        f"Running benchmark for Dataset: '{dataset}' Category: '{ts_category}' "
+        f"\n\nRunning benchmark for Dataset: '{dataset}' Category: '{ts_category}' "
         f"Model: '{model}' using ..."
+        f"\n  - PyCaret Version: '{PYCARET_VERSION}'"
         f"\n  - Engine: '{engine}'"
         f"\n  - Execution Mode: '{execution_mode}'"
         f"\n  - CPUs: {num_cpus}"
@@ -102,7 +103,6 @@ def main(
         directory=BASE_DIR, dataset=dataset, group=ts_category, train=False
     )
 
-    # Uncomment after this is implemented https://github.com/pycaret/pycaret/issues/3202
     # We only need the y_test time points. y_test values should be unknown to
     # avoid any chance of leakage
     test["y"] = np.nan
@@ -115,9 +115,6 @@ def main(
     # # For local testing on a small subset ----
     # all_ts = combined["unique_id"].unique()
     # combined = combined[combined["unique_id"].isin(all_ts[:2])]
-
-    RUN_DATE = date.today().strftime("%Y-%m-%d")
-    PYCARET_VERSION = pycaret.__version__
 
     verbose = False
     cross_validate = False
@@ -168,7 +165,9 @@ def main(
     test_results = test_results[cols]
 
     # Write results ----
-    test_results.to_csv(f"{FORECAST_DIR}/forecasts-{prefix}.csv", index=False)
+    result_file_name = f"{FORECAST_DIR}/forecasts-{prefix}.csv"
+    print(f"\nWriting results to {result_file_name}")
+    test_results.to_csv(result_file_name, index=False)
     time_df = pd.DataFrame(
         {
             "time": [time_taken],
@@ -181,7 +180,9 @@ def main(
             "pycaret_version": [PYCARET_VERSION],
         }
     )
-    time_df.to_csv(f"{TIME_DIR}/time-{prefix}.csv", index=False)
+    time_file_name = f"{TIME_DIR}/time-{prefix}.csv"
+    print(f"Writing time to {time_file_name}")
+    time_df.to_csv(time_file_name, index=False)
 
     shutdown_engine(engine)
 
