@@ -89,10 +89,11 @@ def main(
 
     LIBRARY = "pycaret"
     RUN_DATE = date.today().strftime("%Y-%m-%d")
+    logging.info("\n\n")
     LIBRARY_VERSION = _return_pycaret_version_or_hash()
     num_cpus = num_cpus or mp.cpu_count()
     logging.info(
-        f"\n\nRun Date: {RUN_DATE}"
+        f"\nRun Date: {RUN_DATE}"
         f"\nRunning benchmark for Dataset: '{dataset}' Category: '{ts_category}' "
         f"Model: '{model}', Model Engine: '{model_engine}' using ..."
         f"\n  - Library: '{LIBRARY}'"
@@ -187,7 +188,7 @@ def main(
 
     # Write results ----
     result_file_name = f"{FORECAST_DIR}/forecasts-{prefix}.csv"
-    logging.info(f"\nWriting results to {result_file_name}")
+    logging.info(f"Writing results to {result_file_name}")
     test_results.to_csv(result_file_name, index=False)
     time_df = pd.DataFrame(
         {
@@ -209,7 +210,7 @@ def main(
 
     shutdown_engine(execution_engine)
 
-    logging.info("\nBenchmark Complete!")
+    logging.info("Benchmark Complete!")
 
 
 if __name__ == "__main__":
