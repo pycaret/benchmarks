@@ -1,7 +1,7 @@
 """Ref: https://github.com/Nixtla/statsforecast/tree/main/experiments/m3/src"""
 
-from typing import Tuple
 import logging
+from typing import Tuple
 
 import numpy as np
 import pandas as pd
