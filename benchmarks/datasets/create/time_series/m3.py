@@ -135,7 +135,11 @@ def evaluate(
     """
     BASE_DIR, FORECAST_DIR, TIME_DIR = return_dirs(dataset=dataset)
 
-    suffix = f"{library}-{dataset}-{group}-{model}-{model_engine}-{execution_engine}-{execution_mode}"
+    suffix = (
+        f"{library}-{dataset}-{group}-"
+        f"{model}-{model_engine}-"
+        f"{execution_engine}-{execution_mode}"
+    )
     logging.info(suffix)
     y_test, horizon, _, _ = get_data(BASE_DIR, dataset, group, False)
     count_ts = len(y_test) / horizon
