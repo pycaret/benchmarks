@@ -45,12 +45,12 @@ def check_allowed_types(some_string: str, enum_class: Enum) -> bool:
     return any([some_string in enum.name for enum in list(enum_class)])
 
 
-def return_pycaret_model_engine_names() -> List(Tuple[str, str]):
+def return_pycaret_model_engine_names() -> List[Tuple[str, str]]:
     """Return all model names in PyCaret along with their supported engines.
 
     Returns
     -------
-    List(Tuple[str, str]
+    List[Tuple[str, str]]
         List of tuples of the form (model_name, engine_name)
         If a model supports multiple engines, then there will be multiple tuples
         for that model.
