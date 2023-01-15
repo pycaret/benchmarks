@@ -103,9 +103,14 @@ def main(
         f"\n  - CPUs: {num_cpus}"
     )
 
-    initialize_engine(execution_engine, num_cpus)
+    model_engine = _get_qualified_model_engine(model=model, model_engine=model_engine)
+    logging.info(f"Passed model engine corresponds to '{model_engine}'")
 
+    prefix = f"{LIBRARY}-{dataset}-{ts_category}-{model}-{model_engine}-{execution_engine}-{execution_mode}"
+
+    # -------------------------------------------------------------------------#
     # Get the data ----
+    # -------------------------------------------------------------------------#
     BASE_DIR, FORECAST_DIR, TIME_DIR = return_dirs(dataset=dataset)
 
     # Check if the directory exists. If not, create it.
@@ -125,14 +130,17 @@ def main(
     combined = pd.concat([train, test], axis=0)
     combined["ds"] = pd.to_datetime(combined["ds"])
 
-    model_engine = _get_qualified_model_engine(model=model, model_engine=model_engine)
-    logging.info(f"Passed model engine corresponds to '{model_engine}'")
-
-    prefix = f"{LIBRARY}-{dataset}-{ts_category}-{model}-{model_engine}-{execution_engine}-{execution_mode}"
-
     # # For local testing on a small subset ----
     # all_ts = combined["unique_id"].unique()
     # combined = combined[combined["unique_id"].isin(all_ts[:2])]
+
+    # -------------------------------------------------------------------------#
+    # Experiment Settings ----
+    # NOTE:
+    # (1) Disable Cross validation to get fastest results for benchmarking.
+    # (2) Test only has time points. No values. This is to avoid leakage.
+    # (3) Only use the train portion to extract features since test will be imputed.
+    # -------------------------------------------------------------------------#
 
     verbose = False
     cross_validate = False
@@ -142,6 +150,7 @@ def main(
         "index": "ds",
         "fold": 1,
         "numeric_imputation_target": "ffill",
+        "hyperparameter_split": "train",
         "ignore_features": ["unique_id"],
         "engine": {model: model_engine},
         "n_jobs": 1,
@@ -171,6 +180,10 @@ def main(
     else:
         schema = None
 
+    # -------------------------------------------------------------------------#
+    # Run Benchmarking ----
+    # -------------------------------------------------------------------------#
+    initialize_engine(execution_engine, num_cpus)
     test_results, time_taken = execute(
         all_groups=combined,
         keys="unique_id",
@@ -181,6 +194,11 @@ def main(
         num_cpus=num_cpus,
         schema=schema,
     )
+    shutdown_engine(execution_engine)
+
+    # -------------------------------------------------------------------------#
+    # Write Results ----
+    # -------------------------------------------------------------------------#
 
     # Order columns (as different execution engines may have different orders) ----
     cols = ["unique_id", "ds", "y_pred", "model_name", "model_engine", "model"]
@@ -207,8 +225,6 @@ def main(
     time_file_name = f"{TIME_DIR}/time-{prefix}.csv"
     logging.info(f"Writing time to {time_file_name}")
     time_df.to_csv(time_file_name, index=False)
-
-    shutdown_engine(execution_engine)
 
     logging.info("Benchmark Complete!")
 

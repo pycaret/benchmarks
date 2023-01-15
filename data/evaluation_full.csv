@@ -72,8 +72,6 @@ pycaret,,M3,Other,tbats,None,,native,,174.0,,,,,,,
 pycaret,,M3,Other,theta,None,,native,,174.0,,,,,,,
 pycaret,,M3,Quarterly,ada_cds_dt,sklearn,,native,,756.0,,,,,,,
 pycaret,,M3,Quarterly,arima,None,,native,,756.0,,,,,,,
-pycaret,,M3,Quarterly,auto_arima,pmdarima,,native,,756.0,,,,,,,
-pycaret,,M3,Quarterly,auto_arima,statsforecast,,native,,756.0,,,,,,,
 pycaret,,M3,Quarterly,bats,None,,native,,756.0,,,,,,,
 pycaret,,M3,Quarterly,br_cds_dt,sklearn,,native,,756.0,,,,,,,
 pycaret,,M3,Quarterly,croston,None,,native,,756.0,,,,,,,
@@ -109,8 +107,6 @@ pycaret,,M3,Quarterly,tbats,None,,native,,756.0,,,,,,,
 pycaret,,M3,Quarterly,theta,None,,native,,756.0,,,,,,,
 pycaret,,M3,Yearly,ada_cds_dt,sklearn,,native,,645.0,,,,,,,
 pycaret,,M3,Yearly,arima,None,,native,,645.0,,,,,,,
-pycaret,,M3,Yearly,auto_arima,pmdarima,,native,,645.0,,,,,,,
-pycaret,,M3,Yearly,auto_arima,statsforecast,,native,,645.0,,,,,,,
 pycaret,,M3,Yearly,bats,None,,native,,645.0,,,,,,,
 pycaret,,M3,Yearly,br_cds_dt,sklearn,,native,,645.0,,,,,,,
 pycaret,,M3,Yearly,croston,None,,native,,645.0,,,,,,,
@@ -144,6 +140,10 @@ pycaret,,M3,Yearly,ridge_cds_dt,sklearnex,,native,,645.0,,,,,,,
 pycaret,,M3,Yearly,snaive,None,,native,,645.0,,,,,,,
 pycaret,,M3,Yearly,tbats,None,,native,,645.0,,,,,,,
 pycaret,,M3,Yearly,theta,None,,native,,645.0,,,,,,,
-pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Other,auto_arima,pmdarima,ray,native,2023-01-14,174.0,100.0,0.0,0.0,,4.45,4.169,6.667
-pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Other,auto_arima,statsforecast,ray,native,2023-01-14,174.0,100.0,0.0,0.0,,5.143,4.818,3.3
+pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Other,auto_arima,pmdarima,ray,native,2023-01-14,174.0,100.0,0.0,0.0,,4.417,4.123,5.933
+pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Other,auto_arima,statsforecast,ray,native,2023-01-14,174.0,100.0,0.0,0.0,,4.999,4.782,2.7
 pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Other,naive,,ray,native,2023-01-14,174.0,100.0,0.0,0.0,,7.025,6.302,1.633
+pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Quarterly,auto_arima,pmdarima,ray,native,2023-01-14,756.0,100.0,0.0,0.0,,13.07,9.861,12.567
+pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Quarterly,auto_arima,statsforecast,ray,native,2023-01-14,756.0,100.0,0.0,0.0,,14.22,12.911,8.45
+pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Yearly,auto_arima,pmdarima,ray,native,2023-01-14,645.0,100.0,0.0,0.0,,22.193,17.524,6.783
+pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,M3,Yearly,auto_arima,statsforecast,ray,native,2023-01-14,645.0,100.0,0.0,0.0,,24.27,22.625,6.633
