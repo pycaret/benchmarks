@@ -8,7 +8,7 @@ import pandas as pd
 from datasetsforecast.losses import mape, smape
 from datasetsforecast.m3 import M3, M3Info
 
-from benchmarks.utils import return_dirs
+from benchmarks.utils import _return_dirs
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
 
@@ -135,7 +135,7 @@ def evaluate(
     pd.DataFrame
         Dataframe showing the evaluation metrics along with execution times.
     """
-    BASE_DIR, FORECAST_DIR, TIME_DIR = return_dirs(dataset=dataset)
+    BASE_DIR, FORECAST_DIR, TIME_DIR = _return_dirs(dataset=dataset)
 
     suffix = (
         f"{library}-{dataset}-{group}-"
@@ -230,8 +230,11 @@ def evaluate(
                 "group": group,
                 "model": model,
                 "model_engine": model_engine,
-                "engine": execution_engine,
+                "model_engine_version": [None],
+                "execution_engine": execution_engine,
+                "execution_engine_version": [None],
                 "execution_mode": execution_mode,
+                "execution_mode_version": [None],
                 "num_cpus": [None],
                 "time": [0],
             }
