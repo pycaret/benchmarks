@@ -230,6 +230,7 @@ def evaluate(
                 "model_engine": model_engine,
                 "engine": execution_engine,
                 "execution_mode": execution_mode,
+                "num_cpus": [None],
                 "time": [0],
             }
         )

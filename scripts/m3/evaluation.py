@@ -54,6 +54,7 @@ if __name__ == "__main__":
             "backup_model",
             "mape",
             "smape",
+            "num_cpus",
             "time",
         ]
     ]
@@ -138,7 +139,7 @@ if __name__ == "__main__":
     logging.info(f"\nWriting full evaluation results to {eval_file_name}")
     evaluation.to_csv(eval_file_name, index=False)
 
-    cols_to_drop = ["run_date", "time"]
+    cols_to_drop = ["run_date", "num_cpus", "time"]
     eval_file_name = f"{BASE_DIR}/evaluation_static.csv"
     logging.info(f"\nWriting static evaluation results to {eval_file_name}")
     evaluation.drop(columns=cols_to_drop).to_csv(eval_file_name, index=False)

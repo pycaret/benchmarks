@@ -88,12 +88,12 @@ def main(
 
     run_checks(execution_mode, execution_engine)
 
+    logging.info("\n\n")
+    LIBRARY_VERSION = _return_pycaret_version_or_hash()
     OS = sys.platform
     PYTHON_VERSION = sys.version.split()[0]
     LIBRARY = "pycaret"
     RUN_DATE = date.today().strftime("%Y-%m-%d")
-    logging.info("\n\n")
-    LIBRARY_VERSION = _return_pycaret_version_or_hash()
     num_cpus = num_cpus or mp.cpu_count()
     logging.info(
         f"\nRun Date: {RUN_DATE}"
@@ -225,6 +225,7 @@ def main(
             "model_engine": [model_engine],
             "execution_engine": [execution_engine],
             "execution_mode": [execution_mode],
+            "num_cpus": [num_cpus],
             "time": [time_taken],
             "run_date": [RUN_DATE],
         }
