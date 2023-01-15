@@ -36,6 +36,8 @@ if __name__ == "__main__":
     evaluation = pd.concat(evaluation)
     evaluation = evaluation[
         [
+            "os",
+            "python_version",
             "library",
             "library_version",
             "dataset",
@@ -59,6 +61,8 @@ if __name__ == "__main__":
     evaluation = (
         evaluation.set_index(
             [
+                "os",
+                "python_version",
                 "library",
                 "library_version",
                 "dataset",
@@ -79,6 +83,8 @@ if __name__ == "__main__":
         .reset_index()
     )
     evaluation.columns = [
+        "os",
+        "python_version",
         "library",
         "library_version",
         "dataset",
@@ -99,6 +105,8 @@ if __name__ == "__main__":
     evaluation = (
         evaluation.set_index(
             [
+                "os",
+                "python_version",
                 "library",
                 "library_version",
                 "dataset",

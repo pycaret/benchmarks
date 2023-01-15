@@ -220,6 +220,8 @@ def evaluate(
     except FileNotFoundError:
         times = pd.DataFrame(
             {
+                "os": [None],
+                "python_version": [None],
                 "library": [library],
                 "library_version": [None],
                 "dataset": dataset,

@@ -10,6 +10,7 @@ Execution command (examples):
 import logging
 import multiprocessing as mp
 import os
+import sys
 from datetime import date
 from typing import Optional
 
@@ -87,6 +88,8 @@ def main(
 
     run_checks(execution_mode, execution_engine)
 
+    OS = sys.platform
+    PYTHON_VERSION = sys.version.split()[0]
     LIBRARY = "pycaret"
     RUN_DATE = date.today().strftime("%Y-%m-%d")
     logging.info("\n\n")
@@ -96,6 +99,8 @@ def main(
         f"\nRun Date: {RUN_DATE}"
         f"\nRunning benchmark for Dataset: '{dataset}' Category: '{ts_category}' "
         f"Model: '{model}', Model Engine: '{model_engine}' using ..."
+        f"\n  - OS: '{OS}'"
+        f"\n  - Python Version: '{PYTHON_VERSION}'"
         f"\n  - Library: '{LIBRARY}'"
         f"\n  - Library Version: '{LIBRARY_VERSION}'"
         f"\n  - Execution Engine: '{execution_engine}'"
@@ -210,6 +215,8 @@ def main(
     test_results.to_csv(result_file_name, index=False)
     time_df = pd.DataFrame(
         {
+            "os": [OS],
+            "python_version": [PYTHON_VERSION],
             "library": [LIBRARY],
             "library_version": [LIBRARY_VERSION],
             "dataset": [dataset],
