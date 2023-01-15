@@ -2,10 +2,12 @@
 import logging
 import re
 from enum import Enum, auto
-from typing import Tuple
+from itertools import product
+from typing import List, Optional, Tuple
 
 import pycaret
 from pycaret.containers.models import get_all_ts_model_containers
+from pycaret.containers.models.time_series import ALL_ALLOWED_ENGINES
 from pycaret.datasets import get_data
 from pycaret.time_series import TSForecastingExperiment
 
@@ -43,13 +45,29 @@ def check_allowed_types(some_string: str, enum_class: Enum) -> bool:
     return any([some_string in enum.name for enum in list(enum_class)])
 
 
-def return_pycaret_model_names():
-    """Return all model names in PyCaret."""
+def return_pycaret_model_engine_names() -> List[Tuple[str, str]]:
+    """Return all model names in PyCaret along with their supported engines.
+
+    Returns
+    -------
+    List[Tuple[str, str]]
+        List of tuples of the form (model_name, engine_name)
+        If a model supports multiple engines, then there will be multiple tuples
+        for that model.
+    """
     data = get_data("airline", verbose=False)
     exp = TSForecastingExperiment()
     exp.setup(data=data, session_id=42, verbose=False)
     model_containers = get_all_ts_model_containers(exp)
-    return list(model_containers.keys())
+    all_models = model_containers.keys()
+
+    all_model_engines = ALL_ALLOWED_ENGINES
+    return_list = []
+    for model in all_models:
+        model_engines = all_model_engines.get(model, ["None"])
+        for m, e in product([model], model_engines):
+            return_list.append((m, e))
+    return return_list
 
 
 def return_dirs(dataset: str) -> Tuple[str, str, str]:
@@ -101,3 +119,30 @@ def _return_pycaret_version_or_hash() -> str:
         PYCARET_VERSION = match.group(1).split()[0]
 
     return PYCARET_VERSION
+
+
+def _get_qualified_model_engine(model: str, model_engine: Optional[str]) -> str:
+    """Returns the model engine for the model based on the setup kwargs.
+
+    When the model engine is not specified in the setup kwargs, the model engine
+    defaults to None. In such cases, this function returns the model engine name
+    based on the internal logic of PyCaret.
+
+    Parameters
+    ----------
+    model : str
+        The model whose engine has to be returned.
+    model_engine : Optional[str]
+        The model engine to use
+
+    Returns
+    -------
+    str
+        The model engine name
+    """
+    dummy = get_data("airline", verbose=False)
+    exp = TSForecastingExperiment()
+    setup_kwargs = {"engine": {model: model_engine}} if model_engine else {}
+    exp.setup(data=dummy, verbose=False, **setup_kwargs)
+    model_engine = exp.get_engine(model)
+    return model_engine

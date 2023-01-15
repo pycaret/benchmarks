@@ -16,7 +16,7 @@ def execute(
     function_single_group: Callable,
     function_kwargs: dict,
     execution_mode: str,
-    engine: str,
+    execution_engine: str,
     num_cpus: int,
     schema: Optional[str] = None,
 ) -> Tuple[pd.DataFrame, float]:
@@ -35,7 +35,7 @@ def execute(
     execution_mode : str, optional
         Should the execution be done natively or using the Fugue wrapper
         Options: "native", "fugue"
-    engine : str
+    execution_engine : str
         What engine should be used.
         Options: "local", "ray", "spark", by default "ray"
             - "local" will execute serially using pandas
@@ -60,25 +60,25 @@ def execute(
         (1) engine is set to "spark"
     """
     # Set variables based on the execution mode and engine ----
-    if engine == "local":
+    if execution_engine == "local":
         if execution_mode == "fugue":
             fugue_engine = None
             as_local = True
-    elif engine == "ray":
+    elif execution_engine == "ray":
         if execution_mode == "fugue":
             fugue_engine = "ray"
             as_local = True
-    elif engine == "spark":
+    elif execution_engine == "spark":
         raise ValueError("Spark is not supported right now.")
 
     start = time.time()
     if execution_mode == "native":
         grouped_data = all_groups.groupby(keys)
-        if engine == "local":
+        if execution_engine == "local":
             all_results = grouped_data.progress_apply(
                 function_single_group, **function_kwargs
             )
-        elif engine == "ray":
+        elif execution_engine == "ray":
             all_results = []
             function_remote = ray.remote(function_single_group)
             for single_group in grouped_data.groups.keys():

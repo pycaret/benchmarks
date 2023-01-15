@@ -1,5 +1,6 @@
 """Ref: https://github.com/Nixtla/statsforecast/tree/main/experiments/m3/src"""
 
+import logging
 from typing import Tuple
 
 import numpy as np
@@ -96,12 +97,20 @@ def save_data(dataset: str, group: str, train: bool = True):
 
 
 def evaluate(
-    dataset: str, group: str, model: str, engine: str, execution_mode: str
+    library: str,
+    dataset: str,
+    group: str,
+    model: str,
+    model_engine: str,
+    execution_engine: str,
+    execution_mode: str,
 ) -> pd.DataFrame:
     """Evaluate the results of a model across a dataset.
 
     Parameters
     ----------
+    library : str
+        The library to evaluate, e.g. 'pycaret'
     dataset : str
         'M3' only
     group : str
@@ -109,12 +118,15 @@ def evaluate(
         Allowed values: 'Yearly', 'Quarterly', 'Monthly', 'Other'.
     model : str
         Name of the model to evaluate.
+    model_engine : str
+        Name of the model engine to evaluate.
+        e.g. for model = "auto_arima", model_engine can be "pmdarima"
+    execution_engine : str, optional
+        Evaluate the model based on which engine
+        Options: "local", "ray", "spark", by default "ray"
     execution_mode : str, optional
         Evaluate the model based on which execution mode
         Options: "native", "fugue"
-    engine : str, optional
-        Evaluate the model based on which engine
-        Options: "local", "ray", "spark", by default "ray"
 
     Returns
     -------
@@ -123,8 +135,12 @@ def evaluate(
     """
     BASE_DIR, FORECAST_DIR, TIME_DIR = return_dirs(dataset=dataset)
 
-    suffix = f"{dataset}-{group}-{model}-{engine}-{execution_mode}"
-    print(suffix)
+    suffix = (
+        f"{library}-{dataset}-{group}-"
+        f"{model}-{model_engine}-"
+        f"{execution_engine}-{execution_mode}"
+    )
+    logging.info(suffix)
     y_test, horizon, _, _ = get_data(BASE_DIR, dataset, group, False)
     count_ts = len(y_test) / horizon
 
@@ -204,12 +220,15 @@ def evaluate(
     except FileNotFoundError:
         times = pd.DataFrame(
             {
-                "time": [0],
+                "library": [library],
+                "library_version": [None],
                 "dataset": dataset,
                 "group": group,
                 "model": model,
-                "engine": engine,
+                "model_engine": model_engine,
+                "engine": execution_engine,
                 "execution_mode": execution_mode,
+                "time": [0],
             }
         )
 

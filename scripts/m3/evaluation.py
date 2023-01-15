@@ -2,44 +2,49 @@
 To Run
 >>> python scripts\m3\evaluation.py
 """
-
+import logging
 from itertools import product
 
 import numpy as np
 import pandas as pd
 
 from benchmarks.datasets.create.time_series.m3 import evaluate
-from benchmarks.utils import return_pycaret_model_names
+from benchmarks.utils import return_pycaret_model_engine_names
 
 if __name__ == "__main__":
+    library = "pycaret"
     groups = ["Yearly", "Quarterly", "Monthly", "Other"]
-    models = return_pycaret_model_names()
+    model_and_engines = return_pycaret_model_engine_names()
     datasets = ["M3"]
     # All dataset evaluations are stored in the same BASE_DIR
     BASE_DIR = "data"
 
     evaluation = [
         evaluate(
+            library=library,
             dataset=dataset,
             group=group,
             model=model,
-            engine="ray",
+            model_engine=model_engine,
+            execution_engine="ray",
             execution_mode="native",
         )
-        for model, group in product(models, groups)
+        for (model, model_engine), group in product(model_and_engines, groups)
         for dataset in datasets
     ]
     evaluation = [eval_ for eval_ in evaluation if eval_ is not None]
     evaluation = pd.concat(evaluation)
     evaluation = evaluation[
         [
+            "library",
+            "library_version",
             "dataset",
             "group",
             "model",
-            "engine",
+            "model_engine",
+            "execution_engine",
             "execution_mode",
             "run_date",
-            "pycaret_version",
             "count_ts",
             "primary_model_per",
             "backup_model_per",
@@ -54,13 +59,15 @@ if __name__ == "__main__":
     evaluation = (
         evaluation.set_index(
             [
+                "library",
+                "library_version",
                 "dataset",
                 "group",
                 "model",
-                "engine",
+                "model_engine",
+                "execution_engine",
                 "execution_mode",
                 "run_date",
-                "pycaret_version",
                 "count_ts",
                 "primary_model_per",
                 "backup_model_per",
@@ -72,13 +79,15 @@ if __name__ == "__main__":
         .reset_index()
     )
     evaluation.columns = [
+        "library",
+        "library_version",
         "dataset",
         "group",
         "model",
-        "engine",
+        "model_engine",
+        "execution_engine",
         "execution_mode",
         "run_date",
-        "pycaret_version",
         "count_ts",
         "primary_model_per",
         "backup_model_per",
@@ -90,13 +99,15 @@ if __name__ == "__main__":
     evaluation = (
         evaluation.set_index(
             [
+                "library",
+                "library_version",
                 "dataset",
                 "group",
                 "model",
-                "engine",
+                "model_engine",
+                "execution_engine",
                 "execution_mode",
                 "run_date",
-                "pycaret_version",
                 "count_ts",
                 "primary_model_per",
                 "backup_model_per",
@@ -111,5 +122,17 @@ if __name__ == "__main__":
     evaluation = evaluation.droplevel(0, 1).reset_index()
     cols_to_clean = ["mape", "smape", "time"]
     evaluation[cols_to_clean] = evaluation[cols_to_clean].replace(0, np.nan)
-    evaluation.to_csv(f"{BASE_DIR}/evaluation.csv", index=False)
-    print(evaluation)
+
+    cols_to_round = ["primary_model_per", "backup_model_per", "no_model_per"]
+    evaluation[cols_to_round] = evaluation[cols_to_round].round(4)
+
+    eval_file_name = f"{BASE_DIR}/evaluation_full.csv"
+    logging.info(f"\nWriting full evaluation results to {eval_file_name}")
+    evaluation.to_csv(eval_file_name, index=False)
+
+    cols_to_drop = ["run_date", "time"]
+    eval_file_name = f"{BASE_DIR}/evaluation_static.csv"
+    logging.info(f"\nWriting static evaluation results to {eval_file_name}")
+    evaluation.drop(columns=cols_to_drop).to_csv(eval_file_name, index=False)
+
+    logging.info("\nEvaluation Complete!")
