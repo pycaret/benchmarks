@@ -29,8 +29,9 @@ from benchmarks.parallel.execution import (
 from benchmarks.parallel.time_series.single_ts import forecast_create_model
 from benchmarks.utils import (
     _get_qualified_model_engine,
+    _return_dirs,
     _return_pycaret_version_or_hash,
-    return_dirs,
+    _try_import_and_get_module_version,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
@@ -113,14 +114,20 @@ def main(
     )
 
     model_engine = _get_qualified_model_engine(model=model, model_engine=model_engine)
-    logging.info(f"Passed model engine corresponds to '{model_engine}'")
+    model_engine_version = None
+    if model_engine:
+        model_engine_version = _try_import_and_get_module_version(model_engine)
+    logging.info(
+        f"Passed model engine corresponds to '{model_engine}'"
+        f"- Installed version '{model_engine_version}'"
+    )
 
     prefix = f"{LIBRARY}-{dataset}-{ts_category}-{model}-{model_engine}-{execution_engine}-{execution_mode}"
 
     # -------------------------------------------------------------------------#
     # Get the data ----
     # -------------------------------------------------------------------------#
-    BASE_DIR, FORECAST_DIR, TIME_DIR = return_dirs(dataset=dataset)
+    BASE_DIR, FORECAST_DIR, TIME_DIR = _return_dirs(dataset=dataset)
 
     # Check if the directory exists. If not, create it.
     for dir in [FORECAST_DIR, TIME_DIR]:
@@ -227,6 +234,7 @@ def main(
             "group": [ts_category],
             "model": [model],
             "model_engine": [model_engine],
+            "model_engine_version": [model_engine_version],
             "execution_engine": [execution_engine],
             "execution_engine_version": [EXEC_ENGINE_VERSION],
             "execution_mode": [execution_mode],

@@ -1,9 +1,12 @@
 """Utility functions"""
 import logging
 import re
+import sys
+from distutils.version import LooseVersion
 from enum import Enum, auto
+from importlib import import_module
 from itertools import product
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Union
 
 import pycaret
 from pycaret.containers.models import get_all_ts_model_containers
@@ -72,7 +75,7 @@ def return_pycaret_model_engine_names() -> List[Tuple[str, str]]:
     return return_list
 
 
-def return_dirs(dataset: str) -> Tuple[str, str, str]:
+def _return_dirs(dataset: str) -> Tuple[str, str, str]:
     """Return the directories to use for the dataset.
 
     Parameters
@@ -148,3 +151,24 @@ def _get_qualified_model_engine(model: str, model_engine: Optional[str]) -> str:
     exp.setup(data=dummy, verbose=False, **setup_kwargs)
     model_engine = exp.get_engine(model)
     return model_engine
+
+
+def _try_import_and_get_module_version(
+    modname: str,
+) -> Optional[Union[LooseVersion, bool]]:
+    """Returns False if module is not installed, None if version is not available"""
+    try:
+        if modname in sys.modules:
+            mod = sys.modules[modname]
+        else:
+            mod = import_module(modname)
+        try:
+            ver = mod.__version__
+        except AttributeError:
+            # Version could not be obtained
+            ver = None
+    except ImportError:
+        ver = False
+    if ver:
+        ver = LooseVersion(ver)
+    return ver
