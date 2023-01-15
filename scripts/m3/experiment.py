@@ -23,7 +23,7 @@ from benchmarks.datasets.create.time_series.m3 import get_data
 from benchmarks.parallel.execution import (
     execute,
     initialize_engine,
-    run_checks,
+    run_execution_checks,
     shutdown_engine,
 )
 from benchmarks.parallel.time_series.single_ts import forecast_create_model
@@ -32,6 +32,8 @@ from benchmarks.utils import (
     _return_pycaret_version_or_hash,
     return_dirs,
 )
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
 
 # Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
 tqdm.pandas()
@@ -86,7 +88,9 @@ def main(
         (3) engine is not implemented
     """
 
-    run_checks(execution_mode, execution_engine)
+    EXEC_MODE_VERSION, EXEC_ENGINE_VERSION = run_execution_checks(
+        execution_mode, execution_engine
+    )
 
     logging.info("\n\n")
     LIBRARY_VERSION = _return_pycaret_version_or_hash()
@@ -103,8 +107,8 @@ def main(
         f"\n  - Python Version: '{PYTHON_VERSION}'"
         f"\n  - Library: '{LIBRARY}'"
         f"\n  - Library Version: '{LIBRARY_VERSION}'"
-        f"\n  - Execution Engine: '{execution_engine}'"
-        f"\n  - Execution Mode: '{execution_mode}'"
+        f"\n  - Execution Engine: '{execution_engine}' Version: '{EXEC_ENGINE_VERSION}'"
+        f"\n  - Execution Mode: '{execution_mode}' Version: '{EXEC_MODE_VERSION}'"
         f"\n  - CPUs: {num_cpus}"
     )
 
@@ -224,7 +228,9 @@ def main(
             "model": [model],
             "model_engine": [model_engine],
             "execution_engine": [execution_engine],
+            "execution_engine_version": [EXEC_ENGINE_VERSION],
             "execution_mode": [execution_mode],
+            "execution_mode_version": [EXEC_MODE_VERSION],
             "num_cpus": [num_cpus],
             "time": [time_taken],
             "run_date": [RUN_DATE],

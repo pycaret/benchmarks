@@ -11,6 +11,8 @@ import pandas as pd
 from benchmarks.datasets.create.time_series.m3 import evaluate
 from benchmarks.utils import return_pycaret_model_engine_names
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
+
 if __name__ == "__main__":
     library = "pycaret"
     groups = ["Yearly", "Quarterly", "Monthly", "Other"]
@@ -45,7 +47,9 @@ if __name__ == "__main__":
             "model",
             "model_engine",
             "execution_engine",
+            "execution_engine_version",
             "execution_mode",
+            "execution_mode_version",
             "run_date",
             "count_ts",
             "primary_model_per",
@@ -71,7 +75,9 @@ if __name__ == "__main__":
                 "model",
                 "model_engine",
                 "execution_engine",
+                "execution_engine_version",
                 "execution_mode",
+                "execution_mode_version",
                 "run_date",
                 "count_ts",
                 "primary_model_per",
@@ -93,7 +99,9 @@ if __name__ == "__main__":
         "model",
         "model_engine",
         "execution_engine",
+        "execution_engine_version",
         "execution_mode",
+        "execution_mode_version",
         "run_date",
         "count_ts",
         "primary_model_per",
@@ -115,7 +123,9 @@ if __name__ == "__main__":
                 "model",
                 "model_engine",
                 "execution_engine",
+                "execution_engine_version",
                 "execution_mode",
+                "execution_mode_version",
                 "run_date",
                 "count_ts",
                 "primary_model_per",

@@ -5,6 +5,8 @@ from typing import Optional
 import pandas as pd
 from pycaret.time_series import TSForecastingExperiment
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
+
 
 def forecast_create_model(
     data: pd.DataFrame,

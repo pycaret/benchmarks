@@ -10,6 +10,8 @@ from datasetsforecast.m3 import M3, M3Info
 
 from benchmarks.utils import return_dirs
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
+
 dict_datasets = {
     "M3": (M3, M3Info),
 }
