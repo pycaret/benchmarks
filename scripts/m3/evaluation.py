@@ -11,6 +11,8 @@ import pandas as pd
 from benchmarks.datasets.create.time_series.m3 import evaluate
 from benchmarks.utils import return_pycaret_model_engine_names
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
+
 if __name__ == "__main__":
     library = "pycaret"
     groups = ["Yearly", "Quarterly", "Monthly", "Other"]
@@ -45,7 +47,9 @@ if __name__ == "__main__":
             "model",
             "model_engine",
             "execution_engine",
+            "execution_engine_version",
             "execution_mode",
+            "execution_mode_version",
             "run_date",
             "count_ts",
             "primary_model_per",
@@ -54,6 +58,7 @@ if __name__ == "__main__":
             "backup_model",
             "mape",
             "smape",
+            "num_cpus",
             "time",
         ]
     ]
@@ -70,7 +75,9 @@ if __name__ == "__main__":
                 "model",
                 "model_engine",
                 "execution_engine",
+                "execution_engine_version",
                 "execution_mode",
+                "execution_mode_version",
                 "run_date",
                 "count_ts",
                 "primary_model_per",
@@ -92,7 +99,9 @@ if __name__ == "__main__":
         "model",
         "model_engine",
         "execution_engine",
+        "execution_engine_version",
         "execution_mode",
+        "execution_mode_version",
         "run_date",
         "count_ts",
         "primary_model_per",
@@ -114,7 +123,9 @@ if __name__ == "__main__":
                 "model",
                 "model_engine",
                 "execution_engine",
+                "execution_engine_version",
                 "execution_mode",
+                "execution_mode_version",
                 "run_date",
                 "count_ts",
                 "primary_model_per",
@@ -138,7 +149,7 @@ if __name__ == "__main__":
     logging.info(f"\nWriting full evaluation results to {eval_file_name}")
     evaluation.to_csv(eval_file_name, index=False)
 
-    cols_to_drop = ["run_date", "time"]
+    cols_to_drop = ["run_date", "num_cpus", "time"]
     eval_file_name = f"{BASE_DIR}/evaluation_static.csv"
     logging.info(f"\nWriting static evaluation results to {eval_file_name}")
     evaluation.drop(columns=cols_to_drop).to_csv(eval_file_name, index=False)

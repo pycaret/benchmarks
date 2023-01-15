@@ -11,8 +11,10 @@ from pycaret.containers.models.time_series import ALL_ALLOWED_ENGINES
 from pycaret.datasets import get_data
 from pycaret.time_series import TSForecastingExperiment
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
 
-class Engine(Enum):
+
+class ExecutionEngine(Enum):
     """The execution engine to use."""
 
     local = auto()

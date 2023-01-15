@@ -7,7 +7,7 @@ import pandas as pd
 import ray
 from fugue import transform
 
-from benchmarks.utils import Engine, ExecutionMode, check_allowed_types
+from benchmarks.utils import ExecutionEngine, ExecutionMode, check_allowed_types
 
 
 def execute(
@@ -106,7 +106,9 @@ def execute(
     return all_results, time_taken
 
 
-def run_checks(execution_mode: str, engine: str):
+def run_execution_checks(
+    execution_mode: str, execution_engine: str
+) -> Tuple[Optional[str], Optional[str]]:
     """Checks that the execution model and engine are of the allowed types.
 
     Parameters
@@ -114,9 +116,16 @@ def run_checks(execution_mode: str, engine: str):
     execution_mode : str
         Should the execution be done natively or using the Fugue wrapper
         Options: "native", "fugue"
-    engine : str
+    execution_engine : str
         What engine should be used.
         Options: "local", "ray", "spark"
+
+    Returns
+    -------
+    Tuple[Optional[str], Optional[str]]
+        The version of the execution mode and engine
+        Execution mode version is None if execution mode is "native"
+        Execution engine version is None if execution engine is "local"
 
     Raises
     ------
@@ -130,11 +139,29 @@ def run_checks(execution_mode: str, engine: str):
             f"Execution Mode '{execution_mode}' not supported. "
             f"Please choose from {list(ExecutionMode.__members__.keys())}."
         )
-    if not check_allowed_types(engine, Engine):
+    if not check_allowed_types(execution_engine, ExecutionEngine):
         raise ValueError(
-            f"Engine '{engine}' not supported. "
-            f"Please choose from {list(Engine.__members__.keys())}."
+            f"Engine '{execution_engine}' not supported. "
+            f"Please choose from {list(ExecutionEngine.__members__.keys())}."
         )
+
+    EXEC_MODE_VERSION = None
+    if execution_mode == "fugue":
+        import fugue
+
+        EXEC_MODE_VERSION = fugue.__version__
+
+    EXEC_ENGINE_VERSION = None
+    if execution_engine == "ray":
+        import ray
+
+        EXEC_ENGINE_VERSION = ray.__version__
+    elif execution_engine == "spark":
+        import pyspark
+
+        EXEC_ENGINE_VERSION = pyspark.__version__
+
+    return EXEC_MODE_VERSION, EXEC_ENGINE_VERSION
 
 
 def initialize_engine(engine: str, num_cpus: int):
