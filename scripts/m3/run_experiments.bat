@@ -3,16 +3,11 @@
 @REM python scripts/m3/experiment.py --model=ets --group=Other
 
 @echo OFF
-for %%c in (Other Yearly) do (
+for %%c in (Other Yearly Quarterly Monthly) do (
     @REM Statistical Models (single engine) ----
-    for %%m in (polytrend croston) do (
+    for %%m in (grand_means naive snaive polytrend croston arima ets exp_smooth theta) do (
         python scripts/m3/experiment.py --model=%%m --group=%%c
     )
-
-    @REM @REM Statistical Models (single engine) ----
-    @REM for %%m in (grand_means naive snaive polytrend croston arima ets exp_smooth theta) do (
-    @REM     python scripts/m3/experiment.py --model=%%m --group=%%c
-    @REM )
 
     @REM @REM Reduced Regression Models (Linear) ----
     @REM for %%m in (lr_cds_dt ridge_cds_dt lasso_cds_dt lar_cds_dt llar_cds_dt en_cds_dt br_cds_dt huber_cds_dt omp_cds_dt par_cds_dt) do (
@@ -40,12 +35,12 @@ for %%c in (Other Yearly) do (
     @REM )
 )
 
-@REM @REM Disabling Monthly for now since too slow
-@REM for %%c in (Other Yearly Quarterly) do (
-@REM     @REM Statistical Models (multiple engines) ----
-@REM     for %%m in (auto_arima) do (
-@REM         for %%e in (pmdarima statsforecast) do (
-@REM             python scripts/m3/experiment.py --model=%%m --model_engine=%%e --group=%%c
-@REM         )
-@REM     )
-@REM )
+@REM Disabling Monthly for now since too slow
+for %%c in (Other Yearly Quarterly Monthly) do (
+    @REM Statistical Models (multiple engines) ----
+    for %%m in (auto_arima) do (
+        for %%e in (pmdarima statsforecast) do (
+            python scripts/m3/experiment.py --model=%%m --model_engine=%%e --group=%%c
+        )
+    )
+)
