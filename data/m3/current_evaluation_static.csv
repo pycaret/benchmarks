@@ -1,0 +1,9 @@
+dataset,group,library,library_version,model,model_engine,model_engine_version,execution_engine,execution_engine_version,execution_mode,execution_mode_version,num_cpus,backup_model,python_version,os,backup_model_per,count_ts,mape,no_model_per,primary_model_per,smape
+M3,Other,pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,croston,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,174.0,15.5502,0.0,100.0,13.709
+M3,Other,pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,grand_means,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,174.0,36.1146,0.0,100.0,28.0412
+M3,Other,pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,naive,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,174.0,7.0251,0.0,100.0,6.3016
+M3,Other,pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,polytrend,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,174.0,9.9987,0.0,100.0,9.5989
+M3,Yearly,pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,croston,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,645.0,35.8621,0.0,100.0,37.4025
+M3,Yearly,pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,grand_means,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,645.0,40.289,0.0,100.0,43.6252
+M3,Yearly,pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,naive,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,645.0,20.8814,0.0,100.0,17.8799
+M3,Yearly,pycaret,6a4914f1552547fe73dd7be13f3d1843e72d1f61,polytrend,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,645.0,29.1264,0.0,100.0,22.92

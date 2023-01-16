@@ -32,6 +32,27 @@ class ExecutionMode(Enum):
     fugue = auto()
 
 
+KEY_COLS = [
+    "dataset",
+    "group",
+    "library",
+    "library_version",
+    "model",
+    "model_engine",
+    "model_engine_version",
+    "execution_engine",
+    "execution_engine_version",
+    "execution_mode",
+    "execution_mode_version",
+    "num_cpus",
+    "backup_model",
+    "python_version",
+    "os",
+]
+
+NON_STATIC_COLS = ["run_date", "time"]
+
+
 def check_allowed_types(some_string: str, enum_class: Enum) -> bool:
     """Checks if a string is in an Enumeration Class
 

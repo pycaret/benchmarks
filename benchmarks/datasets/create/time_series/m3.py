@@ -99,36 +99,61 @@ def save_data(dataset: str, group: str, train: bool = True):
 
 
 def evaluate(
-    library: str,
     dataset: str,
     group: str,
+    library: str,
+    library_version: str,
     model: str,
     model_engine: str,
+    model_engine_version: str,
     execution_engine: str,
+    execution_engine_version: str,
     execution_mode: str,
+    execution_mode_version: str,
+    num_cpus: str,
+    backup_model: str,
+    python_version: str,
+    os: str,
 ) -> pd.DataFrame:
     """Evaluate the results of a model across a dataset.
 
     Parameters
     ----------
-    library : str
-        The library to evaluate, e.g. 'pycaret'
     dataset : str
-        'M3' only
+        e.g. 'M3', 'M4', etc.
     group : str
         Time Series Category name.
         Allowed values: 'Yearly', 'Quarterly', 'Monthly', 'Other'.
+    library : str
+        The library to evaluate, e.g. 'pycaret'
+    library : str
+        Version of the library. Could be actual version if installed from pip
+        or the commit hash if installed from git.
     model : str
         Name of the model to evaluate.
     model_engine : str
         Name of the model engine to evaluate.
         e.g. for model = "auto_arima", model_engine can be "pmdarima"
+    model_engine_version : str
+        Version of the model engine
     execution_engine : str, optional
         Evaluate the model based on which engine
         Options: "local", "ray", "spark", by default "ray"
+    execution_engine_version : str
+        Version of the execution engine used
     execution_mode : str, optional
         Evaluate the model based on which execution mode
         Options: "native", "fugue"
+    execution_mode_version : str
+        Version of the execution mode used
+    num_cpus : str
+        Number of CPUs used, e.g. '8'
+    backup_model : str
+        Backup model used, e.g. "naive"
+    python_version : str
+        Python version used, e.g. 3.9.15
+    os : str
+        OS used, e.g. win32
 
     Returns
     -------
@@ -137,12 +162,25 @@ def evaluate(
     """
     BASE_DIR, FORECAST_DIR, TIME_DIR = _return_dirs(dataset=dataset)
 
-    suffix = (
-        f"{library}-{dataset}-{group}-"
-        f"{model}-{model_engine}-"
-        f"{execution_engine}-{execution_mode}"
-    )
-    logging.info(suffix)
+    keys = [
+        dataset,
+        group,
+        library,
+        library_version,
+        model,
+        model_engine,
+        model_engine_version,
+        execution_engine,
+        execution_engine_version,
+        execution_mode,
+        execution_mode_version,
+        num_cpus,
+        backup_model,
+        python_version,
+        os,
+    ]
+    suffix = "-".join([str(key) for key in keys])
+    logging.info(f"Evaluating: {suffix}")
     y_test, horizon, _, _ = get_data(BASE_DIR, dataset, group, False)
     count_ts = len(y_test) / horizon
 
@@ -161,20 +199,12 @@ def evaluate(
             columns=["unique_id", "ds", "y_pred", "model_name", "model"]
         )
 
-    all_models = forecast["model_name"].unique().tolist()
-    backup_model = [
-        candidate_bk_model
-        for candidate_bk_model in all_models
-        if candidate_bk_model != model
-    ] or [""]
-
     stats = pd.DataFrame(
         {
             "count_ts": [count_ts],
             "primary_model_per": primary_model_per,
             "backup_model_per": backup_model_per,
             "no_model_per": no_model_per,
-            "backup_model": backup_model,
         }
     )
 
@@ -220,22 +250,24 @@ def evaluate(
     try:
         times = pd.read_csv(f"{TIME_DIR}/time-{suffix}.csv")
     except FileNotFoundError:
+        # Include all keys for visibility when returned
         times = pd.DataFrame(
             {
-                "os": [None],
-                "python_version": [None],
+                "dataset": [dataset],
+                "group": [group],
                 "library": [library],
-                "library_version": [None],
-                "dataset": dataset,
-                "group": group,
-                "model": model,
-                "model_engine": model_engine,
-                "model_engine_version": [None],
-                "execution_engine": execution_engine,
-                "execution_engine_version": [None],
-                "execution_mode": execution_mode,
-                "execution_mode_version": [None],
-                "num_cpus": [None],
+                "library_version": [library_version],
+                "model": [model],
+                "model_engine": [model_engine],
+                "model_engine_version": [model_engine_version],
+                "execution_engine": [execution_engine],
+                "execution_engine_version": [execution_engine_version],
+                "execution_mode": [execution_mode],
+                "execution_mode_version": [execution_engine_version],
+                "num_cpus": [num_cpus],
+                "backup_model": [backup_model],
+                "python_version": [python_version],
+                "os": [os],
                 "time": [0],
             }
         )
