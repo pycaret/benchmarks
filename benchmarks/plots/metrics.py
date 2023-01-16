@@ -1,3 +1,4 @@
+"""Module to plot metrics from benchmark results."""
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -96,7 +97,6 @@ def plot_metrics(data: pd.DataFrame, metric: str):
         The metric to plot, e.g. 'smape'
         There must be a column with this name in the data
     """
-
     fig = make_subplots(
         rows=1,
         cols=1,
