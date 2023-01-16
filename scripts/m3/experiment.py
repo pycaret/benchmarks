@@ -1,10 +1,10 @@
 """
 Execution command (examples):
 >>> python scripts/m3/experiment.py --help
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=local --ts_category=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=ray --ts_category=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=local --ts_category=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=ray --ts_category=Other
+>>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=local --group=Other
+>>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=ray --group=Other
+>>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=local --group=Other
+>>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=ray --group=Other
 """
 
 import logging
@@ -42,7 +42,7 @@ tqdm.pandas()
 
 def main(
     dataset: str = "M3",
-    ts_category: str = "Other",
+    group: str = "Other",
     model: str = "ets",
     model_engine: Optional[str] = None,
     execution_mode: str = "native",
@@ -57,7 +57,7 @@ def main(
     dataset : str, optional
         Dataset to benchmark, by default "M3"
         NOTE: Currently only M3 is supported
-    ts_category : str, optional
+    group : str, optional
         Options: "Yearly", "Quarterly", "Monthly", "Other", by default "Other"
     model : str, optional
         The model name to pass to pycaret's create_model in order to benchmark,
@@ -94,15 +94,15 @@ def main(
     )
 
     logging.info("\n\n")
+    LIBRARY = "pycaret"
     LIBRARY_VERSION = _return_pycaret_version_or_hash()
     OS = sys.platform
     PYTHON_VERSION = sys.version.split()[0]
-    LIBRARY = "pycaret"
     RUN_DATE = date.today().strftime("%Y-%m-%d")
     num_cpus = num_cpus or mp.cpu_count()
     logging.info(
         f"\nRun Date: {RUN_DATE}"
-        f"\nRunning benchmark for Dataset: '{dataset}' Category: '{ts_category}' "
+        f"\nRunning benchmark for Dataset: '{dataset}' Group: '{group}' "
         f"Model: '{model}', Model Engine: '{model_engine}' using ..."
         f"\n  - OS: '{OS}'"
         f"\n  - Python Version: '{PYTHON_VERSION}'"
@@ -122,7 +122,27 @@ def main(
         f"- Installed version '{model_engine_version}'"
     )
 
-    prefix = f"{LIBRARY}-{dataset}-{ts_category}-{model}-{model_engine}-{execution_engine}-{execution_mode}"
+    backup_model = "naive"
+
+    keys = [
+        dataset,
+        group,
+        LIBRARY,
+        LIBRARY_VERSION,
+        model,
+        model_engine,
+        model_engine_version,
+        execution_engine,
+        EXEC_ENGINE_VERSION,
+        execution_mode,
+        EXEC_MODE_VERSION,
+        num_cpus,
+        backup_model,
+        PYTHON_VERSION,
+        OS,
+    ]
+
+    prefix = "-".join([str(key) for key in keys])
 
     # -------------------------------------------------------------------------#
     # Get the data ----
@@ -134,9 +154,9 @@ def main(
         if not os.path.exists(dir):
             os.makedirs(dir)
 
-    train, fh, _, _ = get_data(directory=BASE_DIR, dataset=dataset, group=ts_category)
+    train, fh, _, _ = get_data(directory=BASE_DIR, dataset=dataset, group=group)
     test, _, _, _ = get_data(
-        directory=BASE_DIR, dataset=dataset, group=ts_category, train=False
+        directory=BASE_DIR, dataset=dataset, group=group, train=False
     )
 
     # We only need the y_test time points. y_test values should be unknown to
@@ -179,7 +199,7 @@ def main(
         "verbose": verbose,
     }
     backup_model_kwargs = {
-        "estimator": "naive",
+        "estimator": backup_model,
         "cross_validation": cross_validate,
         "verbose": verbose,
     }
@@ -224,14 +244,14 @@ def main(
     result_file_name = f"{FORECAST_DIR}/forecasts-{prefix}.csv"
     logging.info(f"Writing results to {result_file_name}")
     test_results.to_csv(result_file_name, index=False)
+
+    # Add all KEY_COLS along with Non Static columns like time and run date ----
     time_df = pd.DataFrame(
         {
-            "os": [OS],
-            "python_version": [PYTHON_VERSION],
+            "dataset": [dataset],
+            "group": [group],
             "library": [LIBRARY],
             "library_version": [LIBRARY_VERSION],
-            "dataset": [dataset],
-            "group": [ts_category],
             "model": [model],
             "model_engine": [model_engine],
             "model_engine_version": [model_engine_version],
@@ -240,6 +260,9 @@ def main(
             "execution_mode": [execution_mode],
             "execution_mode_version": [EXEC_MODE_VERSION],
             "num_cpus": [num_cpus],
+            "backup_model": [backup_model],
+            "python_version": [PYTHON_VERSION],
+            "os": [OS],
             "time": [time_taken],
             "run_date": [RUN_DATE],
         }
