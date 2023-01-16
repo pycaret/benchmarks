@@ -49,9 +49,8 @@ def main(
     )
 
     # -------------------------------------------------------------------------#
-    # START: Read all available combinations
+    # START: Read evaluations
     # -------------------------------------------------------------------------#
-    # Read combinations from both forecasts and time files
     running_evals = pd.read_csv(f"{EVAL_DIR}/running_evaluations.csv")
     ext_benchmarks = pd.read_csv(f"{EVAL_DIR}/external_benchmarks.csv")
 
@@ -60,6 +59,10 @@ def main(
 
     combined = pd.concat([running_evals, ext_benchmarks])
     combined = combined.query("group == @group")
+
+    # -------------------------------------------------------------------------#
+    # START: Filter based on user inputs
+    # -------------------------------------------------------------------------#
 
     if library:
         combined = combined.query("library in @library")
@@ -101,14 +104,14 @@ def main(
     combined.sort_values(by=metric, inplace=True)
     combined[KEY_COLS] = combined[KEY_COLS].astype(str)
 
+    # -------------------------------------------------------------------------#
+    # START: Plot Results
+    # -------------------------------------------------------------------------#
+
     plot_metrics(combined, metric)
     plot_metrics_vs_time(combined, metric)
 
-    # -------------------------------------------------------------------------#
-    # END: Writing Current Evaluations
-    # -------------------------------------------------------------------------#
-
-    logging.info("\n\nEvaluation Complete!")
+    logging.info("\n\Plotting Complete!")
 
 
 if __name__ == "__main__":
