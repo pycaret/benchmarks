@@ -111,7 +111,7 @@ def main(
     plot_metrics(combined, metric)
     plot_metrics_vs_time(combined, metric)
 
-    logging.info("\n\Plotting Complete!")
+    logging.info("\nPlotting Complete!")
 
 
 if __name__ == "__main__":

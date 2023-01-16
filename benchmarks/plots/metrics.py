@@ -1,20 +1,20 @@
+import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-def plot_metrics_vs_time(data, metric):
+def plot_metrics_vs_time(data: pd.DataFrame, metric: str):
     """Plots the metric vs. elapsed time for each model.
 
     Metric is plotted on the y-axis and elapsed time on the x-axis.
 
     Parameters
     ----------
-    elapsed_times : dict
-        A dictionary with the elapsed time for each model. The keys are the model
-        names and the values atr the elapsed times.
-    metrics : dict
-        A dictionary with the metrics for each model. The keys are the model names
-        and the values are the metrics.
+    data : pd.DataFrame
+        Dataframe containing the results of the benchmark.
+    metric : str
+        The metric to plot on the y-axis, e.g. 'smape'
+        There must be a column with this name in the data
     """
     data = data.copy()
     data.dropna(subset=["norm_time_cpu_model", metric], inplace=True)
@@ -85,7 +85,17 @@ def plot_metrics_vs_time(data, metric):
     fig.show()
 
 
-def plot_metrics(data, metric):
+def plot_metrics(data: pd.DataFrame, metric: str):
+    """Plots the metric for all models (bar chart).
+
+    Parameters
+    ----------
+    data : pd.DataFrame
+        Dataframe containing the results of the benchmark.
+    metric : str
+        The metric to plot, e.g. 'smape'
+        There must be a column with this name in the data
+    """
 
     fig = make_subplots(
         rows=1,
@@ -103,10 +113,6 @@ def plot_metrics(data, metric):
         fig.update_layout(showlegend=False, template=template)
 
     fig.show()
-
-
-def plot_all():
-    pass
 
 
 if __name__ == "__main__":
