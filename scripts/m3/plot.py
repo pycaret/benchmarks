@@ -1,6 +1,10 @@
 """
 To Run
 >>> python scripts/m3/plot.py
+>>> python scripts/m3/plot.py --dataset=M3 --group=Other
+>>> python scripts/m3/plot.py --dataset=M3 --group=Yearly
+>>> python scripts/m3/plot.py --dataset=M3 --group=Quarterly
+>>> python scripts/m3/plot.py --dataset=M3 --group=Monthly
 # TODO: See how to accept list of values for each parameter from command line
 """
 
@@ -108,8 +112,8 @@ def main(
     # START: Plot Results
     # -------------------------------------------------------------------------#
 
-    plot_metrics(combined, metric)
-    plot_metrics_vs_time(combined, metric)
+    plot_metrics(combined, metric, dataset, group)
+    plot_metrics_vs_time(combined, metric, dataset, group)
 
     logging.info("\nPlotting Complete!")
 

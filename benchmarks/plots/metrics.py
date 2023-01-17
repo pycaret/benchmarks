@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-def plot_metrics_vs_time(data: pd.DataFrame, metric: str):
+def plot_metrics_vs_time(data: pd.DataFrame, metric: str, dataset: str, group: str):
     """Plots the metric vs. elapsed time for each model.
 
     Metric is plotted on the y-axis and elapsed time on the x-axis.
@@ -16,6 +16,13 @@ def plot_metrics_vs_time(data: pd.DataFrame, metric: str):
     metric : str
         The metric to plot on the y-axis, e.g. 'smape'
         There must be a column with this name in the data
+    dataset : str
+        Dataset for which to plot the results, e.g. 'M3'.
+        Used for the title of the plot.
+    group : str
+        Dataset for which to plot the results,
+        e.g. 'Other', 'Quarterly', 'Yearly', 'Monthly', etc.
+        Used for the title of the plot.
     """
     data = data.copy()
     data.dropna(subset=["norm_time_cpu_model", metric], inplace=True)
@@ -82,11 +89,12 @@ def plot_metrics_vs_time(data: pd.DataFrame, metric: str):
         template = "ggplot2"
         fig.update_layout(showlegend=True, template=template)
         fig.update_traces(marker={"size": 10})
+        fig.update_layout(title=f"Dataset: '{dataset}' Group: '{group}'")
 
     fig.show()
 
 
-def plot_metrics(data: pd.DataFrame, metric: str):
+def plot_metrics(data: pd.DataFrame, metric: str, dataset: str, group: str):
     """Plots the metric for all models (bar chart).
 
     Parameters
@@ -96,6 +104,13 @@ def plot_metrics(data: pd.DataFrame, metric: str):
     metric : str
         The metric to plot, e.g. 'smape'
         There must be a column with this name in the data
+    dataset : str
+        Dataset for which to plot the results, e.g. 'M3'.
+        Used for the title of the plot.
+    group : str
+        Dataset for which to plot the results,
+        e.g. 'Other', 'Quarterly', 'Yearly', 'Monthly', etc.
+        Used for the title of the plot.
     """
     fig = make_subplots(
         rows=1,
@@ -111,6 +126,7 @@ def plot_metrics(data: pd.DataFrame, metric: str):
         fig.update_xaxes(title_text=f"{metric}", row=1, col=1)
         template = "ggplot2"
         fig.update_layout(showlegend=False, template=template)
+        fig.update_layout(title=f"Dataset: '{dataset}' Group: '{group}'")
 
     fig.show()
 
