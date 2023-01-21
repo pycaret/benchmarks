@@ -215,6 +215,18 @@ def evaluate(
     forecast = forecast.query("model_name == @model")[selected_cols]
     forecast["ds"] = pd.to_datetime(forecast["ds"])
 
+    if group == "Weekly":
+        # Get the correct index from ds (to match y_test)
+        # This is due to internal coercing in PyCaret
+        forecast[["_remove", "ds"]] = (
+            forecast["ds"]
+            .dt.strftime("%Y-%m-%d %H:%M:%S.%10f")
+            .str.split(".", expand=True)
+        )
+        # Trim leading zeros
+        forecast["ds"] = forecast["ds"].astype(int).astype(str)
+        forecast.drop(columns="_remove", inplace=True)
+        y_test["ds"] = y_test["ds"].astype(str)
     if group == "Monthly":
         # Remove day since one can have Month Start and one can have Month End
         # This is due to internal coercing in PyCaret
