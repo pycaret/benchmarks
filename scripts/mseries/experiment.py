@@ -147,7 +147,7 @@ def main(
     # -------------------------------------------------------------------------#
     # Get the data ----
     # -------------------------------------------------------------------------#
-    BASE_DIR, FORECAST_DIR, TIME_DIR = _return_dirs(dataset=dataset)
+    BASE_DIR, FORECAST_DIR, TIME_DIR, _ = _return_dirs(dataset=dataset)
 
     # Check if the directory exists. If not, create it.
     for dir in [FORECAST_DIR, TIME_DIR]:
