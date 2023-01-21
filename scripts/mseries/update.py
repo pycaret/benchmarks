@@ -1,9 +1,10 @@
 """
 To Run
->>> python scripts/m3/update.py --dataset="M3"
+>>> python scripts/mseries/update.py --dataset=M3
 """
 
 import logging
+import os
 
 import fire
 import pandas as pd
@@ -26,8 +27,13 @@ def main(dataset: str = "M3") -> None:
     # -------------------------------------------------------------------------#
     running_eval_path = f"{BASE_DIR}/{dataset}/running_evaluations.csv"
     current_eval_path = f"{BASE_DIR}/{dataset}/current_evaluation_full.csv"
-    running_evals = pd.read_csv(running_eval_path)
+
     current_eval = pd.read_csv(current_eval_path)
+    # When running for the first time, running evaluations will not exist
+    if os.path.isfile(running_eval_path):
+        running_evals = pd.read_csv(running_eval_path)
+    else:
+        running_evals = current_eval.copy()
 
     # -------------------------------------------------------------------------#
     # END: Read the evaluation results

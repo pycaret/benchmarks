@@ -1,10 +1,10 @@
 """
 Execution command (examples):
->>> python scripts/m3/experiment.py --help
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=local --group=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=ray --group=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=local --group=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=ray --group=Other
+>>> python scripts/mseries/experiment.py --help
+>>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=local --group=Other
+>>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=ray --group=Other
+>>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=local --group=Other
+>>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=ray --group=Other
 """
 
 import logging
@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-from benchmarks.datasets.create.time_series.m3 import get_data
+from benchmarks.datasets.create.time_series.mseries import get_data
 from benchmarks.parallel.execution import (
     execute,
     initialize_engine,

@@ -1,10 +1,10 @@
 """
 To Run
->>> python scripts/m3/plot.py
->>> python scripts/m3/plot.py --dataset=M3 --group=Other
->>> python scripts/m3/plot.py --dataset=M3 --group=Yearly
->>> python scripts/m3/plot.py --dataset=M3 --group=Quarterly
->>> python scripts/m3/plot.py --dataset=M3 --group=Monthly
+>>> python scripts/mseries/plot.py
+>>> python scripts/mseries/plot.py --dataset=M3 --group=Other
+>>> python scripts/mseries/plot.py --dataset=M3 --group=Yearly
+>>> python scripts/mseries/plot.py --dataset=M3 --group=Quarterly
+>>> python scripts/mseries/plot.py --dataset=M3 --group=Monthly
 # TODO: See how to accept list of values for each parameter from command line
 """
 
