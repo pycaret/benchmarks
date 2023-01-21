@@ -43,7 +43,7 @@ def main(
     dataset : str, optional
         Dataset for which the evaluation needs to be performed, by default "M3"
     """
-    BASE_DIR, _, _ = _return_dirs(dataset=dataset)
+    BASE_DIR, _, _, _ = _return_dirs(dataset=dataset)
     EVAL_DIR = f"{BASE_DIR}/{dataset}"
 
     logging.info("\n\n")

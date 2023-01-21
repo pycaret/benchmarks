@@ -96,7 +96,7 @@ def return_pycaret_model_engine_names() -> List[Tuple[str, str]]:
     return return_list
 
 
-def _return_dirs(dataset: str) -> Tuple[str, str, str]:
+def _return_dirs(dataset: str) -> Tuple[str, str, str, str]:
     """Return the directories to use for the dataset.
 
     Parameters
@@ -110,13 +110,15 @@ def _return_dirs(dataset: str) -> Tuple[str, str, str]:
         (1) Base Directory: location of the dataset and results
         (2) Forecasts Directory: location of forecasts
         (3) Time Directory: location of time metrics
+        (4) Properties Directory: location of time series properties
     """
     dataset_ = dataset.lower()
     BASE_DIR = "data"
     RESULTS_DIR = f"{BASE_DIR}/{dataset_}/results"
     FORECAST_DIR = f"{RESULTS_DIR}/forecasts"
     TIME_DIR = f"{RESULTS_DIR}/time"
-    return BASE_DIR, FORECAST_DIR, TIME_DIR
+    PROPERTIES_DIR = f"{RESULTS_DIR}/properties"
+    return BASE_DIR, FORECAST_DIR, TIME_DIR, PROPERTIES_DIR
 
 
 def _return_pycaret_version_or_hash() -> str:

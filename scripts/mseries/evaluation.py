@@ -59,7 +59,7 @@ def main(dataset: str = "M3") -> None:
     dataset : str, optional
         Dataset for which the evaluation needs to be performed, by default "M3"
     """
-    BASE_DIR, FORECAST_DIR, TIME_DIR = _return_dirs(dataset=dataset)
+    BASE_DIR, FORECAST_DIR, TIME_DIR, _ = _return_dirs(dataset=dataset)
 
     logging.info("\n\n")
     logging.info(
