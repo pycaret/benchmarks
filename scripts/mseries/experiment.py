@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-from benchmarks.datasets.create.time_series.m3 import get_data
+from benchmarks.datasets.create.time_series.mseries import get_data
 from benchmarks.parallel.execution import (
     execute,
     initialize_engine,

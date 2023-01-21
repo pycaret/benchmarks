@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 from datasetsforecast.losses import mape, smape
 from datasetsforecast.m3 import M3, M3Info
+from datasetsforecast.m4 import M4, M4Info
 
 from benchmarks.utils import _return_dirs
 
@@ -14,6 +15,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
 
 dict_datasets = {
     "M3": (M3, M3Info),
+    "M4": (M4, M4Info),
 }
 
 

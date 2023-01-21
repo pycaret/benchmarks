@@ -9,7 +9,7 @@ from typing import List
 import fire
 import pandas as pd
 
-from benchmarks.datasets.create.time_series.m3 import evaluate
+from benchmarks.datasets.create.time_series.mseries import evaluate
 from benchmarks.utils import KEY_COLS, _return_dirs
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
