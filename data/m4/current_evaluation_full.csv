@@ -1,0 +1,2 @@
+dataset,group,library,library_version,model,model_engine,model_engine_version,execution_engine,execution_engine_version,execution_mode,execution_mode_version,num_cpus,backup_model,python_version,os,backup_model_per,count_ts,mape,no_model_per,primary_model_per,run_date,smape,time
+M4,Weekly,pycaret,3.0.0.rc8,snaive,,,ray,2.0.1,native,,8,naive,3.9.15,win32,3.8997,359.0,11.6962,0.0,96.1003,2023-01-21,11.9925,11.1333
