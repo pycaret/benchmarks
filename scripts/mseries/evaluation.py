@@ -1,6 +1,6 @@
 """
 To Run
->>> python scripts/m3/evaluation.py --dataset="M3"
+>>> python scripts/mseries/evaluation.py --dataset=M3
 """
 import logging
 import os

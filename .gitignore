@@ -136,3 +136,6 @@ dmypy.json
 
 # Benchmark details
 data/m3/results/*
+data/m3/datasets/*
+data/m4/datasets/*
+data/m4/results/*

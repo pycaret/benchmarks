@@ -1,10 +1,10 @@
 """
 Execution command (examples):
->>> python scripts/m3/experiment.py --help
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=local --group=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=ray --group=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=local --group=Other
->>> python scripts/m3/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=ray --group=Other
+>>> python scripts/mseries/experiment.py --help
+>>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=local --group=Other
+>>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=ray --group=Other
+>>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=local --group=Other
+>>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=ray --group=Other
 """
 
 import logging
