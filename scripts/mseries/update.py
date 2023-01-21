@@ -3,8 +3,8 @@ To Run
 >>> python scripts/mseries/update.py --dataset=M3
 """
 
-import os
 import logging
+import os
 
 import fire
 import pandas as pd
