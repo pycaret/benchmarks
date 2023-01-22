@@ -56,7 +56,10 @@ def main(
     # START: Read evaluations
     # -------------------------------------------------------------------------#
     running_evals = pd.read_csv(f"{EVAL_DIR}/running_evaluations.csv")
-    ext_benchmarks = pd.read_csv(f"{EVAL_DIR}/external_benchmarks.csv")
+    try:
+        ext_benchmarks = pd.read_csv(f"{EVAL_DIR}/external_benchmarks.csv")
+    except FileNotFoundError:
+        ext_benchmarks = pd.DataFrame({}, columns=running_evals.columns)
 
     running_evals["source"] = "Internal"
     ext_benchmarks["source"] = "External"

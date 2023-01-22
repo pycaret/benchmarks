@@ -25,8 +25,14 @@ python scripts/mseries/evaluation.py --dataset=M3
 
 This will produce a file called `data\m3\current_evaluation_full.csv` and `data\m3\current_evaluation_full.csv` with the summary of the benchmark.
 
-3. Finally, you can combine these results with the already run benchmarks in the past.
+3. Next, you can combine these results with the already run benchmarks in the past.
 
 ```
 python scripts/mseries/update.py --dataset=M3
+```
+
+4. Finally, you can plot the results using plotly.
+
+```
+python scripts/mseries/plot.py --dataset=M3 --group=Monthly
 ```
