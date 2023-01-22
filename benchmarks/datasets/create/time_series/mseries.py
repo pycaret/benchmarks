@@ -162,7 +162,7 @@ def evaluate(
     pd.DataFrame
         Dataframe showing the evaluation metrics along with execution times.
     """
-    BASE_DIR, FORECAST_DIR, TIME_DIR = _return_dirs(dataset=dataset)
+    BASE_DIR, FORECAST_DIR, TIME_DIR, _ = _return_dirs(dataset=dataset)
 
     keys = [
         dataset,

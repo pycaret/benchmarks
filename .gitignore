@@ -135,7 +135,11 @@ dmypy.json
 .DS_Store
 
 # Benchmark details
-data/m3/results/*
+#M3
+data/m3/results/forecasts/*
+data/m3/results/time/*
 data/m3/datasets/*
+#M4
 data/m4/datasets/*
-data/m4/results/*
+data/m4/results/forecasts/*
+data/m4/results/time/*

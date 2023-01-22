@@ -1,10 +1,7 @@
 """
 Execution command (examples):
->>> python scripts/mseries/experiment.py --help
->>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=local --group=Other
->>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=native --execution_engine=ray --group=Other
->>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=local --group=Other
->>> python scripts/mseries/experiment.py --model=auto_arima --model_engine=pmdarima --execution_mode=fugue --execution_engine=ray --group=Other
+>>> python scripts/mseries/extract_properties.py --help
+>>> python scripts/mseries/extract_properties.py --dataset=M3 --group=Other --execution_mode=native --execution_engine=ray
 """
 
 import logging
@@ -26,13 +23,8 @@ from benchmarks.parallel.execution import (
     run_execution_checks,
     shutdown_engine,
 )
-from benchmarks.parallel.time_series.single_ts import forecast_create_model
-from benchmarks.utils import (
-    _get_qualified_model_engine,
-    _return_dirs,
-    _return_pycaret_version_or_hash,
-    _try_import_and_get_module_version,
-)
+from benchmarks.parallel.time_series.properties import extract_properties
+from benchmarks.utils import _return_dirs, _return_pycaret_version_or_hash
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
 
@@ -43,8 +35,6 @@ tqdm.pandas()
 def main(
     dataset: str = "M3",
     group: str = "Other",
-    model: str = "ets",
-    model_engine: Optional[str] = None,
     execution_mode: str = "native",
     execution_engine: str = "ray",
     num_cpus: Optional[int] = None,
@@ -59,13 +49,6 @@ def main(
         NOTE: Currently only M3 is supported
     group : str, optional
         Options: "Yearly", "Quarterly", "Monthly", "Other", by default "Other"
-    model : str, optional
-        The model name to pass to pycaret's create_model in order to benchmark,
-        by default "ets". Refer to pycaret's documentation for more information.
-    model_engine : Optional[str]
-        Name of the model engine to evaluate.
-        e.g. for model = "auto_arima", model_engine can be "pmdarima",
-        by default None which picks the default engine in pycaret.
     execution_mode : str, optional
         Should the execution be done natively or using the Fugue wrapper
         Options: "native", "fugue", by default "native"
@@ -102,42 +85,25 @@ def main(
     num_cpus = num_cpus or mp.cpu_count()
     logging.info(
         f"\nRun Date: {RUN_DATE}"
-        f"\nRunning benchmark for Dataset: '{dataset}' Group: '{group}' "
-        f"Model: '{model}', Model Engine: '{model_engine}' using ..."
+        f"\nExtracting features for Dataset: '{dataset}' Group: '{group}' using ..."
         f"\n  - OS: '{OS}'"
         f"\n  - Python Version: '{PYTHON_VERSION}'"
-        f"\n  - Library: '{LIBRARY}'"
-        f"\n  - Library Version: '{LIBRARY_VERSION}'"
+        f"\n  - Library: '{LIBRARY}' Version: '{LIBRARY_VERSION}'"
         f"\n  - Execution Engine: '{execution_engine}' Version: '{EXEC_ENGINE_VERSION}'"
         f"\n  - Execution Mode: '{execution_mode}' Version: '{EXEC_MODE_VERSION}'"
         f"\n  - CPUs: {num_cpus}"
     )
-
-    model_engine = _get_qualified_model_engine(model=model, model_engine=model_engine)
-    model_engine_version = None
-    if model_engine:
-        model_engine_version = _try_import_and_get_module_version(model_engine)
-    logging.info(
-        f"Passed model engine corresponds to '{model_engine}'"
-        f"- Installed version '{model_engine_version}'"
-    )
-
-    backup_model = "naive"
 
     keys = [
         dataset,
         group,
         LIBRARY,
         LIBRARY_VERSION,
-        model,
-        model_engine,
-        model_engine_version,
         execution_engine,
         EXEC_ENGINE_VERSION,
         execution_mode,
         EXEC_MODE_VERSION,
         num_cpus,
-        backup_model,
         PYTHON_VERSION,
         OS,
     ]
@@ -147,10 +113,10 @@ def main(
     # -------------------------------------------------------------------------#
     # Get the data ----
     # -------------------------------------------------------------------------#
-    BASE_DIR, FORECAST_DIR, TIME_DIR, _ = _return_dirs(dataset=dataset)
+    BASE_DIR, _, _, PROPERTIES_DIR = _return_dirs(dataset=dataset)
 
     # Check if the directory exists. If not, create it.
-    for dir in [FORECAST_DIR, TIME_DIR]:
+    for dir in [PROPERTIES_DIR]:
         if not os.path.exists(dir):
             os.makedirs(dir)
 
@@ -173,13 +139,11 @@ def main(
     # -------------------------------------------------------------------------#
     # Experiment Settings ----
     # NOTE:
-    # (1) Disable Cross validation to get fastest results for benchmarking.
-    # (2) Test only has time points. No values. This is to avoid leakage.
-    # (3) Only use the train portion to extract features since test will be imputed.
+    # (1) Test only has time points. No values. This is to avoid leakage.
+    # (2) Only use the train portion to extract features since test will be imputed.
     # -------------------------------------------------------------------------#
 
     verbose = False
-    cross_validate = False
     setup_kwargs = {
         "fh": fh,
         "target": "y",
@@ -188,31 +152,32 @@ def main(
         "numeric_imputation_target": "ffill",
         "hyperparameter_split": "train",
         "ignore_features": ["unique_id"],
-        "engine": {model: model_engine},
         "n_jobs": 1,
         "session_id": 42,
         "verbose": verbose,
     }
-    create_model_kwargs = {
-        "estimator": model,
-        "cross_validation": cross_validate,
-        "verbose": verbose,
-    }
-    backup_model_kwargs = {
-        "estimator": backup_model,
-        "cross_validation": cross_validate,
-        "verbose": verbose,
-    }
-    apply_kwargs = dict(
-        prefix=prefix,
-        setup_kwargs=setup_kwargs,
-        create_model_kwargs=create_model_kwargs,
-        backup_model_kwargs=backup_model_kwargs,
-    )
+    apply_kwargs = dict(prefix=prefix, setup_kwargs=setup_kwargs)
 
     # Fugue required the schema of the returned dataframe ----
     if execution_mode == "fugue":
-        schema = "unique_id:str, ds:date, y_pred:float, model_name:str, model_engine:str, model:str"
+        schema = (
+            "len_total : int"
+            ",len_train : int"
+            ",len_test : int"
+            ",strictly_positive : bool"
+            ",white_noise : str"
+            ",lowercase_d : int"
+            ",uppercase_d : int"
+            ",seasonality_present :bool"
+            ",candidate_sps :list"
+            ",significant_sps :list"
+            ",all_sps :list"
+            ",primary_sp :int"
+            ",significant_sps_no_harmonics :list"
+            ",all_sps_no_harmonics :list"
+            ",primary_sp_no_harmonics :int"
+            ",time_taken :float"
+        )
     else:
         schema = None
 
@@ -220,10 +185,10 @@ def main(
     # Run Benchmarking ----
     # -------------------------------------------------------------------------#
     initialize_engine(execution_engine, num_cpus)
-    test_results, time_taken = execute(
+    properties, time_taken = execute(
         all_groups=combined,
         keys="unique_id",
-        function_single_group=forecast_create_model,
+        function_single_group=extract_properties,
         function_kwargs=apply_kwargs,
         execution_mode=execution_mode,
         execution_engine=execution_engine,
@@ -237,13 +202,31 @@ def main(
     # -------------------------------------------------------------------------#
 
     # Order columns (as different execution engines may have different orders) ----
-    cols = ["unique_id", "ds", "y_pred", "model_name", "model_engine", "model"]
-    test_results = test_results[cols]
+    cols = [
+        "unique_id",
+        "len_total",
+        "len_train",
+        "len_test",
+        "strictly_positive",
+        "white_noise",
+        "lowercase_d",
+        "uppercase_d",
+        "seasonality_present",
+        "candidate_sps",
+        "significant_sps",
+        "all_sps",
+        "primary_sp",
+        "significant_sps_no_harmonics",
+        "all_sps_no_harmonics",
+        "primary_sp_no_harmonics",
+        "time_taken",
+    ]
+    properties = properties[cols]
 
     # Write results ----
-    result_file_name = f"{FORECAST_DIR}/forecasts-{prefix}.csv"
-    logging.info(f"Writing results to {result_file_name}")
-    test_results.to_csv(result_file_name, index=False)
+    properties_file_name = f"{PROPERTIES_DIR}/properties-{prefix}.csv"
+    logging.info(f"Writing properties to {properties_file_name}")
+    properties.to_csv(properties_file_name, index=False)
 
     # Add all KEY_COLS along with Non Static columns like time and run date ----
     time_df = pd.DataFrame(
@@ -252,26 +235,22 @@ def main(
             "group": [group],
             "library": [LIBRARY],
             "library_version": [LIBRARY_VERSION],
-            "model": [model],
-            "model_engine": [model_engine],
-            "model_engine_version": [model_engine_version],
             "execution_engine": [execution_engine],
             "execution_engine_version": [EXEC_ENGINE_VERSION],
             "execution_mode": [execution_mode],
             "execution_mode_version": [EXEC_MODE_VERSION],
             "num_cpus": [num_cpus],
-            "backup_model": [backup_model],
             "python_version": [PYTHON_VERSION],
             "os": [OS],
             "time": [time_taken],
             "run_date": [RUN_DATE],
         }
     )
-    time_file_name = f"{TIME_DIR}/time-{prefix}.csv"
+    time_file_name = f"{PROPERTIES_DIR}/time-{prefix}.csv"
     logging.info(f"Writing time to {time_file_name}")
     time_df.to_csv(time_file_name, index=False)
 
-    logging.info("Benchmark Complete!")
+    logging.info("Property Extraction Complete!")
 
 
 if __name__ == "__main__":

@@ -20,7 +20,7 @@ def main(dataset: str = "M3") -> None:
     dataset : str, optional
         Dataset for which the evaluation needs to be performed, by default "M3"
     """
-    BASE_DIR, _, _ = _return_dirs(dataset=dataset)
+    BASE_DIR, _, _, _ = _return_dirs(dataset=dataset)
 
     # -------------------------------------------------------------------------#
     # START: Read the evaluation results
