@@ -26,7 +26,7 @@ from benchmarks.parallel.execution import (
     run_execution_checks,
     shutdown_engine,
 )
-from benchmarks.parallel.time_series.single_ts import forecast_create_model
+from benchmarks.parallel.time_series.forecast_single_ts import forecast_create_model
 from benchmarks.utils import (
     _get_qualified_model_engine,
     _return_dirs,
@@ -189,6 +189,7 @@ def main(
         "hyperparameter_split": "train",
         "ignore_features": ["unique_id"],
         "engine": {model: model_engine},
+        "max_sp_to_consider": 52,
         "n_jobs": 1,
         "session_id": 42,
         "verbose": verbose,

@@ -215,7 +215,7 @@ def evaluate(
     forecast = forecast.query("model_name == @model")[selected_cols]
     forecast["ds"] = pd.to_datetime(forecast["ds"])
 
-    if group == "Weekly":
+    if group in ["Hourly", "Weekly"]:
         # Get the correct index from ds (to match y_test)
         # This is due to internal coercing in PyCaret
         forecast[["_remove", "ds"]] = (
@@ -258,6 +258,10 @@ def evaluate(
         metric_name = metric.__name__
         loss = metric(y_test, y_hat)
         evaluations[metric_name] = loss
+
+    # TODO: For M4, we should use M4.evaluate as shown here ....
+    # This gives SMAPE, MASE and OWA
+    # https://www.kaggle.com/code/lemuz90/m4-competition
 
     evaluations = pd.DataFrame(evaluations, index=[0])
 
