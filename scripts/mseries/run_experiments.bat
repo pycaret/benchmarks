@@ -5,8 +5,7 @@
 @echo OFF
 
 for %%d in (M4) do (
-    @REM Weekly
-    for %%g in (Hourly) do (
+    for %%g in (Weekly Hourly) do (
         @REM Statistical Models (single engine) ----
         for %%m in (grand_means naive snaive polytrend croston arima ets exp_smooth theta) do (
             python scripts/mseries/experiment.py --dataset=%%d --model=%%m --group=%%g
