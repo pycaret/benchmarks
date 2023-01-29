@@ -58,6 +58,9 @@ def plot_metrics_vs_time(
         python_version = data.iloc[i]["python_version"]
         os = data.iloc[i]["os"]
         num_models = data.iloc[i]["count_ts"]
+        primary_model_per = data.iloc[i]["primary_model_per"]
+        backup_model_per = data.iloc[i]["backup_model_per"]
+        no_model_per = data.iloc[i]["no_model_per"]
         time = data.iloc[i]["time"]
         hovertext = (
             f"<br>Library: '{library}' Version: '{library_version}'"
@@ -69,7 +72,8 @@ def plot_metrics_vs_time(
             f"Version: '{execution_mode_version}'"
             f"<br>Number of CPUs: '{num_cpus}' "
             f"Total Models: '{num_models}' Total Time (mins): '{time}'"
-            f"<br>Backup Model: '{backup_model}'"
+            f"<br>Backup Model: '{backup_model}' Backup Model %: '{backup_model_per}'"
+            f"<br>Primary Model %: '{primary_model_per}' No Model %: '{no_model_per}'"
             f"<br>Python Version: '{python_version}' OS: '{os}'"
         )
         fig.add_scattergl(
