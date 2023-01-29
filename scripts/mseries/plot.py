@@ -48,7 +48,7 @@ def main(
 
     logging.info("\n\n")
     logging.info(
-        f"\nPlotting results for dataset: '{dataset}'"
+        f"\nPlotting results for dataset: '{dataset}' group: '{group}'"
         f"\n    from Directory: '{EVAL_DIR}'"
     )
 
