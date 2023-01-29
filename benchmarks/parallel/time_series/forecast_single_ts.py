@@ -93,9 +93,13 @@ def forecast_create_model(
     # Hence, add it as a column
     test_preds["unique_id"] = unique_id
 
-    # PyArrow does not support PeriodIndex (returned by PyCaret).
-    # Hence converting to datetime.
-    test_preds = test_preds.to_timestamp()
+    # PyArrow does not support PeriodIndex (returned by PyCaret depending on
+    # input data index type). Hence converting to datetime if applicable.
+    try:
+        if isinstance(test_preds.index, pd.PeriodIndex):
+            test_preds = test_preds.to_timestamp()
+    except TypeError as e:
+        logging.info(f"Index for {unique_id} is not coercible to timestamp: {e}")
 
     # Fugue may have issues handling index.
     # Hence it is better to reset it before returning.
