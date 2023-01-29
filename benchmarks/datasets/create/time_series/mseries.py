@@ -210,9 +210,13 @@ def evaluate(
         }
     )
 
-    # Just to be double sure
+    # Here the final metric is for a combination of the primary and backup models.
+    # Hence to make sure the comparisons are fair, we should check to make sure
+    # that backup models are used sparingly only (instead of removing them from
+    # the comparison).
     selected_cols = ["unique_id", "ds", "y_pred"]
-    forecast = forecast.query("model_name == @model")[selected_cols]
+    # forecast = forecast.query("model_name == @model")[selected_cols]
+    forecast = forecast[selected_cols]
 
     # Combine and check if the index matches
     if y_test["ds"].dtype == "datetime64[ns]":
