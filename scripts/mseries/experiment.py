@@ -31,6 +31,7 @@ from benchmarks.utils import (
     _return_dirs,
     _return_pycaret_version_or_hash,
     _try_import_and_get_module_version,
+    _impute_time_series_model_engine,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
@@ -110,7 +111,7 @@ def main(
 
     model_engine = _get_qualified_model_engine(model=model, model_engine=model_engine)
     # Default model engine is assumed to be sktime
-    model_engine_imputed = model_engine or "sktime"
+    model_engine_imputed = _impute_time_series_model_engine(engine=model_engine)
     model_engine_version = _try_import_and_get_module_version(model_engine_imputed)
     logging.info(
         f"Passed model engine corresponds to '{model_engine_imputed}'"
@@ -125,7 +126,7 @@ def main(
         LIBRARY,
         LIBRARY_VERSION,
         model,
-        model_engine,
+        model_engine_imputed,
         model_engine_version,
         execution_engine,
         EXEC_ENGINE_VERSION,
@@ -194,7 +195,7 @@ def main(
         "numeric_imputation_target": "ffill",
         "hyperparameter_split": "train",
         "ignore_features": ["unique_id"],
-        "engine": {model: model_engine},
+        "engine": {model: model_engine},  # non-imputed version of model_engine
         "n_jobs": 1,
         "session_id": 42,
         "verbose": verbose,
@@ -259,7 +260,7 @@ def main(
             "library": [LIBRARY],
             "library_version": [LIBRARY_VERSION],
             "model": [model],
-            "model_engine": [model_engine],
+            "model_engine": [model_engine_imputed],
             "model_engine_version": [model_engine_version],
             "execution_engine": [execution_engine],
             "execution_engine_version": [EXEC_ENGINE_VERSION],

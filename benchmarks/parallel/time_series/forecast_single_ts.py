@@ -2,6 +2,8 @@
 import logging
 from typing import Optional
 
+from benchmarks.utils import _impute_time_series_model_engine
+
 import pandas as pd
 from pycaret.time_series import TSForecastingExperiment
 
@@ -86,7 +88,7 @@ def forecast_create_model(
 
     # Add model name and model hyperparameters used ----
     test_preds["model_name"] = model_name
-    test_preds["model_engine"] = model_engine
+    test_preds["model_engine"] = _impute_time_series_model_engine(engine=model_engine)
     test_preds["model"] = model.__repr__()
 
     # Fugue does not return back the group by column (like Pandas)

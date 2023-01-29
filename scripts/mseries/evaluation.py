@@ -83,7 +83,8 @@ def main(dataset: str = "M3") -> None:
     for filename in os.listdir(TIME_DIR):
         if filename.endswith(".csv"):
             name_no_ext = os.path.splitext(filename)[0]
-            combination = name_no_ext.split("time-")[1]
+            # since library also has name sktime-, we need to split only once
+            combination = name_no_ext.split("time-", 1)[1]
             all_combinations.append(combination)
 
     # Remove duplicates
@@ -96,6 +97,7 @@ def main(dataset: str = "M3") -> None:
     # -------------------------------------------------------------------------#
 
     evaluation = []
+    all_combinations.sort()
     for combination in all_combinations:
         keys = combination.split("-")
         evaluation.append(
