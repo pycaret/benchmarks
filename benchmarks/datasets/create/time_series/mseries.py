@@ -213,43 +213,67 @@ def evaluate(
     # Just to be double sure
     selected_cols = ["unique_id", "ds", "y_pred"]
     forecast = forecast.query("model_name == @model")[selected_cols]
-    forecast["ds"] = pd.to_datetime(forecast["ds"])
 
-    if group in ["Hourly", "Weekly"]:
-        # Get the correct index from ds (to match y_test)
-        # This is due to internal coercing in PyCaret
-        forecast[["_remove", "ds"]] = (
-            forecast["ds"]
-            .dt.strftime("%Y-%m-%d %H:%M:%S.%10f")
-            .str.split(".", expand=True)
-        )
-        # Trim leading zeros
-        forecast["ds"] = forecast["ds"].astype(int).astype(str)
-        forecast.drop(columns="_remove", inplace=True)
-        y_test["ds"] = y_test["ds"].astype(str)
-    if group == "Monthly":
-        # Remove day since one can have Month Start and one can have Month End
-        # This is due to internal coercing in PyCaret
-        forecast["ds"] = forecast["ds"].dt.strftime("%Y-%m")
-        y_test["ds"] = y_test["ds"].dt.strftime("%Y-%m")
-    elif group == "Quarterly":
-        # Remove day-month since one can have Quarter Start and one can have Quarter End
-        # This is due to internal coercing in PyCaret
-        forecast["ds"] = (
-            forecast["ds"].dt.year.astype(str)
-            + "-"
-            + forecast["ds"].dt.quarter.astype(str)
-        )
-        y_test["ds"] = (
-            y_test["ds"].dt.year.astype(str) + "-" + y_test["ds"].dt.quarter.astype(str)
-        )
-    if group == "Yearly":
-        # Remove day-month since one can have Year Start and one can have Year End
-        # This is due to internal coercing in PyCaret
-        forecast["ds"] = forecast["ds"].dt.strftime("%Y")
-        y_test["ds"] = y_test["ds"].dt.strftime("%Y")
+    # Combine and check if the index matches
+    if y_test["ds"].dtype == "datetime64[ns]":
+        # Resample the forecasts to same frequency as used in the dataset class
+        # e.g. https://github.com/Nixtla/datasetsforecast/blob/90b51c31824fc95ac50e00e9ca93cc951ded3ee6/datasetsforecast/m3.py#L108  # noqa: E501
+
+        # 1.0 Get the freq
+        _, dataset_info_cls = dict_datasets.get(dataset)
+        freq = dataset_info_cls.get_group(group).freq
+        freq = pd.tseries.frequencies.to_offset(freq)
+
+        # Resample the forecast
+        forecast["ds"] = pd.to_datetime(forecast["ds"])
+        forecast.set_index("ds", inplace=True)
+        forecast = forecast.groupby("unique_id").resample(freq).sum().reset_index()
 
     combined = pd.merge(y_test, forecast, on=["unique_id", "ds"], how="left")
+
+    # If the index does not match (in older versions of PyCaret, then use
+    # workaround below)
+    if sum(combined.isna()["y_pred"]) == len(y_test):
+        logging.info("\tIndex does not match. Using workaround to match index.")
+        forecast["ds"] = pd.to_datetime(forecast["ds"])
+
+        if group in ["Hourly", "Weekly"]:
+            # Get the correct index from ds (to match y_test)
+            # This is due to internal coercing in PyCaret
+            forecast[["_remove", "ds"]] = (
+                forecast["ds"]
+                .dt.strftime("%Y-%m-%d %H:%M:%S.%10f")
+                .str.split(".", expand=True)
+            )
+            # Trim leading zeros
+            forecast["ds"] = forecast["ds"].astype(int).astype(str)
+            forecast.drop(columns="_remove", inplace=True)
+            y_test["ds"] = y_test["ds"].astype(str)
+        if group == "Monthly":
+            # Remove day since one can have Month Start and one can have Month End
+            # This is due to internal coercing in PyCaret
+            forecast["ds"] = forecast["ds"].dt.strftime("%Y-%m")
+            y_test["ds"] = y_test["ds"].dt.strftime("%Y-%m")
+        elif group == "Quarterly":
+            # Remove day-month since one can have Quarter Start and one can have
+            # Quarter End. This is due to internal coercing in PyCaret.
+            forecast["ds"] = (
+                forecast["ds"].dt.year.astype(str)
+                + "-"
+                + forecast["ds"].dt.quarter.astype(str)
+            )
+            y_test["ds"] = (
+                y_test["ds"].dt.year.astype(str)
+                + "-"
+                + y_test["ds"].dt.quarter.astype(str)
+            )
+        if group == "Yearly":
+            # Remove day-month since one can have Year Start and one can have Year End
+            # This is due to internal coercing in PyCaret
+            forecast["ds"] = forecast["ds"].dt.strftime("%Y")
+            y_test["ds"] = y_test["ds"].dt.strftime("%Y")
+
+        combined = pd.merge(y_test, forecast, on=["unique_id", "ds"], how="left")
     y_test = combined["y"].values.reshape(-1, horizon)
     y_hat = combined["y_pred"].values.reshape(-1, horizon)
 

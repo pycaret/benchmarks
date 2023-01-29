@@ -14,7 +14,6 @@ from typing import Optional
 import fire
 import numpy as np
 import pandas as pd
-from tqdm import tqdm
 
 from benchmarks.datasets.create.time_series.mseries import get_data
 from benchmarks.parallel.execution import (
@@ -27,9 +26,6 @@ from benchmarks.parallel.time_series.properties import extract_properties
 from benchmarks.utils import _return_dirs, _return_pycaret_version_or_hash
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
-
-# Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
-tqdm.pandas()
 
 
 def main(

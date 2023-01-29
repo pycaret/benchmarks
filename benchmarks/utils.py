@@ -176,6 +176,26 @@ def _get_qualified_model_engine(model: str, model_engine: Optional[str]) -> str:
     return model_engine
 
 
+def _impute_time_series_model_engine(
+    engine: Optional[str], default: str = "sktime"
+) -> str:
+    """Returns the engine after imputing it with the default value (if None).
+
+    Parameters
+    ----------
+    engine : Optional[str]
+        The engine value to impute
+    default : str, optional
+        The default engine used by pycaret time series module, by default "sktime"
+
+    Returns
+    -------
+    str
+        The engine value after imputation (or the passed value if not imputed)
+    """
+    return engine or default
+
+
 def _try_import_and_get_module_version(
     modname: str,
 ) -> Optional[Union[LooseVersion, bool]]:

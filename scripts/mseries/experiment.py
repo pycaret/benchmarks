@@ -17,7 +17,6 @@ from typing import Optional
 import fire
 import numpy as np
 import pandas as pd
-from tqdm import tqdm
 
 from benchmarks.datasets.create.time_series.mseries import get_data
 from benchmarks.parallel.execution import (
@@ -29,15 +28,13 @@ from benchmarks.parallel.execution import (
 from benchmarks.parallel.time_series.forecast_single_ts import forecast_create_model
 from benchmarks.utils import (
     _get_qualified_model_engine,
+    _impute_time_series_model_engine,
     _return_dirs,
     _return_pycaret_version_or_hash,
     _try_import_and_get_module_version,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
-
-# Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
-tqdm.pandas()
 
 
 def main(
@@ -106,19 +103,18 @@ def main(
         f"Model: '{model}', Model Engine: '{model_engine}' using ..."
         f"\n  - OS: '{OS}'"
         f"\n  - Python Version: '{PYTHON_VERSION}'"
-        f"\n  - Library: '{LIBRARY}'"
-        f"\n  - Library Version: '{LIBRARY_VERSION}'"
+        f"\n  - Library: '{LIBRARY}' Version: '{LIBRARY_VERSION}'"
         f"\n  - Execution Engine: '{execution_engine}' Version: '{EXEC_ENGINE_VERSION}'"
         f"\n  - Execution Mode: '{execution_mode}' Version: '{EXEC_MODE_VERSION}'"
         f"\n  - CPUs: {num_cpus}"
     )
 
     model_engine = _get_qualified_model_engine(model=model, model_engine=model_engine)
-    model_engine_version = None
-    if model_engine:
-        model_engine_version = _try_import_and_get_module_version(model_engine)
+    # Default model engine is assumed to be sktime
+    model_engine_imputed = _impute_time_series_model_engine(engine=model_engine)
+    model_engine_version = _try_import_and_get_module_version(model_engine_imputed)
     logging.info(
-        f"Passed model engine corresponds to '{model_engine}'"
+        f"Passed model engine corresponds to '{model_engine_imputed}'"
         f"- Installed version '{model_engine_version}'"
     )
 
@@ -130,7 +126,7 @@ def main(
         LIBRARY,
         LIBRARY_VERSION,
         model,
-        model_engine,
+        model_engine_imputed,
         model_engine_version,
         execution_engine,
         EXEC_ENGINE_VERSION,
@@ -164,7 +160,18 @@ def main(
     test["y"] = np.nan
 
     combined = pd.concat([train, test], axis=0)
-    combined["ds"] = pd.to_datetime(combined["ds"])
+    # combined["ds"] = pd.to_datetime(combined["ds"])
+    try:
+        # If index is of int type, it may be read in as string.
+        # Try to convert it back to int.
+        if combined["ds"].dtype == "object":
+            combined["ds"] = combined["ds"].astype(int)
+    except TypeError:
+        logging.warn(
+            "Tried converting 'ds' string column to int but failed. It will "
+            "remain a string and be assumed to be coercible to datetime for "
+            "further processing in pycaret."
+        )
 
     # # For local testing on a small subset ----
     # all_ts = combined["unique_id"].unique()
@@ -188,8 +195,7 @@ def main(
         "numeric_imputation_target": "ffill",
         "hyperparameter_split": "train",
         "ignore_features": ["unique_id"],
-        "engine": {model: model_engine},
-        "max_sp_to_consider": 52,
+        "engine": {model: model_engine},  # non-imputed version of model_engine
         "n_jobs": 1,
         "session_id": 42,
         "verbose": verbose,
@@ -254,7 +260,7 @@ def main(
             "library": [LIBRARY],
             "library_version": [LIBRARY_VERSION],
             "model": [model],
-            "model_engine": [model_engine],
+            "model_engine": [model_engine_imputed],
             "model_engine_version": [model_engine_version],
             "execution_engine": [execution_engine],
             "execution_engine_version": [EXEC_ENGINE_VERSION],
