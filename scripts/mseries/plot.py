@@ -115,8 +115,8 @@ def main(
     # START: Plot Results
     # -------------------------------------------------------------------------#
 
-    plot_metrics(combined, metric, dataset, group)
-    plot_metrics_vs_time(combined, metric, dataset, group)
+    plot_metrics(combined, metric, dataset, group, name_col="key")
+    plot_metrics_vs_time(combined, metric, dataset, group, name_col="key")
 
     logging.info("\nPlotting Complete!")
 

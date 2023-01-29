@@ -4,7 +4,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-def plot_metrics_vs_time(data: pd.DataFrame, metric: str, dataset: str, group: str):
+def plot_metrics_vs_time(
+    data: pd.DataFrame, metric: str, dataset: str, group: str, name_col: str = "key"
+):
     """Plots the metric vs. elapsed time for each model.
 
     Metric is plotted on the y-axis and elapsed time on the x-axis.
@@ -23,6 +25,8 @@ def plot_metrics_vs_time(data: pd.DataFrame, metric: str, dataset: str, group: s
         Dataset for which to plot the results,
         e.g. 'Other', 'Quarterly', 'Yearly', 'Monthly', etc.
         Used for the title of the plot.
+    name_col : str, optional
+        The column name to use to name the data points, by default "key"
     """
     data = data.copy()
     data.dropna(subset=["norm_time_cpu_model", metric], inplace=True)
@@ -75,7 +79,7 @@ def plot_metrics_vs_time(data: pd.DataFrame, metric: str, dataset: str, group: s
             marker_size=10,
             row=1,
             col=1,
-            name=data.iloc[i]["name"],
+            name=data.iloc[i][name_col],
             hovertext=hovertext,
         )
 
@@ -94,7 +98,9 @@ def plot_metrics_vs_time(data: pd.DataFrame, metric: str, dataset: str, group: s
     fig.show()
 
 
-def plot_metrics(data: pd.DataFrame, metric: str, dataset: str, group: str):
+def plot_metrics(
+    data: pd.DataFrame, metric: str, dataset: str, group: str, name_col: str = "key"
+):
     """Plots the metric for all models (bar chart).
 
     Parameters
@@ -111,6 +117,8 @@ def plot_metrics(data: pd.DataFrame, metric: str, dataset: str, group: str):
         Dataset for which to plot the results,
         e.g. 'Other', 'Quarterly', 'Yearly', 'Monthly', etc.
         Used for the title of the plot.
+    name_col : str, optional
+        The column name to use to name the data points, by default "key"
     """
     fig = make_subplots(
         rows=1,
@@ -120,7 +128,7 @@ def plot_metrics(data: pd.DataFrame, metric: str, dataset: str, group: str):
         shared_xaxes=True,
     )
 
-    fig.add_trace(go.Bar(y=data["name"], x=data[metric], orientation="h"))
+    fig.add_trace(go.Bar(y=data[name_col], x=data[metric], orientation="h"))
 
     with fig.batch_update():
         fig.update_xaxes(title_text=f"{metric}", row=1, col=1)
