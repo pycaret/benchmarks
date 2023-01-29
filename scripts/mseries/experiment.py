@@ -28,10 +28,10 @@ from benchmarks.parallel.execution import (
 from benchmarks.parallel.time_series.forecast_single_ts import forecast_create_model
 from benchmarks.utils import (
     _get_qualified_model_engine,
+    _impute_time_series_model_engine,
     _return_dirs,
     _return_pycaret_version_or_hash,
     _try_import_and_get_module_version,
-    _impute_time_series_model_engine,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")

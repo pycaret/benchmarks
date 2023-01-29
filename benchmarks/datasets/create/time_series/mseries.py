@@ -255,8 +255,8 @@ def evaluate(
             forecast["ds"] = forecast["ds"].dt.strftime("%Y-%m")
             y_test["ds"] = y_test["ds"].dt.strftime("%Y-%m")
         elif group == "Quarterly":
-            # Remove day-month since one can have Quarter Start and one can have Quarter End
-            # This is due to internal coercing in PyCaret
+            # Remove day-month since one can have Quarter Start and one can have
+            # Quarter End. This is due to internal coercing in PyCaret.
             forecast["ds"] = (
                 forecast["ds"].dt.year.astype(str)
                 + "-"

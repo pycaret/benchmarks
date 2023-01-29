@@ -2,10 +2,10 @@
 import logging
 from typing import Optional
 
-from benchmarks.utils import _impute_time_series_model_engine
-
 import pandas as pd
 from pycaret.time_series import TSForecastingExperiment
+
+from benchmarks.utils import _impute_time_series_model_engine
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
 
