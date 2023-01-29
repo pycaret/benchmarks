@@ -217,7 +217,7 @@ def evaluate(
     # Combine and check if the index matches
     if y_test["ds"].dtype == "datetime64[ns]":
         # Resample the forecasts to same frequency as used in the dataset class
-        # e.g. https://github.com/Nixtla/datasetsforecast/blob/90b51c31824fc95ac50e00e9ca93cc951ded3ee6/datasetsforecast/m3.py#L108
+        # e.g. https://github.com/Nixtla/datasetsforecast/blob/90b51c31824fc95ac50e00e9ca93cc951ded3ee6/datasetsforecast/m3.py#L108  # noqa: E501
 
         # 1.0 Get the freq
         _, dataset_info_cls = dict_datasets.get(dataset)
