@@ -109,11 +109,11 @@ def main(
     )
 
     model_engine = _get_qualified_model_engine(model=model, model_engine=model_engine)
-    model_engine_version = None
-    if model_engine:
-        model_engine_version = _try_import_and_get_module_version(model_engine)
+    # Default model engine is assumed to be sktime
+    model_engine_imputed = model_engine or "sktime"
+    model_engine_version = _try_import_and_get_module_version(model_engine_imputed)
     logging.info(
-        f"Passed model engine corresponds to '{model_engine}'"
+        f"Passed model engine corresponds to '{model_engine_imputed}'"
         f"- Installed version '{model_engine_version}'"
     )
 
