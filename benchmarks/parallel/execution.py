@@ -6,8 +6,12 @@ from typing import Callable, Optional, Tuple
 import pandas as pd
 import ray
 from fugue import transform
+from tqdm import tqdm
 
 from benchmarks.utils import ExecutionEngine, ExecutionMode, check_allowed_types
+
+# Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
+tqdm.pandas()
 
 
 def execute(
@@ -79,16 +83,26 @@ def execute(
                 function_single_group, **function_kwargs
             )
         elif execution_engine == "ray":
+            # Adding progress bar for Ray
+            results_in_progress = []
             all_results = []
             function_remote = ray.remote(function_single_group)
             for single_group in grouped_data.groups.keys():
                 result_single_group = function_remote.remote(
                     data=grouped_data.get_group(single_group), **function_kwargs
                 )
-                all_results.append(result_single_group)
+                results_in_progress.append(result_single_group)
+            progress_bar = tqdm(total=len(results_in_progress))
+            while results_in_progress:
+                results_finished, results_in_progress = ray.wait(
+                    results_in_progress, timeout=1
+                )
+                progress_bar.update(len(results_finished))
+                all_results.extend(results_finished)
             all_results = ray.get(all_results)
             # Combine all results into 1 dataframe
             all_results = pd.concat(all_results)
+
     elif execution_mode == "fugue":
         all_results = transform(
             all_groups,
