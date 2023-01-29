@@ -17,7 +17,6 @@ from typing import Optional
 import fire
 import numpy as np
 import pandas as pd
-from tqdm import tqdm
 
 from benchmarks.datasets.create.time_series.mseries import get_data
 from benchmarks.parallel.execution import (
@@ -35,9 +34,6 @@ from benchmarks.utils import (
 )
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
-
-# Register `pandas.progress_apply` and `pandas.Series.map_apply` with `tqdm`
-tqdm.pandas()
 
 
 def main(
@@ -106,8 +102,7 @@ def main(
         f"Model: '{model}', Model Engine: '{model_engine}' using ..."
         f"\n  - OS: '{OS}'"
         f"\n  - Python Version: '{PYTHON_VERSION}'"
-        f"\n  - Library: '{LIBRARY}'"
-        f"\n  - Library Version: '{LIBRARY_VERSION}'"
+        f"\n  - Library: '{LIBRARY}' Version: '{LIBRARY_VERSION}'"
         f"\n  - Execution Engine: '{execution_engine}' Version: '{EXEC_ENGINE_VERSION}'"
         f"\n  - Execution Mode: '{execution_mode}' Version: '{EXEC_MODE_VERSION}'"
         f"\n  - CPUs: {num_cpus}"
@@ -164,7 +159,18 @@ def main(
     test["y"] = np.nan
 
     combined = pd.concat([train, test], axis=0)
-    combined["ds"] = pd.to_datetime(combined["ds"])
+    # combined["ds"] = pd.to_datetime(combined["ds"])
+    try:
+        # If index is of int type, it may be read in as string.
+        # Try to convert it back to int.
+        if combined["ds"].dtype == "object":
+            combined["ds"] = combined["ds"].astype(int)
+    except TypeError:
+        logging.warn(
+            "Tried converting 'ds' string column to int but failed. It will "
+            "remain a string and be assumed to be coercible to datetime for "
+            "further processing in pycaret."
+        )
 
     # # For local testing on a small subset ----
     # all_ts = combined["unique_id"].unique()
@@ -189,7 +195,6 @@ def main(
         "hyperparameter_split": "train",
         "ignore_features": ["unique_id"],
         "engine": {model: model_engine},
-        "max_sp_to_consider": 52,
         "n_jobs": 1,
         "session_id": 42,
         "verbose": verbose,
