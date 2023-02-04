@@ -1,0 +1,4 @@
+dataset,group,library,library_version,model,model_engine,model_engine_version,execution_engine,execution_engine_version,execution_mode,execution_mode_version,num_cpus,backup_model,python_version,os,backup_model_per,count_ts,mape,no_model_per,primary_model_per,run_date,smape,mase,owa,time,Link
+M4,Hourly,mlforecast,unknown,lightgbm_global,mlforecast,unknown,local,,native,,2,,3.7,linux,0,414,,0,100,10/31/2022,10.297529,0.871663,0.462057,0.078,https://www.kaggle.com/code/lemuz90/m4-competition-cv
+M4,Daily,mlforecast,unknown,lightgbm_global,mlforecast,unknown,local,,native,,2,,3.7,linux,0,4227,,0,100,10/31/2022,2.982905,3.201486,0.978029,0.0457,https://www.kaggle.com/code/lemuz90/m4-competition-cv
+M4,Weekly,mlforecast,unknown,lightgbm_global,mlforecast,unknown,local,,native,,2,,3.7,linux,0,359,,0,100,10/31/2022,7.673,2.142247,0.804444,0.2633,https://www.kaggle.com/code/lemuz90/m4-competition-cv

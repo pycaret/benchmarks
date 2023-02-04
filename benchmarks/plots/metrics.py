@@ -169,7 +169,7 @@ def plot_metrics_vs_time(
         fig.update_layout(showlegend=True, template=template)
         fig.update_layout(title=f"Dataset: '{dataset}' Group: '{group}'")
 
-    fig.show()
+    return fig
 
 
 def plot_metrics(
@@ -210,7 +210,7 @@ def plot_metrics(
         fig.update_layout(showlegend=False, template=template)
         fig.update_layout(title=f"Dataset: '{dataset}' Group: '{group}'")
 
-    fig.show()
+    return fig
 
 
 if __name__ == "__main__":

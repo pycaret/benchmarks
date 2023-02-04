@@ -2,6 +2,10 @@
 
 The purpose of this repository is to assist with the benchmarking of the pycaret module. Currently, the benchmarks are only for time series forecasting and feature extraction. The benchmarking is done using the M3 and M4 competition dataset, but can be extended to other datasets as well.
 
+## Result Summary
+
+- [M3 Benchmark Summary](http://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/data/m3/M3_all_results_summary.html)
+- [M4 Benchmark Summary](http://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/data/m4/M4_all_results_summary.html)
 
 # Time Series Benchmarking (Windows)
 

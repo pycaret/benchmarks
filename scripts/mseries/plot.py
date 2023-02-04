@@ -199,8 +199,21 @@ def main(
     # START: Plot Results
     # -------------------------------------------------------------------------#
 
-    plot_metrics(combined, metric, dataset, group, name_col="key")
-    plot_metrics_vs_time(combined, metric, dataset, group, name_col="key")
+    plot_prefix = f"{dataset}_{group}_{metric}"
+
+    fig1 = plot_metrics(combined, metric, dataset, group, name_col="key")
+    # fig1.show()
+    fig1.write_html(
+        f"{EVAL_DIR}/{plot_prefix}.html", full_html=False, include_plotlyjs="cdn"
+    )
+
+    fig2 = plot_metrics_vs_time(combined, metric, dataset, group, name_col="key")
+    # fig2.show()
+    fig2.write_html(
+        f"{EVAL_DIR}/{plot_prefix}_vs_time.html",
+        full_html=False,
+        include_plotlyjs="cdn",
+    )
 
     logging.info("\nPlotting Complete!")
 
