@@ -1,7 +1,69 @@
 """Module to plot metrics from benchmark results."""
 import pandas as pd
+import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from plotly.validators.scatter.marker import SymbolValidator
+
+
+def _return_color_map(models: list) -> dict:
+    """Returns a color map for the models.
+
+    Parameters
+    ----------
+    models : list
+        List of models for which to return the color map.
+
+    Returns
+    -------
+    dict
+        Dictionary with model as key and color as value.
+    """
+    # Add color map for models ----
+    color_map = {}
+    cmap = px.colors.sequential.Turbo  # px.colors.sequential.Viridis
+    total_colors = len(cmap)
+    for i, model in enumerate(models):
+        color_map[model] = cmap[i % total_colors]
+    return color_map
+
+
+def _return_symbol_map(models: list) -> dict:
+    """Returns a symbol map for the models.
+
+    Parameters
+    ----------
+    models : list
+        List of models for which to return the symbol map.
+
+    Returns
+    -------
+    dict
+        Dictionary with model as key and symbol as value.
+    """
+    # Ref: https://plotly.com/python/marker-style/
+    symbols = []
+    name_stems = []
+    # name_variants = []
+    raw_symbols = SymbolValidator().values
+    for i in range(0, len(raw_symbols), 3):
+        name = raw_symbols[i + 2]
+        symbols.append(raw_symbols[i])
+        name_stems.append(name.replace("-open", "").replace("-dot", ""))
+        # name_variants.append(name[len(name_stems[-1]) :])
+
+    if len(models) <= len(set(name_stems)):
+        symbols_to_use = list(set(name_stems))
+    else:
+        symbols_to_use = symbols
+    symbols_to_use.sort()
+
+    symbol_map = {}
+    total_symbols = len(symbols_to_use)
+    for i, model in enumerate(models):
+        symbol_map[model] = symbols_to_use[i % total_symbols]
+
+    return symbol_map
 
 
 def plot_metrics_vs_time(
@@ -38,6 +100,10 @@ def plot_metrics_vs_time(
         vertical_spacing=0.02,
         shared_xaxes=True,
     )
+
+    models = data["model"].unique()
+    color_map = _return_color_map(models)
+    symbol_map = _return_symbol_map(models)
 
     data["count_ts"] = data["count_ts"].astype(str)
     data["time"] = data["time"].astype(str)
@@ -80,7 +146,12 @@ def plot_metrics_vs_time(
             x=[data.iloc[i]["norm_time_cpu_model"]],
             y=[data.iloc[i][metric]],
             mode="markers",
-            marker_size=10,
+            marker=dict(
+                color=color_map.get(model, "ffffff"),
+                symbol=symbol_map.get(model, "circle"),
+            ),
+            marker_line_width=2,
+            marker_size=15,
             row=1,
             col=1,
             name=data.iloc[i][name_col],
@@ -96,7 +167,6 @@ def plot_metrics_vs_time(
         fig.update_yaxes(title_text=f"{metric}", row=1, col=1)
         template = "ggplot2"
         fig.update_layout(showlegend=True, template=template)
-        fig.update_traces(marker={"size": 10})
         fig.update_layout(title=f"Dataset: '{dataset}' Group: '{group}'")
 
     fig.show()
