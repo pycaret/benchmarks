@@ -249,8 +249,15 @@ def evaluate(
                 .dt.strftime("%Y-%m-%d %H:%M:%S.%10f")
                 .str.split(".", expand=True)
             )
-            # Trim leading zeros
-            forecast["ds"] = forecast["ds"].astype(int).astype(str)
+            # (1) Trim leading zeros
+            # (2) '1000' (str), gets converted to 1 (int). So account for this as well.
+            forecast["ds"] = (
+                forecast["ds"]
+                .str.ljust(9)
+                .str.replace(" ", "0")
+                .astype(int)
+                .astype(str)
+            )
             forecast.drop(columns="_remove", inplace=True)
             y_test["ds"] = y_test["ds"].astype(str)
         if group == "Monthly":
@@ -278,6 +285,10 @@ def evaluate(
             y_test["ds"] = y_test["ds"].dt.strftime("%Y")
 
         combined = pd.merge(y_test, forecast, on=["unique_id", "ds"], how="left")
+
+    # At this point, we should have no missing values after merging
+    assert combined.isna().sum().sum() == 0, "Missing values after merging"
+
     y_test = combined["y"].values.reshape(-1, horizon)
     y_hat = combined["y_pred"].values.reshape(-1, horizon)
 
