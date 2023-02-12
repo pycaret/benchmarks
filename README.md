@@ -4,8 +4,37 @@ The purpose of this repository is to assist with the benchmarking of the pycaret
 
 ## Result Summary
 
-- [M3 Benchmark Summary](http://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_all_results_summary.html)
-- [M4 Benchmark Summary](http://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_all_results_summary.html)
+### M3 Benchmark Summary 
+- Monthly
+  - SMAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Monthly_smape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Monthly_smape_vs_time.html)
+  - MAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Monthly_mape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Monthly_mape_vs_time.html)
+  - Primary Model % Coverage: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Monthly_primary_model_per.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Monthly_primary_model_per_vs_time.html)
+- Quarterly
+  - SMAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Quarterly_smape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Quarterly_smape_vs_time.html)
+  - MAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Quarterly_mape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Quarterly_mape_vs_time.html)
+  - Primary Model % Coverage: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Quarterly_primary_model_per.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Quarterly_primary_model_per_vs_time.html)
+- Yearly
+  - SMAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Yearly_smape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Yearly_smape_vs_time.html)
+  - MAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Yearly_mape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Yearly_mape_vs_time.html)
+  - Primary Model % Coverage: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Yearly_primary_model_per.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Yearly_primary_model_per_vs_time.html)
+- Other
+  - SMAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Other_smape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Other_smape_vs_time.html)
+  - MAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Other_mape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Other_mape_vs_time.html)
+  - Primary Model % Coverage: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Other_primary_model_per.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m3/M3_Other_primary_model_per_vs_time.html)
+
+### M4 Benchmark Summary
+- Weekly
+  - SMAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_smape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_smape_vs_time.html)
+  - MASE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_mase.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_mase_vs_time.html)
+  - OWA: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_owa.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_owa_vs_time.html)
+  - MAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_mape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_mape_vs_time.html)
+  - Primary Model % Coverage: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_primary_model_per.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Weekly_primary_model_per_vs_time.html)
+- Hourly
+  - SMAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_smape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_smape_vs_time.html)
+  - MASE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_mase.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_mase_vs_time.html)
+  - OWA: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_owa.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_owa_vs_time.html)
+  - MAPE: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_mape.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_mape_vs_time.html)
+  - Primary Model % Coverage: [Bar Chart](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_primary_model_per.html) | [Metric vs. Time](https://htmlpreview.github.io/?https://github.com/pycaret/benchmarks/blob/main/data/m4/M4_Hourly_primary_model_per_vs_time.html)
 
 # Time Series Benchmarking (Windows)
 
