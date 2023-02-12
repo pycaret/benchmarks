@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from datasetsforecast.losses import mape, smape
 from datasetsforecast.m3 import M3, M3Info
-from datasetsforecast.m4 import M4, M4Info
+from datasetsforecast.m4 import M4, M4Info, M4Evaluation
 
 from benchmarks.utils import _return_dirs
 
@@ -298,11 +298,21 @@ def evaluate(
         loss = metric(y_test, y_hat)
         evaluations[metric_name] = loss
 
-    # TODO: For M4, we should use M4.evaluate as shown here ....
-    # This gives SMAPE, MASE and OWA
-    # https://www.kaggle.com/code/lemuz90/m4-competition
-
     evaluations = pd.DataFrame(evaluations, index=[0])
+
+    if dataset == "M4":
+        # For M4, we should use M4.evaluate as shown here ....
+        # This gives SMAPE, MASE and OWA
+        # https://www.kaggle.com/code/lemuz90/m4-competition
+        m4_results = M4Evaluation.evaluate(directory=BASE_DIR, group=group, y_hat=y_hat)
+        m4_results.columns = m4_results.columns.str.lower()
+        m4_results.reset_index(inplace=True, drop=True)
+
+        if m4_results["smape"][0] != evaluations["smape"][0]:
+            assert "M4 SMAPE Local calculations do no match M4Evaluation"
+
+        evaluations.drop(columns=["smape"], inplace=True)
+        evaluations = pd.concat([evaluations, m4_results], axis=1)
 
     try:
         times = pd.read_csv(f"{TIME_DIR}/time-{suffix}.csv")
