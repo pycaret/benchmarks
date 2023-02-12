@@ -74,9 +74,23 @@ def main(
 
     if metric in combined.columns:
 
-        # -------------------------------------------------------------------------#
+        # ---------------------------------------------------------------------#
+        # START: Exclude
+        # ---------------------------------------------------------------------#
+        # Models that have large errors and distort plots
+        exclude_models = ["lar_cds_dt", "par_cds_dt"]
+        combined = combined.query("model not in @exclude_models")
+
+        # Intermediate versions
+        exclude_versions = [
+            "38f01856b5ca14ca79aa800677b489c381d5aa71",
+            "6a4914f1552547fe73dd7be13f3d1843e72d1f61",
+        ]
+        combined = combined.query("library_version not in @exclude_versions")
+
+        # ---------------------------------------------------------------------#
         # START: Filter based on user inputs
-        # -------------------------------------------------------------------------#
+        # ---------------------------------------------------------------------#
 
         def _print_all_available(key: str, values: Optional[str] = None):
             values = values or "All Available"
@@ -202,25 +216,19 @@ def main(
         combined.sort_values(by=metric, inplace=True)
         combined[KEY_COLS] = combined[KEY_COLS].astype(str)
 
-        # -------------------------------------------------------------------------#
+        # ---------------------------------------------------------------------#
         # START: Plot Results
-        # -------------------------------------------------------------------------#
+        # ---------------------------------------------------------------------#
 
         plot_prefix = f"{dataset}_{group}_{metric}"
 
         fig1 = plot_metrics(combined, metric, dataset, group, name_col="key")
         # fig1.show()
-        fig1.write_html(
-            f"{EVAL_DIR}/{plot_prefix}.html", full_html=False, include_plotlyjs="cdn"
-        )
+        fig1.write_html(f"{EVAL_DIR}/{plot_prefix}.html")
 
         fig2 = plot_metrics_vs_time(combined, metric, dataset, group, name_col="key")
         # fig2.show()
-        fig2.write_html(
-            f"{EVAL_DIR}/{plot_prefix}_vs_time.html",
-            full_html=False,
-            include_plotlyjs="cdn",
-        )
+        fig2.write_html(f"{EVAL_DIR}/{plot_prefix}_vs_time.html")
 
         logging.info("\nPlotting Complete!")
     else:
