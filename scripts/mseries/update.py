@@ -62,7 +62,7 @@ def main(dataset: str = "M3") -> None:
             "\nNon Static metrics like date and run times are not used for this "
             "comparison."
             "\nReviewer should make sure that all models belonging to the updated "
-            "keys have been updated"
+            "keys have been updated."
         )
     else:
         logging.info(
@@ -100,6 +100,7 @@ def main(dataset: str = "M3") -> None:
     # -------------------------------------------------------------------------#
 
     running_evals.reset_index(inplace=True)
+    running_evals.sort_values(KEY_COLS, inplace=True)
     running_evals.to_csv(running_eval_path, index=False)
 
     # -------------------------------------------------------------------------#

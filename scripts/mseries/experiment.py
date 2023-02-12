@@ -244,7 +244,18 @@ def main(
     # -------------------------------------------------------------------------#
 
     # Order columns (as different execution engines may have different orders) ----
-    cols = ["unique_id", "ds", "y_pred", "model_name", "model_engine", "model"]
+    cols = [
+        "unique_id",
+        "ds",
+        "y_pred",
+        "model_name",
+        "model_engine",
+        "model",
+        "total_time",
+        "setup_time",
+        "train_time",
+        "predict_time",
+    ]
     test_results = test_results[cols]
 
     # Write results ----

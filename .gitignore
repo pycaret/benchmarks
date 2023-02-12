@@ -143,3 +143,6 @@ data/m3/datasets/*
 data/m4/datasets/*
 data/m4/results/forecasts/*
 data/m4/results/time/*
+
+# Models
+catboost_info/

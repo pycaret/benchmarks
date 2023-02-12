@@ -1,6 +1,6 @@
 # Pycaret
-# pycaret==3.0.0rc8
-git+https://github.com/pycaret/pycaret@38f01856b5ca14ca79aa800677b489c381d5aa71
+pycaret==3.0.0rc9
+# git+https://github.com/pycaret/pycaret@38f01856b5ca14ca79aa800677b489c381d5aa71
 prophet
 xgboost
 catboost

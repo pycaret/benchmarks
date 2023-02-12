@@ -4,6 +4,7 @@ from typing import Optional
 
 import pandas as pd
 from pycaret.time_series import TSForecastingExperiment
+import time
 
 from benchmarks.utils import _impute_time_series_model_engine
 
@@ -54,15 +55,26 @@ def forecast_create_model(
     model_name = None
     model_engine = None
     model = None
+    total_start, total_end = 0, -1
+    setup_start, setup_end = 0, -1
+    train_start, train_end = 0, -1
+    predict_start, predict_end = 0, -1
     try:
+        total_start = time.time()
+        setup_start = time.time()
         exp = TSForecastingExperiment()
         exp.setup(data=data, experiment_name=f"{prefix}_{unique_id}", **setup_kwargs)
+        setup_end = time.time()
         setup_passed = True
         try:
             model_name = create_model_kwargs.get("estimator")
             model_engine = exp.get_engine(model_name)
+            train_start = time.time()
             model = exp.create_model(**create_model_kwargs)
+            train_end = time.time()
+            predict_start = time.time()
             test_preds = exp.predict_model(model, verbose=False)
+            predict_end = time.time()
         except Exception as e:
             logging.warn(
                 f"Error occurred for ID: {unique_id} when trying main model: " f"{e}"
@@ -72,19 +84,30 @@ def forecast_create_model(
                     logging.info(f"Trying backup model for ID: {unique_id}")
                     model_name = backup_model_kwargs.get("estimator")
                     model_engine = exp.get_engine(model_name)
+                    train_start = time.time()
                     model = exp.create_model(**backup_model_kwargs)
+                    train_end = time.time()
+                    predict_start = time.time()
                     test_preds = exp.predict_model(model, verbose=False)
+                    predict_end = time.time()
                 except Exception as e:
                     logging.warn(
                         f"Error occurred for ID: {unique_id} when trying backup model: "
                         f"{e}"
                     )
+        total_end = time.time()
     except Exception as e:
         if not setup_passed:
             logging.warn(
                 f"Error occurred for ID: {unique_id} during experiment setup. "
                 f"No model created: {e}"
             )
+
+    # Add timing information ----
+    test_preds["total_time"] = round(total_end - total_start, 4)
+    test_preds["setup_time"] = round(setup_end - setup_start, 4)
+    test_preds["train_time"] = round(train_end - train_start, 4)
+    test_preds["predict_time"] = round(predict_end - predict_start, 4)
 
     # Add model name and model hyperparameters used ----
     test_preds["model_name"] = model_name
