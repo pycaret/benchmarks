@@ -53,7 +53,7 @@ def main(
 
     logging.info("\n\n")
     logging.info(
-        f"\nPlotting results for dataset: '{dataset}' group: '{group}'"
+        f"\nPlotting results for dataset: '{dataset}' group: '{group}' metric: '{metric}'"
         f"\n    from Directory: '{EVAL_DIR}'"
     )
 
@@ -72,150 +72,159 @@ def main(
     combined = pd.concat([running_evals, ext_benchmarks])
     combined = combined.query("group == @group")
 
-    # -------------------------------------------------------------------------#
-    # START: Filter based on user inputs
-    # -------------------------------------------------------------------------#
+    if metric in combined.columns:
 
-    def _print_all_available(key: str, values: Optional[str] = None):
-        values = values or "All Available"
-        print(f"    {key} included: '{values}'")
+        # -------------------------------------------------------------------------#
+        # START: Filter based on user inputs
+        # -------------------------------------------------------------------------#
 
-    key = "Libraries"
-    if library:
-        values = ast.literal_eval(library)
-        _print_all_available(key=key, values=values)
-        combined = combined.query("library in @values")
+        def _print_all_available(key: str, values: Optional[str] = None):
+            values = values or "All Available"
+            print(f"    {key} included: '{values}'")
+
+        key = "Libraries"
+        if library:
+            values = ast.literal_eval(library)
+            _print_all_available(key=key, values=values)
+            combined = combined.query("library in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Library Versions"
+        if library_version:
+            values = ast.literal_eval(library_version)
+            _print_all_available(key=key, values=values)
+            combined = combined.query("library_version in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Models"
+        if model:
+            values = ast.literal_eval(str(model))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("model in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Model Engines"
+        if model_engine:
+            values = ast.literal_eval(str(model_engine))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("model_engine in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Model Engine Versions"
+        if model_engine_version:
+            values = ast.literal_eval(str(model_engine_version))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("model_engine_version in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Execution Engines"
+        if execution_engine:
+            values = ast.literal_eval(str(execution_engine))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("execution_engine in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Execution Engine Versions"
+        if execution_engine_version:
+            values = ast.literal_eval(str(execution_engine_version))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("execution_engine_version in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Execution Modes"
+        if execution_mode:
+            values = ast.literal_eval(str(execution_mode))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("execution_mode in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Execution Mode Versions"
+        if execution_mode_version:
+            values = ast.literal_eval(str(execution_mode_version))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("execution_mode_version in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Number of CPUs"
+        if num_cpus:
+            values = ast.literal_eval(str(num_cpus))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("num_cpus in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Backup Models"
+        if backup_model:
+            values = ast.literal_eval(str(backup_model))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("backup_model in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "Python Versions"
+        if python_version:
+            values = ast.literal_eval(str(python_version))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("python_version in @values")
+        else:
+            _print_all_available(key=key)
+
+        key = "OS"
+        if os:
+            values = ast.literal_eval(str(os))
+            _print_all_available(key=key, values=values)
+            combined = combined.query("os in @values")
+        else:
+            _print_all_available(key=key)
+
+        # Convert mins to seconds ----
+        combined["time"] = (combined["time"] * 60).round()
+
+        combined["norm_time_cpu"] = combined["time"] * combined["num_cpus"]
+        combined["norm_time_cpu_model"] = (
+            combined["norm_time_cpu"] / combined["count_ts"]
+        )
+        combined["key"] = combined[KEY_COLS].apply(
+            lambda row: "-".join(row.values.astype(str)), axis=1
+        )
+        combined["name"] = combined[["library", "model", "model_engine"]].apply(
+            lambda row: "-".join(row.values.astype(str)), axis=1
+        )
+        combined.sort_values(by=metric, inplace=True)
+        combined[KEY_COLS] = combined[KEY_COLS].astype(str)
+
+        # -------------------------------------------------------------------------#
+        # START: Plot Results
+        # -------------------------------------------------------------------------#
+
+        plot_prefix = f"{dataset}_{group}_{metric}"
+
+        fig1 = plot_metrics(combined, metric, dataset, group, name_col="key")
+        # fig1.show()
+        fig1.write_html(
+            f"{EVAL_DIR}/{plot_prefix}.html", full_html=False, include_plotlyjs="cdn"
+        )
+
+        fig2 = plot_metrics_vs_time(combined, metric, dataset, group, name_col="key")
+        # fig2.show()
+        fig2.write_html(
+            f"{EVAL_DIR}/{plot_prefix}_vs_time.html",
+            full_html=False,
+            include_plotlyjs="cdn",
+        )
+
+        logging.info("\nPlotting Complete!")
     else:
-        _print_all_available(key=key)
-
-    key = "Library Versions"
-    if library_version:
-        values = ast.literal_eval(library_version)
-        _print_all_available(key=key, values=values)
-        combined = combined.query("library_version in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Models"
-    if model:
-        values = ast.literal_eval(str(model))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("model in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Model Engines"
-    if model_engine:
-        values = ast.literal_eval(str(model_engine))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("model_engine in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Model Engine Versions"
-    if model_engine_version:
-        values = ast.literal_eval(str(model_engine_version))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("model_engine_version in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Execution Engines"
-    if execution_engine:
-        values = ast.literal_eval(str(execution_engine))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("execution_engine in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Execution Engine Versions"
-    if execution_engine_version:
-        values = ast.literal_eval(str(execution_engine_version))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("execution_engine_version in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Execution Modes"
-    if execution_mode:
-        values = ast.literal_eval(str(execution_mode))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("execution_mode in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Execution Mode Versions"
-    if execution_mode_version:
-        values = ast.literal_eval(str(execution_mode_version))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("execution_mode_version in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Number of CPUs"
-    if num_cpus:
-        values = ast.literal_eval(str(num_cpus))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("num_cpus in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Backup Models"
-    if backup_model:
-        values = ast.literal_eval(str(backup_model))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("backup_model in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "Python Versions"
-    if python_version:
-        values = ast.literal_eval(str(python_version))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("python_version in @values")
-    else:
-        _print_all_available(key=key)
-
-    key = "OS"
-    if os:
-        values = ast.literal_eval(str(os))
-        _print_all_available(key=key, values=values)
-        combined = combined.query("os in @values")
-    else:
-        _print_all_available(key=key)
-
-    combined["norm_time_cpu"] = combined["time"] * combined["num_cpus"]
-    combined["norm_time_cpu_model"] = combined["norm_time_cpu"] / combined["count_ts"]
-    combined["key"] = combined[KEY_COLS].apply(
-        lambda row: "-".join(row.values.astype(str)), axis=1
-    )
-    combined["name"] = combined[["library", "model", "model_engine"]].apply(
-        lambda row: "-".join(row.values.astype(str)), axis=1
-    )
-    combined.sort_values(by=metric, inplace=True)
-    combined[KEY_COLS] = combined[KEY_COLS].astype(str)
-
-    # -------------------------------------------------------------------------#
-    # START: Plot Results
-    # -------------------------------------------------------------------------#
-
-    plot_prefix = f"{dataset}_{group}_{metric}"
-
-    fig1 = plot_metrics(combined, metric, dataset, group, name_col="key")
-    # fig1.show()
-    fig1.write_html(
-        f"{EVAL_DIR}/{plot_prefix}.html", full_html=False, include_plotlyjs="cdn"
-    )
-
-    fig2 = plot_metrics_vs_time(combined, metric, dataset, group, name_col="key")
-    # fig2.show()
-    fig2.write_html(
-        f"{EVAL_DIR}/{plot_prefix}_vs_time.html",
-        full_html=False,
-        include_plotlyjs="cdn",
-    )
-
-    logging.info("\nPlotting Complete!")
+        logging.warning(f"Metric '{metric}' not found in data. Skipping plotting.")
 
 
 if __name__ == "__main__":

@@ -72,6 +72,7 @@ def plot_metrics_vs_time(
     """Plots the metric vs. elapsed time for each model.
 
     Metric is plotted on the y-axis and elapsed time on the x-axis.
+    NOTE: Time passed should be in seconds.
 
     Parameters
     ----------
@@ -137,7 +138,7 @@ def plot_metrics_vs_time(
             f"<br>Execution Mode: '{execution_mode}' "
             f"Version: '{execution_mode_version}'"
             f"<br>Number of CPUs: '{num_cpus}' "
-            f"Total Models: '{num_models}' Total Time (mins): '{time}'"
+            f"Total Models: '{num_models}' Total Time (seconds): '{time}'"
             f"<br>Backup Model: '{backup_model}' Backup Model %: '{backup_model_per}'"
             f"<br>Primary Model %: '{primary_model_per}' No Model %: '{no_model_per}'"
             f"<br>Python Version: '{python_version}' OS: '{os}'"
@@ -160,7 +161,9 @@ def plot_metrics_vs_time(
 
     with fig.batch_update():
         fig.update_xaxes(
-            title_text="Elapsed Time (normalized per core and per model)", row=1, col=1
+            title_text="Elapsed Time in Seconds (normalized per core and per model)",
+            row=1,
+            col=1,
         )
 
         # Only on first column
@@ -206,6 +209,8 @@ def plot_metrics(
 
     with fig.batch_update():
         fig.update_xaxes(title_text=f"{metric}", row=1, col=1)
+        # tickmode added so that all y-axis labels are shown
+        fig.update_yaxes(tickmode="linear", row=1, col=1)
         template = "ggplot2"
         fig.update_layout(showlegend=False, template=template)
         fig.update_layout(title=f"Dataset: '{dataset}' Group: '{group}'")
