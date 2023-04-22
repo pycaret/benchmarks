@@ -1,4 +1,6 @@
 dataset,group,library,library_version,model,model_engine,model_engine_version,execution_engine,execution_engine_version,execution_mode,execution_mode_version,num_cpus,backup_model,python_version,os,backup_model_per,count_ts,mape,mase,no_model_per,owa,primary_model_per,smape
+M4,Hourly,pycaret,3.0.0,ets,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,72.4857,10.7187,0.0,3.6879,100.0,53.3182
+M4,Hourly,pycaret,3.0.0,exp_smooth,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,101.5441,12.0148,0.0,4.1898,100.0,61.8234
 M4,Hourly,pycaret,3.0.0.rc8,ada_cds_dt,sklearn,1.1.3,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,59.4297,2.6698,0.0,1.2728,100.0,26.3019
 M4,Hourly,pycaret,3.0.0.rc8,arima,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,30.7001,4.7259,0.0,1.9746,100.0,36.3239
 M4,Hourly,pycaret,3.0.0.rc8,br_cds_dt,sklearn,1.1.3,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,40.3464,1.9508,0.0,0.9574,100.0,20.228
@@ -57,6 +59,9 @@ M4,Hourly,pycaret,3.0.0.rc9,theta,sktime,0.16.0,ray,2.0.1,native,,8,naive,3.9.15
 M4,Hourly,pycaret,3.0.0.rc9,xgboost_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,43.0693,1.8923,0.0,1.0182,100.0,22.9114
 M4,Hourly,pycaret,38f01856b5ca14ca79aa800677b489c381d5aa71,ets,sktime,0.15.0,ray,2.0.1,native,,8,naive,3.9.15,win32,100.0,414.0,37.717,11.6077,0.0,3.5929,0.0,43.003
 M4,Hourly,pycaret,38f01856b5ca14ca79aa800677b489c381d5aa71,exp_smooth,sktime,0.15.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,101.5441,12.0148,0.0,4.1898,100.0,61.8234
+M4,Weekly,pycaret,3.0.0,bats,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.2786,359.0,7.0159,2.3369,0.0,0.8069,99.7214,7.076
+M4,Weekly,pycaret,3.0.0,ets,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,359.0,7.4141,2.2399,0.0,0.8213,100.0,7.6594
+M4,Weekly,pycaret,3.0.0,exp_smooth,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,359.0,7.4962,2.3391,0.0,0.8461,100.0,7.7878
 M4,Weekly,pycaret,3.0.0.rc8,ada_cds_dt,sklearn,1.1.3,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,359.0,12.8353,3.7081,0.0,1.3019,100.0,11.622
 M4,Weekly,pycaret,3.0.0.rc8,arima,,,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,359.0,8.3399,2.6379,0.0,0.9455,100.0,8.623
 M4,Weekly,pycaret,3.0.0.rc8,br_cds_dt,sklearn,1.1.3,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,359.0,9.8035,2.3722,0.0,0.9455,100.0,9.4997
