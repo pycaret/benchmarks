@@ -45,7 +45,7 @@ The benchmarking is done in 4 steps as described below.
 You can edit the batch file include all the models and categories you want to benchmark. Then run using the following command. This will execute `experiment.py` in a loop for all combinations.
 
 ```
-scripts\m3\run_experiments.bat
+scripts\mseries\run_experiments.bat
 ```
 
 This will create 2 files per model-category combination - one with the predictions and the other with the run statistics.
