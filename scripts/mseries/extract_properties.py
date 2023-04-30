@@ -164,15 +164,16 @@ def main(
             ",white_noise : str"
             ",lowercase_d : int"
             ",uppercase_d : int"
-            ",seasonality_present :bool"
-            ",candidate_sps :list"
-            ",significant_sps :list"
-            ",all_sps :list"
-            ",primary_sp :int"
-            ",significant_sps_no_harmonics :list"
-            ",all_sps_no_harmonics :list"
-            ",primary_sp_no_harmonics :int"
-            ",time_taken :float"
+            ",seasonality_present : bool"
+            ",seasonality_type: str"
+            ",candidate_sps : list"
+            ",significant_sps : list"
+            ",all_sps : list"
+            ",primary_sp : int"
+            ",significant_sps_no_harmonics : list"
+            ",all_sps_no_harmonics : list"
+            ",primary_sp_no_harmonics : int"
+            ",time_taken : float"
         )
     else:
         schema = None
@@ -208,6 +209,7 @@ def main(
         "lowercase_d",
         "uppercase_d",
         "seasonality_present",
+        "seasonality_type",
         "candidate_sps",
         "significant_sps",
         "all_sps",
