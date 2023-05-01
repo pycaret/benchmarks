@@ -54,6 +54,7 @@ def extract_properties(
                     "lowercase_d": [exp.lowercase_d],
                     "uppercase_d": [exp.uppercase_d],
                     "seasonality_present": [exp.seasonality_present],
+                    "seasonality_type": [exp.seasonality_type],
                     "candidate_sps": [exp.candidate_sps],
                     "significant_sps": [exp.significant_sps],
                     "all_sps": [exp.all_sps_to_use],
