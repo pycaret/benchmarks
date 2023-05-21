@@ -7,7 +7,7 @@
 for %%d in (M3) do (
     for %%g in (Other Yearly Quarterly Monthly) do (
         @REM Statistical Models (single engine) ----
-        for %%m in (grand_means naive snaive polytrend croston arima ets exp_smooth theta) do (
+        for %%m in (grand_means naive snaive polytrend croston arima ets exp_smooth stlf theta) do (
             python scripts/mseries/experiment.py --dataset=%%d --model=%%m --group=%%g
         )
 
@@ -44,7 +44,7 @@ for %%d in (M3) do (
 for %%d in (M4) do (
     for %%g in (Weekly Hourly) do (
         @REM Statistical Models (single engine) ----
-        for %%m in (grand_means naive snaive polytrend croston arima ets exp_smooth theta) do (
+        for %%m in (grand_means naive snaive polytrend croston arima ets exp_smooth stlf theta) do (
             python scripts/mseries/experiment.py --dataset=%%d --model=%%m --group=%%g
         )
 

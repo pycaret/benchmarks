@@ -25,7 +25,9 @@ from benchmarks.parallel.execution import (
     run_execution_checks,
     shutdown_engine,
 )
-from benchmarks.parallel.time_series.forecast_single_ts import forecast_create_model
+from benchmarks.parallel.time_series.fcst_single_ts_single_model import (
+    forecast_single_ts_single_model,
+)
 from benchmarks.utils import (
     _get_qualified_model_engine,
     _impute_time_series_model_engine,
@@ -230,7 +232,7 @@ def main(
     test_results, time_taken = execute(
         all_groups=combined,
         keys="unique_id",
-        function_single_group=forecast_create_model,
+        function_single_group=forecast_single_ts_single_model,
         function_kwargs=apply_kwargs,
         execution_mode=execution_mode,
         execution_engine=execution_engine,
