@@ -42,7 +42,7 @@ M4,Hourly,pycaret,3.0.0.rc9,gbr_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3
 M4,Hourly,pycaret,3.0.0.rc9,grand_means,sktime,0.16.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,85.7816,11.6862,0.0,3.3688,100.0,2023-02-11,34.161,2.55
 M4,Hourly,pycaret,3.0.0.rc9,huber_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,34.1304,1.9227,0.0,0.9585,100.0,2023-02-11,20.4814,9.6
 M4,Hourly,pycaret,3.0.0.rc9,knn_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,44.6077,1.9515,0.0,0.9821,100.0,2023-02-11,21.1301,9.6667
-M4,Hourly,pycaret,3.0.0.rc9,lar_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.2415,414.0,1.2974491346143155e+51,1.9031982078846398e+50,0.0,3.9732075505272307e+49,99.7585,2023-02-11,23.982,9.3833
+M4,Hourly,pycaret,3.0.0.rc9,lar_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.2415,414.0,1.2974491346143155e+51,1.9031982078846398e+50,0.0,3.973207550527231e+49,99.7585,2023-02-11,23.982,9.3833
 M4,Hourly,pycaret,3.0.0.rc9,lasso_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,41.1052,2.9801,0.0,1.1925,100.0,2023-02-11,20.9681,9.45
 M4,Hourly,pycaret,3.0.0.rc9,lightgbm_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,48.5804,1.962,0.0,1.0095,100.0,2023-02-11,22.0548,9.7333
 M4,Hourly,pycaret,3.0.0.rc9,llar_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,41.1047,2.98,0.0,1.1924,100.0,2023-02-11,20.9676,9.45
@@ -57,6 +57,9 @@ M4,Hourly,pycaret,3.0.0.rc9,ridge_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive
 M4,Hourly,pycaret,3.0.0.rc9,snaive,sktime,0.16.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,25.437,2.8605,0.0,1.2994,100.0,2023-02-11,25.8184,2.5667
 M4,Hourly,pycaret,3.0.0.rc9,theta,sktime,0.16.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,28.0722,3.8148,0.0,1.5734,100.0,2023-02-11,28.5687,2.5667
 M4,Hourly,pycaret,3.0.0.rc9,xgboost_cds_dt,sklearn,1.2.1,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,43.0693,1.8923,0.0,1.0182,100.0,2023-02-11,22.9114,10.25
+M4,Hourly,pycaret,3.0.2,arima_ens_freq_3_False_None_False_None,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,27.7524,7.7557,0.0,2.3751,100.0,2023-05-21,27.7956,14.7833
+M4,Hourly,pycaret,3.0.2,arima_ens_freq_5_False_None_False_None,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,24.0756,6.2955,0.0,1.9688,100.0,2023-05-21,24.0633,32.4
+M4,Hourly,pycaret,3.0.2,arima_ens_freq_5_True_1_False_None,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,17.5239,1.0736,0.0,0.6835,100.0,2023-05-20,16.8886,40.6333
 M4,Hourly,pycaret,38f01856b5ca14ca79aa800677b489c381d5aa71,ets,sktime,0.15.0,ray,2.0.1,native,,8,naive,3.9.15,win32,100.0,414.0,37.717,11.6077,0.0,3.5929,0.0,2023-01-29,43.003,5.7333
 M4,Hourly,pycaret,38f01856b5ca14ca79aa800677b489c381d5aa71,exp_smooth,sktime,0.15.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,101.5441,12.0148,0.0,4.1898,100.0,2023-01-29,61.8234,3.4833
 M4,Hourly,pycaret,4610ee8babbf2ab70769a7a3fc18c4392a1550c2,ets,sktime,0.17.0,ray,2.0.1,native,,8,naive,3.9.15,win32,0.0,414.0,74.1555,11.122,0.0,3.7751,100.0,2023-04-29,53.429,5.35
