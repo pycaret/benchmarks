@@ -1,10 +1,10 @@
 """Module to forecast a single time series using various pycaret flows."""
 import logging
+import time
 from typing import Optional
 
 import pandas as pd
 from pycaret.time_series import TSForecastingExperiment
-import time
 
 from benchmarks.utils import _impute_time_series_model_engine
 
@@ -237,4 +237,4 @@ def _get_extended_model_name(
         fold = None
     if remove_harmonics is False:
         harmonic_order_method = None
-    return f"{model}_ens_freq_{max_models}_{weighted}_{fold}_{remove_harmonics}_{harmonic_order_method}"
+    return f"{model}_ens_freq_{max_models}_{weighted}_{fold}_{remove_harmonics}_{harmonic_order_method}"  # noqa
