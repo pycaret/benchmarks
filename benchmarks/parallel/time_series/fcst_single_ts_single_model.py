@@ -11,7 +11,7 @@ from benchmarks.utils import _impute_time_series_model_engine
 logging.basicConfig(level=logging.INFO, format="%(asctime)s: %(message)s")
 
 
-def forecast_create_model(
+def forecast_single_ts_single_model(
     data: pd.DataFrame,
     setup_kwargs: dict,
     create_model_kwargs: dict,
